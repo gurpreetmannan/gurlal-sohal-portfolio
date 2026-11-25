@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
@@ -171,6 +171,7 @@
     ::-webkit-scrollbar-thumb { background: #1E293B; border-radius: 4px; }
     ::-webkit-scrollbar-thumb:hover { background: #2563EB; }
   </style>
+  <script src="/public/js/supabase-client.js"></script>
 </head>
 <body class="bg-surface text-on-surface min-h-screen flex flex-col pb-20 md:pb-0 selection:bg-royal-600 selection:text-white">
   <!-- ======================================================== -->
@@ -2385,9 +2386,19 @@
         status: 'new'
       };
 
-      const arr = getStoredEnquiries();
-      arr.unshift(newInquiry);
-      saveStoredEnquiries(arr);
+      if (window.GurlalSupabase && window.GurlalSupabase.submitEnquiry) {
+        window.GurlalSupabase.submitEnquiry({
+          organizerName: organizerName.trim(),
+          contactPhone: contactPhone.trim(),
+          enquiryCategory: enquiryCategory.trim(),
+          tournamentDates: tournamentDates.trim(),
+          messageTerms: messageTerms.trim()
+        });
+      } else {
+        const arr = getStoredEnquiries();
+        arr.unshift(newInquiry);
+        saveStoredEnquiries(arr);
+      }
 
               // Formatted structured WhatsApp message for instant delivery
         const waText = encodeURIComponent(

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -18,6 +18,8 @@
     .font-mono { font-family: 'JetBrains Mono', monospace; }
     .font-gurmukhi { font-family: 'Noto Sans Gurmukhi', sans-serif; }
   </style>
+  <!-- Supabase Cloud Database Client -->
+  <script src="/public/js/supabase-client.js"></script>
 </head>
 <body class="bg-[#060B19] text-white min-h-screen flex flex-col">
 
@@ -494,7 +496,13 @@
       const activeContent = document.getElementById('tabContent-' + tabId);
       if (activeContent) activeContent.classList.remove('hidden');
 
-      if (tabId === 'enquiries') renderPageEnquiries('all');
+      if (tabId === 'enquiries') {
+        if (window.GurlalSupabase && window.GurlalSupabase.getEnquiries) {
+          window.GurlalSupabase.getEnquiries().then(() => renderPageEnquiries('all'));
+        } else {
+          renderPageEnquiries('all');
+        }
+      }
     }
 
     // Enquiry Storage & Management
@@ -630,6 +638,9 @@
     }
 
     function updatePageEnquiryStatus(id, newStatus) {
+      if (window.GurlalSupabase && window.GurlalSupabase.updateStatus) {
+        window.GurlalSupabase.updateStatus(id, newStatus);
+      }
       const arr = getStoredEnquiries();
       const idx = arr.findIndex(x => x.id === id);
       if (idx !== -1) {
@@ -641,6 +652,9 @@
     }
 
     function deletePageEnquiry(id) {
+      if (window.GurlalSupabase && window.GurlalSupabase.deleteEnquiry) {
+        window.GurlalSupabase.deleteEnquiry(id);
+      }
       if (!confirm('Are you sure you want to delete this enquiry record?')) return;
       let arr = getStoredEnquiries();
       arr = arr.filter(x => x.id !== id);
