@@ -1,26 +1,31 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Media Gallery &mdash; Gurlal Sohal (Gurlal Singh) Official Raider Portfolio</title>
-  <meta name="description" content="High-resolution match posters, official tournament photography, and match highlight video reels of Gurlal Sohal (Gurlal Singh).">
-  <meta name="keywords" content="Gurlal Sohal, Gurlal Singh, Kabaddi Raider, Village Sohal, Tarn Taran, Young Sports Club BC, Bal Incorporation, Kabaddi365, Scorpio SUV, Frandipur Cup, Circle Style Kabaddi">
+  <meta name="description"
+    content="High-resolution match posters, official tournament photography, and match highlight video reels of Gurlal Sohal (Gurlal Singh).">
+  <meta name="keywords"
+    content="Gurlal Sohal, Gurlal Singh, Kabaddi Raider, Village Sohal, Tarn Taran, Young Sports Club BC, Bal Incorporation, Kabaddi365, Scorpio SUV, Frandipur Cup, Circle Style Kabaddi">
   <meta name="author" content="Gurlal Sohal Official Management">
-  <link rel="canonical" href="https://gurlalsohal.in/gallery.html">
+  <link rel="canonical" href="http://localhost:3000/gallery.html">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://gurlalsohal.in/gallery.html">
+  <meta property="og:url" content="http://localhost:3000/gallery.html">
   <meta property="og:title" content="Media Gallery &mdash; Gurlal Sohal Official Raider Portfolio">
-  <meta property="og:description" content="High-resolution match posters, official tournament photography, and match highlight video reels of Gurlal Sohal (Gurlal Singh).">
-  <meta property="og:image" content="https://gurlalsohal.in/public/images/gurlal_sohal_great_khali_majhe_di_shaan.jpg">
+  <meta property="og:description"
+    content="High-resolution match posters, official tournament photography, and match highlight video reels of Gurlal Sohal (Gurlal Singh).">
+  <meta property="og:image" content="http://localhost:3000/public/images/gurlal_sohal_great_khali_majhe_di_shaan.jpg">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Media Gallery &mdash; Gurlal Sohal">
-  <meta name="twitter:description" content="High-resolution match posters, official tournament photography, and match highlight video reels of Gurlal Sohal (Gurlal Singh).">
-  <meta name="twitter:image" content="https://gurlalsohal.in/public/images/gurlal_sohal_great_khali_majhe_di_shaan.jpg">
+  <meta name="twitter:description"
+    content="High-resolution match posters, official tournament photography, and match highlight video reels of Gurlal Sohal (Gurlal Singh).">
+  <meta name="twitter:image" content="http://localhost:3000/public/images/gurlal_sohal_great_khali_majhe_di_shaan.jpg">
 
   <!-- Schema.org Person & Athlete Structured Data (JSON-LD) -->
   <script type="application/ld+json">
@@ -63,8 +68,11 @@
   <!-- Google Fonts & Material Symbols -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+Gurmukhi:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+Gurmukhi:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
 
   <!-- jsPDF Client-Side PDF Generation Engine -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -138,59 +146,87 @@
       color: #FFFFFF;
       font-family: 'Inter', sans-serif;
     }
+
     .font-gurmukhi {
       font-family: 'Noto Sans Gurmukhi', 'Mukta Mahee', 'Raavi', sans-serif;
     }
+
     .gold-gradient-text {
       background: linear-gradient(135deg, #FFF1B8 0%, #D4AF37 50%, #AA820A 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+
     .saffron-gradient-text {
       background: linear-gradient(135deg, #FFF0E5 0%, #FF6B00 60%, #CC5000 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+
     .blue-gradient-text {
       background: linear-gradient(135deg, #E0F2FE 0%, #2563EB 50%, #1D4ED8 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+
     .stadium-rim-glow {
       box-shadow: inset 0 0 50px rgba(37, 99, 235, 0.35), 0 0 35px rgba(37, 99, 235, 0.25);
     }
+
     .gold-border-glow {
       box-shadow: 0 0 25px rgba(212, 175, 55, 0.15);
     }
+
     .hero-glow {
       background: radial-gradient(circle at 50% 25%, rgba(37, 99, 235, 0.18) 0%, rgba(255, 107, 0, 0.08) 45%, transparent 75%);
     }
+
     /* Smooth Scrollbar */
-    ::-webkit-scrollbar { width: 8px; height: 8px; }
-    ::-webkit-scrollbar-track { background: #060B19; }
-    ::-webkit-scrollbar-thumb { background: #1E293B; border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: #2563EB; }
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #060B19;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #1E293B;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #2563EB;
+    }
   </style>
 </head>
-<body class="overflow-x-hidden bg-surface text-on-surface min-h-screen flex flex-col pb-20 md:pb-0 selection:bg-royal-600 selection:text-white">
+
+<body
+  class="bg-surface text-on-surface min-h-screen flex flex-col pb-20 md:pb-0 selection:bg-royal-600 selection:text-white">
   <!-- ======================================================== -->
   <!-- PERMANENT FROSTED DARK GLASS STICKY HEADER               -->
   <!-- ======================================================== -->
-  <header class="sticky top-0 z-50 w-full bg-[#060B19]/85 backdrop-blur-md border-b border-slate-800/90 shadow-2xl transition-all duration-300">
+  <header
+    class="sticky top-0 z-50 w-full bg-[#060B19]/85 backdrop-blur-md border-b border-slate-800/90 shadow-2xl transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between gap-4">
-      
+
       <!-- Brand & Identity (Verified Name, Village Sohal & Jersey) -->
       <a href="index.html" class="flex items-center gap-3 group shrink-0">
-        <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-royal-600 to-saffron-500 p-0.5 shadow-lg shadow-blue-950/50 group-hover:scale-105 transition-transform">
-          <div class="w-full h-full bg-[#060B19] rounded-[10px] flex items-center justify-center font-headline text-2xl text-blue-400 font-bold">
+        <div
+          class="w-11 h-11 rounded-xl bg-gradient-to-br from-royal-600 to-saffron-500 p-0.5 shadow-lg shadow-blue-950/50 group-hover:scale-105 transition-transform">
+          <div
+            class="w-full h-full bg-[#060B19] rounded-[10px] flex items-center justify-center font-headline text-2xl text-blue-400 font-bold">
             GS
           </div>
         </div>
         <div class="flex flex-col">
-          <span class="font-headline text-xl sm:text-2xl tracking-wider text-white font-bold group-hover:text-blue-400 transition-colors uppercase">
+          <span
+            class="font-headline text-xl sm:text-2xl tracking-wider text-white font-bold group-hover:text-blue-400 transition-colors uppercase">
             GURLAL SOHAL
           </span>
-          <span class="font-label text-[10px] tracking-widest text-[#FF6B00] font-bold uppercase -mt-1 flex items-center gap-1.5">
+          <span
+            class="font-label text-[10px] tracking-widest text-[#FF6B00] font-bold uppercase -mt-1 flex items-center gap-1.5">
             <span>Gurlal Singh</span>
             <span>&bull;</span>
             <span>Village Sohal, Tarn Taran</span>
@@ -199,34 +235,45 @@
       </a>
 
       <!-- Desktop 6-Page Navigation (Prominently displayed on >= 1024px screens) -->
-      <nav class="hidden lg:flex items-center gap-1.5 bg-[#0F172A]/90 px-3 py-1.5 rounded-full border border-slate-800 shadow-inner">
-                  <a href="index.html" class="px-3.5 py-2 rounded-full text-slate-300 hover:text-white hover:bg-slate-800/70 transition-colors font-label text-xs uppercase tracking-wider font-medium">
-            HOME
-          </a>          <a href="about.html" class="px-3.5 py-2 rounded-full text-slate-300 hover:text-white hover:bg-slate-800/70 transition-colors font-label text-xs uppercase tracking-wider font-medium">
-            ABOUT
-          </a>          <a href="achievements.html" class="px-3.5 py-2 rounded-full text-slate-300 hover:text-white hover:bg-slate-800/70 transition-colors font-label text-xs uppercase tracking-wider font-medium">
-            ACHIEVEMENTS
-          </a>          <a href="matches.html" class="px-3.5 py-2 rounded-full text-slate-300 hover:text-white hover:bg-slate-800/70 transition-colors font-label text-xs uppercase tracking-wider font-medium">
-            MATCHES
-          </a>          <a href="gallery.html" class="px-4 py-2 rounded-full bg-royal-600/25 border border-royal-600/70 text-blue-300 font-label text-xs uppercase tracking-wider font-bold shadow-sm flex items-center gap-1.5 transition-all">
-            <span class="w-1.5 h-1.5 rounded-full bg-royal-500 animate-pulse"></span>
-            <span>GALLERY</span>
-          </a>          <a href="contact.html" class="px-3.5 py-2 rounded-full text-slate-300 hover:text-white hover:bg-slate-800/70 transition-colors font-label text-xs uppercase tracking-wider font-medium">
-            CONTACT
-          </a>
+      <nav
+        class="hidden lg:flex items-center gap-1.5 bg-[#0F172A]/90 px-3 py-1.5 rounded-full border border-slate-800 shadow-inner">
+        <a href="index.html"
+          class="px-3.5 py-2 rounded-full text-slate-300 hover:text-white hover:bg-slate-800/70 transition-colors font-label text-xs uppercase tracking-wider font-medium">
+          HOME
+        </a> <a href="about.html"
+          class="px-3.5 py-2 rounded-full text-slate-300 hover:text-white hover:bg-slate-800/70 transition-colors font-label text-xs uppercase tracking-wider font-medium">
+          ABOUT
+        </a> <a href="achievements.html"
+          class="px-3.5 py-2 rounded-full text-slate-300 hover:text-white hover:bg-slate-800/70 transition-colors font-label text-xs uppercase tracking-wider font-medium">
+          ACHIEVEMENTS
+        </a> <a href="matches.html"
+          class="px-3.5 py-2 rounded-full text-slate-300 hover:text-white hover:bg-slate-800/70 transition-colors font-label text-xs uppercase tracking-wider font-medium">
+          MATCHES
+        </a> <a href="gallery.html"
+          class="px-4 py-2 rounded-full bg-royal-600/25 border border-royal-600/70 text-blue-300 font-label text-xs uppercase tracking-wider font-bold shadow-sm flex items-center gap-1.5 transition-all">
+          <span class="w-1.5 h-1.5 rounded-full bg-royal-500 animate-pulse"></span>
+          <span>GALLERY</span>
+        </a> <a href="contact.html"
+          class="px-3.5 py-2 rounded-full text-slate-300 hover:text-white hover:bg-slate-800/70 transition-colors font-label text-xs uppercase tracking-wider font-medium">
+          CONTACT
+        </a>
       </nav>
 
       <!-- Right Header Actions: WhatsApp Direct Connect + Mobile Menu -->
       <div class="flex items-center gap-2 sm:gap-3">
         <!-- Direct WhatsApp Link (Sticky Header Direct Connect) -->
-        <a href="https://wa.me/919849004200?text=Hello%20Gurlal%20Sohal%20Team%2C%20I%20would%20like%20to%20enquire%20regarding%20tournament%20participation%20%2F%20sponsorship." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-xl bg-emerald-950/70 border border-emerald-500/40 text-emerald-400 hover:bg-emerald-600 hover:text-white font-label text-xs uppercase tracking-wider font-bold transition-all shadow-md" title="Instant WhatsApp (+91 98490 04200)">
+        <a href="https://wa.me/919849004200?text=Hello%20Gurlal%20Sohal%20Team%2C%20I%20would%20like%20to%20enquire%20regarding%20tournament%20participation%20%2F%20sponsorship."
+          target="_blank" rel="noopener noreferrer"
+          class="inline-flex items-center gap-1.5 px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-xl bg-emerald-950/70 border border-emerald-500/40 text-emerald-400 hover:bg-emerald-600 hover:text-white font-label text-xs uppercase tracking-wider font-bold transition-all shadow-md"
+          title="Instant WhatsApp (+91 98490 04200)">
           <span class="material-symbols-outlined text-[16px]">chat</span>
           <span class="hidden sm:inline">WhatsApp</span>
           <span class="sm:hidden">Chat</span>
         </a>
 
         <!-- Mobile Hamburger Button (Tablet & Mobile only: lg:hidden) -->
-        <button type="button" onclick="toggleMobileMenu()" aria-label="Toggle Navigation Menu" class="lg:hidden w-10 h-10 rounded-xl bg-[#0F172A] border border-slate-700 flex items-center justify-center text-white hover:text-blue-400 transition-colors cursor-pointer">
+        <button type="button" onclick="toggleMobileMenu()" aria-label="Toggle Navigation Menu"
+          class="lg:hidden w-10 h-10 rounded-xl bg-[#0F172A] border border-slate-700 flex items-center justify-center text-white hover:text-blue-400 transition-colors cursor-pointer">
           <span class="material-symbols-outlined text-[24px]">menu</span>
         </button>
       </div>
@@ -234,23 +281,32 @@
     </div>
 
     <!-- Mobile Drawer Menu (Hidden on Desktop) -->
-    <div id="mobileMenu" class="hidden lg:hidden bg-[#0F172A] border-b border-slate-800 px-6 py-4 flex flex-col gap-2 shadow-2xl">
-                <a href="index.html" class="px-4 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors font-label text-sm uppercase tracking-wider font-medium">
-            HOME
-          </a>          <a href="about.html" class="px-4 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors font-label text-sm uppercase tracking-wider font-medium">
-            ABOUT
-          </a>          <a href="achievements.html" class="px-4 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors font-label text-sm uppercase tracking-wider font-medium">
-            ACHIEVEMENTS
-          </a>          <a href="matches.html" class="px-4 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors font-label text-sm uppercase tracking-wider font-medium">
-            MATCHES
-          </a>          <a href="gallery.html" class="px-4 py-3 rounded-xl bg-royal-600/20 border border-royal-600/50 text-blue-300 font-label text-sm uppercase tracking-wider font-bold flex items-center justify-between">
-            <span>GALLERY</span>
-            <span class="w-2 h-2 rounded-full bg-royal-600"></span>
-          </a>          <a href="contact.html" class="px-4 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors font-label text-sm uppercase tracking-wider font-medium">
-            CONTACT
-          </a>
+    <div id="mobileMenu"
+      class="hidden lg:hidden bg-[#0F172A] border-b border-slate-800 px-6 py-4 flex flex-col gap-2 shadow-2xl">
+      <a href="index.html"
+        class="px-4 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors font-label text-sm uppercase tracking-wider font-medium">
+        HOME
+      </a> <a href="about.html"
+        class="px-4 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors font-label text-sm uppercase tracking-wider font-medium">
+        ABOUT
+      </a> <a href="achievements.html"
+        class="px-4 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors font-label text-sm uppercase tracking-wider font-medium">
+        ACHIEVEMENTS
+      </a> <a href="matches.html"
+        class="px-4 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors font-label text-sm uppercase tracking-wider font-medium">
+        MATCHES
+      </a> <a href="gallery.html"
+        class="px-4 py-3 rounded-xl bg-royal-600/20 border border-royal-600/50 text-blue-300 font-label text-sm uppercase tracking-wider font-bold flex items-center justify-between">
+        <span>GALLERY</span>
+        <span class="w-2 h-2 rounded-full bg-royal-600"></span>
+      </a> <a href="contact.html"
+        class="px-4 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors font-label text-sm uppercase tracking-wider font-medium">
+        CONTACT
+      </a>
       <div class="pt-3 border-t border-slate-800 flex flex-col gap-2">
-        <a href="https://wa.me/919849004200?text=Hello%20Gurlal%20Sohal%20Team%2C%20I%20would%20like%20to%20enquire%20regarding%20tournament%20participation." target="_blank" class="w-full py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-center font-label text-xs uppercase tracking-wider font-bold flex items-center justify-center gap-2 shadow-md">
+        <a href="https://wa.me/919849004200?text=Hello%20Gurlal%20Sohal%20Team%2C%20I%20would%20like%20to%20enquire%20regarding%20tournament%20participation."
+          target="_blank"
+          class="w-full py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-center font-label text-xs uppercase tracking-wider font-bold flex items-center justify-center gap-2 shadow-md">
           <span class="material-symbols-outlined text-[16px]">chat</span>
           <span>WHATSAPP ENQUIRY (+91 98490 04200)</span>
         </a>
@@ -259,12 +315,16 @@
   </header>
 
   <!-- Sleek Sticky Bottom Quick-Booking Bar for Mobile (< 768px screens) -->
-  <aside class="md:hidden fixed bottom-0 inset-x-0 z-40 bg-[#060B19]/95 backdrop-blur-lg border-t border-slate-800 px-3 py-2.5 shadow-2xl flex items-center gap-2">
-    <a href="https://wa.me/919849004200?text=Hello%20Gurlal%20Sohal%20Team%2C%20I%20would%20like%20to%20enquire%20regarding%20tournament%20participation%20%2F%20sponsorship." target="_blank" rel="noopener noreferrer" class="flex-1 py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 text-white font-label text-xs uppercase tracking-wider font-bold flex items-center justify-center gap-1.5 shadow-lg shadow-emerald-950/60">
+  <aside
+    class="md:hidden fixed bottom-0 inset-x-0 z-40 bg-[#060B19]/95 backdrop-blur-lg border-t border-slate-800 px-3 py-2.5 shadow-2xl flex items-center gap-2">
+    <a href="https://wa.me/919849004200?text=Hello%20Gurlal%20Sohal%20Team%2C%20I%20would%20like%20to%20enquire%20regarding%20tournament%20participation%20%2F%20sponsorship."
+      target="_blank" rel="noopener noreferrer"
+      class="flex-1 py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 text-white font-label text-xs uppercase tracking-wider font-bold flex items-center justify-center gap-1.5 shadow-lg shadow-emerald-950/60">
       <span class="material-symbols-outlined text-[18px]">chat</span>
       <span>WHATSAPP BOOKING</span>
     </a>
-    <a href="tel:+919849004200" class="py-2.5 px-4 rounded-xl bg-[#0F172A] hover:bg-slate-800 border border-slate-700 text-slate-200 hover:text-white font-label text-xs uppercase tracking-wider font-bold flex items-center justify-center gap-1.5 shadow-md">
+    <a href="tel:+919849004200"
+      class="py-2.5 px-4 rounded-xl bg-[#0F172A] hover:bg-slate-800 border border-slate-700 text-slate-200 hover:text-white font-label text-xs uppercase tracking-wider font-bold flex items-center justify-center gap-1.5 shadow-md">
       <span class="material-symbols-outlined text-[18px] text-[#FF6B00]">call</span>
       <span>CALL NOW</span>
     </a>
@@ -276,21 +336,27 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col gap-6 relative z-10">
         <div class="inline-flex items-center gap-2">
           <span class="w-8 h-0.5 bg-[#2563EB]"></span>
-          <span class="font-label text-xs uppercase tracking-widest text-blue-400 font-bold">05 / Media Archive &amp; Visual Chronicles</span>
+          <span class="font-label text-xs uppercase tracking-widest text-blue-400 font-bold">05 / Media Archive &amp;
+            Visual Chronicles</span>
         </div>
         <h1 class="font-headline text-5xl sm:text-6xl lg:text-7xl uppercase text-white font-bold leading-tight">
           Authentic Photographs &amp; <span class="blue-gradient-text">Match Highlights</span>
         </h1>
         <p class="font-body text-base lg:text-xl text-slate-300 max-w-3xl leading-relaxed">
-          Explore all official tournament posters, certified statistics, arena photography, and match highlight video reels of Gurlal Sohal. Click any photo to inspect in fullscreen Lightbox or play reels with custom video speeds.
+          Explore all official tournament posters, certified statistics, arena photography, and match highlight video
+          reels of Gurlal Sohal. Click any photo to inspect in fullscreen Lightbox or play reels with custom video
+          speeds.
         </p>
 
         <div class="flex flex-wrap items-center gap-3.5 pt-2">
-          <a href="https://wa.me/919849004200?text=Hello%20Gurlal%20Sohal%20Team%2C%20I%20would%20like%20to%20enquire%20regarding%20tournament%20participation." target="_blank" rel="noopener noreferrer" class="px-6 py-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-label text-xs uppercase tracking-widest font-bold flex items-center gap-2.5 shadow-xl shadow-emerald-900/40 hover:scale-[1.02] transition-all">
+          <a href="https://wa.me/919849004200?text=Hello%20Gurlal%20Sohal%20Team%2C%20I%20would%20like%20to%20enquire%20regarding%20tournament%20participation."
+            target="_blank" rel="noopener noreferrer"
+            class="px-6 py-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-label text-xs uppercase tracking-widest font-bold flex items-center gap-2.5 shadow-xl shadow-emerald-900/40 hover:scale-[1.02] transition-all">
             <span class="material-symbols-outlined text-[20px]">chat</span>
             <span>WHATSAPP ENQUIRY (+91 98490 04200)</span>
           </a>
-          <a href="tel:+919849004200" class="px-5 py-4 rounded-xl bg-[#0F172A] border border-slate-700 hover:border-blue-500 text-white font-mono text-sm font-bold flex items-center gap-2.5 transition-all shadow-md">
+          <a href="tel:+919849004200"
+            class="px-5 py-4 rounded-xl bg-[#0F172A] border border-slate-700 hover:border-blue-500 text-white font-mono text-sm font-bold flex items-center gap-2.5 transition-all shadow-md">
             <span class="material-symbols-outlined text-[20px] text-blue-400">phone_in_talk</span>
             <span>+91 98490 04200</span>
           </a>
@@ -302,16 +368,20 @@
     <section class="py-8 bg-[#0F172A] border-b border-slate-800 sticky top-20 z-30 backdrop-blur-md bg-[#0F172A]/90">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-wrap items-center justify-between gap-4">
         <div class="flex flex-wrap items-center gap-2 p-1.5 rounded-2xl bg-[#060B19] border border-slate-800 shadow-lg">
-          <button type="button" onclick="filterGalleryMedia('all')" id="gFilter-all" class="g-filter-btn px-4 py-2 rounded-xl bg-[#2563EB] text-white font-label text-xs uppercase tracking-wider font-bold transition-all shadow-md cursor-pointer">
+          <button type="button" onclick="filterGalleryMedia('all')" id="gFilter-all"
+            class="g-filter-btn px-4 py-2 rounded-xl bg-[#2563EB] text-white font-label text-xs uppercase tracking-wider font-bold transition-all shadow-md cursor-pointer">
             All Media Archive (9)
           </button>
-          <button type="button" onclick="filterGalleryMedia('posters')" id="gFilter-posters" class="g-filter-btn px-4 py-2 rounded-xl bg-[#060B19] text-slate-400 hover:text-white font-label text-xs uppercase tracking-wider transition-all border border-slate-800 cursor-pointer">
+          <button type="button" onclick="filterGalleryMedia('posters')" id="gFilter-posters"
+            class="g-filter-btn px-4 py-2 rounded-xl bg-[#060B19] text-slate-400 hover:text-white font-label text-xs uppercase tracking-wider transition-all border border-slate-800 cursor-pointer">
             Official Tournament Posters (3)
           </button>
-          <button type="button" onclick="filterGalleryMedia('photography')" id="gFilter-photography" class="g-filter-btn px-4 py-2 rounded-xl bg-[#060B19] text-slate-400 hover:text-white font-label text-xs uppercase tracking-wider transition-all border border-slate-800 cursor-pointer">
+          <button type="button" onclick="filterGalleryMedia('photography')" id="gFilter-photography"
+            class="g-filter-btn px-4 py-2 rounded-xl bg-[#060B19] text-slate-400 hover:text-white font-label text-xs uppercase tracking-wider transition-all border border-slate-800 cursor-pointer">
             Match &amp; Arena Photography
           </button>
-          <button type="button" onclick="filterGalleryMedia('videos')" id="gFilter-videos" class="g-filter-btn px-4 py-2 rounded-xl bg-[#060B19] text-slate-400 hover:text-white font-label text-xs uppercase tracking-wider transition-all border border-slate-800 cursor-pointer">
+          <button type="button" onclick="filterGalleryMedia('videos')" id="gFilter-videos"
+            class="g-filter-btn px-4 py-2 rounded-xl bg-[#060B19] text-slate-400 hover:text-white font-label text-xs uppercase tracking-wider transition-all border border-slate-800 cursor-pointer">
             Match Highlight Reels (6)
           </button>
         </div>
@@ -325,40 +395,58 @@
 
         <!-- Media Items Container -->
         <div id="galleryItemsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          
+
           <!-- ITEM 1: Poster - Frandipur Cup -->
-          <div data-gallery-cat="posters" class="gallery-item-card p-4 rounded-2xl bg-[#0F172A] border border-slate-800 hover:border-amber-500/60 transition-all shadow-xl group cursor-pointer flex flex-col justify-between gap-4" onclick="openGalleryIndex(0)">
+          <div data-gallery-cat="posters"
+            class="gallery-item-card p-4 rounded-2xl bg-[#0F172A] border border-slate-800 hover:border-amber-500/60 transition-all shadow-xl group cursor-pointer flex flex-col justify-between gap-4"
+            onclick="openGalleryIndex(0)">
             <div class="aspect-[3/4] rounded-xl overflow-hidden bg-black relative flex items-center justify-center">
-              <img src="/public/images/frandipur_kabaddi_cup_best_raider.jpg" alt="1st Frandipur Cup Best Raider" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-              <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <img src="/public/images/frandipur_kabaddi_cup_best_raider.jpg" alt="1st Frandipur Cup Best Raider"
+                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+              <div
+                class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                 <span class="material-symbols-outlined text-white text-[48px]">fullscreen</span>
               </div>
-              <span class="absolute top-3 left-3 px-2.5 py-1 rounded bg-[#D4AF37] text-black font-mono text-[10px] uppercase font-bold shadow-md">Trophy Honor</span>
-              <span class="absolute bottom-3 right-3 px-2 py-0.5 rounded bg-black/80 font-mono text-[10px] text-white">Poster 1 / 3</span>
+              <span
+                class="absolute top-3 left-3 px-2.5 py-1 rounded bg-[#D4AF37] text-black font-mono text-[10px] uppercase font-bold shadow-md">Trophy
+                Honor</span>
+              <span
+                class="absolute bottom-3 right-3 px-2 py-0.5 rounded bg-black/80 font-mono text-[10px] text-white">Poster
+                1 / 3</span>
             </div>
             <div class="flex items-end justify-between px-1">
               <div>
                 <span class="font-label text-xs uppercase text-gold-400 font-bold block">18 / 18 Perfect Raids</span>
                 <h3 class="font-headline text-xl uppercase text-white font-bold">1st Frandipur Kabaddi Cup</h3>
-                <span class="font-body text-xs text-slate-400">Bal Incorporation &bull; Best Raider &amp; Prize Buffalo</span>
+                <span class="font-body text-xs text-slate-400">Bal Incorporation &bull; Best Raider &amp; Prize
+                  Buffalo</span>
               </div>
               <span class="material-symbols-outlined text-gold-400 text-[24px]">zoom_in</span>
             </div>
           </div>
 
           <!-- ITEM 2: Poster - Canada BC Season Stats -->
-          <div data-gallery-cat="posters" class="gallery-item-card p-4 rounded-2xl bg-[#0F172A] border border-slate-800 hover:border-blue-500/60 transition-all shadow-xl group cursor-pointer flex flex-col justify-between gap-4" onclick="openGalleryIndex(1)">
+          <div data-gallery-cat="posters"
+            class="gallery-item-card p-4 rounded-2xl bg-[#0F172A] border border-slate-800 hover:border-blue-500/60 transition-all shadow-xl group cursor-pointer flex flex-col justify-between gap-4"
+            onclick="openGalleryIndex(1)">
             <div class="aspect-[3/4] rounded-xl overflow-hidden bg-black relative flex items-center justify-center">
-              <img src="/public/images/canada_bc_kabaddi_season_2026_stats.jpg" alt="Canada BC 2026 Stats" loading="lazy" decoding="async" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
-              <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <img src="/public/images/canada_bc_kabaddi_season_2026_stats.jpg" alt="Canada BC 2026 Stats"
+                class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+              <div
+                class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                 <span class="material-symbols-outlined text-white text-[48px]">fullscreen</span>
               </div>
-              <span class="absolute top-3 left-3 px-2.5 py-1 rounded bg-[#2563EB] text-white font-mono text-[10px] uppercase font-bold shadow-md">Certified Stats</span>
-              <span class="absolute bottom-3 right-3 px-2 py-0.5 rounded bg-black/80 font-mono text-[10px] text-white">Poster 2 / 3</span>
+              <span
+                class="absolute top-3 left-3 px-2.5 py-1 rounded bg-[#2563EB] text-white font-mono text-[10px] uppercase font-bold shadow-md">Certified
+                Stats</span>
+              <span
+                class="absolute bottom-3 right-3 px-2 py-0.5 rounded bg-black/80 font-mono text-[10px] text-white">Poster
+                2 / 3</span>
             </div>
             <div class="flex items-end justify-between px-1">
               <div>
-                <span class="font-label text-xs uppercase text-blue-400 font-bold block">81 Raids &bull; 73 Points</span>
+                <span class="font-label text-xs uppercase text-blue-400 font-bold block">81 Raids &bull; 73
+                  Points</span>
                 <h3 class="font-headline text-xl uppercase text-white font-bold">Canada BC Season 2026</h3>
                 <span class="font-body text-xs text-slate-400">Uttam Khed Kabaddi Official Registry</span>
               </div>
@@ -367,19 +455,31 @@
           </div>
 
           <!-- ITEM 3: Poster & Photography - Great Khali Art -->
-          <div data-gallery-cat="posters photography" class="gallery-item-card p-4 rounded-2xl bg-[#0F172A] border border-slate-800 hover:border-[#FF6B00]/60 transition-all shadow-xl group cursor-pointer flex flex-col justify-between gap-4" onclick="openGalleryIndex(2)">
+          <div data-gallery-cat="posters photography"
+            class="gallery-item-card p-4 rounded-2xl bg-[#0F172A] border border-slate-800 hover:border-[#FF6B00]/60 transition-all shadow-xl group cursor-pointer flex flex-col justify-between gap-4"
+            onclick="openGalleryIndex(2)">
             <div class="aspect-[3/4] rounded-xl overflow-hidden bg-black relative flex items-center justify-center">
-              <img src="/public/images/gurlal_sohal_great_khali_majhe_di_shaan.jpg" alt="Gurlal Sohal Great Khali" loading="lazy" decoding="async" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-              <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <img src="/public/images/gurlal_sohal_great_khali_majhe_di_shaan.jpg" alt="Gurlal Sohal Great Khali"
+                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+              <div
+                class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                 <span class="material-symbols-outlined text-white text-[48px]">fullscreen</span>
               </div>
-              <span class="absolute top-3 left-3 px-2.5 py-1 rounded bg-[#FF6B00] text-white font-mono text-[10px] uppercase font-bold shadow-md">Athlete Key Art</span>
-              <span class="absolute bottom-3 right-3 px-2 py-0.5 rounded bg-black/80 font-mono text-[10px] text-white">Poster 3 / 3</span>
+              <span
+                class="absolute top-3 left-3 px-2.5 py-1 rounded bg-[#FF6B00] text-white font-mono text-[10px] uppercase font-bold shadow-md">Athlete
+                Key Art</span>
+              <span
+                class="absolute bottom-3 right-3 px-2 py-0.5 rounded bg-black/80 font-mono text-[10px] text-white">Poster
+                3 / 3</span>
             </div>
             <div class="flex items-end justify-between px-1">
               <div>
-                <span class="font-label text-xs uppercase text-[#FF6B00] font-bold block"><span class="font-gurmukhi">&#2606;&#2622;&#2589;&#2631; &#2598;&#2624; &#2616;&#2620;&#2622;&#2600;</span></span>
-                <h3 class="font-headline text-xl uppercase text-white font-bold"><span class="font-gurmukhi">&#2581;&#2604;&#2673;&#2593;&#2624; &#2598;&#2622; Great Khali</span></h3>
+                <span class="font-label text-xs uppercase text-[#FF6B00] font-bold block"><span
+                    class="font-gurmukhi">&#2606;&#2622;&#2589;&#2631; &#2598;&#2624;
+                    &#2616;&#2620;&#2622;&#2600;</span></span>
+                <h3 class="font-headline text-xl uppercase text-white font-bold"><span
+                    class="font-gurmukhi">&#2581;&#2604;&#2673;&#2593;&#2624; &#2598;&#2622; Great Khali</span></h3>
+                <span class="font-body text-xs text-slate-400">Navi Bhagiwander Design &bull; Jersey #1</span>
                 <span class="font-body text-xs text-slate-400">Official Key Art &bull; Jersey #1</span>
               </div>
               <span class="material-symbols-outlined text-[#FF6B00] text-[24px]">zoom_in</span>
@@ -387,134 +487,213 @@
           </div>
 
           <!-- ITEM 4: Photography - Framed Stadium Rim-Lighting Card -->
-          <div data-gallery-cat="photography" class="gallery-item-card p-4 rounded-2xl bg-[#0F172A] border border-blue-500/40 transition-all shadow-xl group cursor-pointer flex flex-col justify-between gap-4" onclick="openGalleryIndex(2)">
+          <div data-gallery-cat="photography"
+            class="gallery-item-card p-4 rounded-2xl bg-[#0F172A] border border-blue-500/40 transition-all shadow-xl group cursor-pointer flex flex-col justify-between gap-4"
+            onclick="openGalleryIndex(2)">
             <div class="aspect-[3/4] rounded-xl overflow-hidden bg-black relative flex items-center justify-center">
-              <img src="/public/images/gurlal_sohal_great_khali_majhe_di_shaan.jpg" alt="Gurlal Sohal Stadium Portrait" loading="lazy" decoding="async" class="w-full h-full object-cover object-top scale-110 -translate-y-2 group-hover:scale-115 transition-transform duration-500">
-              <div class="absolute inset-0 bg-gradient-to-t from-[#060B19] via-[#060B19]/30 to-transparent pointer-events-none"></div>
-              <div class="absolute inset-0 pointer-events-none rounded-xl ring-1 ring-inset ring-blue-500/30" style="box-shadow: inset 0 0 45px rgba(37,99,235,0.35);"></div>
-              <div class="absolute top-3 left-3 px-2.5 py-1 rounded bg-blue-950 text-blue-300 border border-blue-500/40 font-mono text-[10px] uppercase font-bold shadow-md">Arena Portrait</div>
+              <img src="/public/images/gurlal_sohal_great_khali_majhe_di_shaan.jpg" alt="Gurlal Sohal Stadium Portrait"
+                class="w-full h-full object-cover object-top scale-110 -translate-y-2 group-hover:scale-115 transition-transform duration-500">
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#060B19] via-[#060B19]/30 to-transparent pointer-events-none">
+              </div>
+              <div class="absolute inset-0 pointer-events-none rounded-xl ring-1 ring-inset ring-blue-500/30"
+                style="box-shadow: inset 0 0 45px rgba(37,99,235,0.35);"></div>
+              <div
+                class="absolute top-3 left-3 px-2.5 py-1 rounded bg-blue-950 text-blue-300 border border-blue-500/40 font-mono text-[10px] uppercase font-bold shadow-md">
+                Arena Portrait</div>
             </div>
             <div class="flex items-end justify-between px-1">
               <div>
                 <span class="font-label text-xs uppercase text-blue-400 font-bold block">Lead Power Raider</span>
                 <h3 class="font-headline text-xl uppercase text-white font-bold">Gurlal Singh (Sohal)</h3>
-                <span class="font-body text-xs text-slate-400">Village Sohal, Tarn Taran &bull; Young Sports Club BC</span>
+                <span class="font-body text-xs text-slate-400">Village Sohal, Tarn Taran &bull; Young Sports Club
+                  BC</span>
               </div>
               <span class="material-symbols-outlined text-blue-400 text-[24px]">zoom_in</span>
             </div>
           </div>
 
           <!-- ITEM 5: Video 1 - Surrey Canada -->
-          <div data-gallery-cat="videos" class="gallery-item-card p-4 rounded-2xl bg-[#0F172A] border border-slate-800 hover:border-blue-500/50 flex flex-col gap-3 shadow-xl transition-all">
-            <div class="relative aspect-video rounded-xl overflow-hidden bg-black group cursor-pointer" onclick="openVideoIndex(0)">
-              <video muted playsinline webkit-playsinline preload="metadata" poster="/public/images/gurlal_sohal_great_khali_majhe_di_shaan.jpg" class="w-full h-full object-cover"><source src="/public/videos/surrey_canada.mp4" type="video/mp4"></video>
-              <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                <div class="w-12 h-12 rounded-full bg-[#2563EB] text-white flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform">
+          <div data-gallery-cat="videos"
+            class="gallery-item-card p-4 rounded-2xl bg-[#0F172A] border border-slate-800 hover:border-blue-500/50 flex flex-col gap-3 shadow-xl transition-all">
+            <div class="relative aspect-video rounded-xl overflow-hidden bg-black group cursor-pointer"
+              onclick="openVideoIndex(0)">
+              <video muted playsinline webkit-playsinline preload="metadata"
+                poster="/public/images/gurlal_sohal_great_khali_majhe_di_shaan.jpg" class="w-full h-full object-cover">
+                <source src="/public/videos/surrey_canada.mp4" type="video/mp4">
+              </video>
+              <div
+                class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                <div
+                  class="w-12 h-12 rounded-full bg-[#2563EB] text-white flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform">
                   <span class="material-symbols-outlined text-[28px] ml-0.5">play_arrow</span>
                 </div>
               </div>
-              <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-blue-950 text-blue-300 border border-blue-500/40 font-mono text-[10px]">Reel 1</span>
-              <span class="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-black/80 font-mono text-[10px] text-white">0:31</span>
+              <span
+                class="absolute top-2 left-2 px-2 py-0.5 rounded bg-blue-950 text-blue-300 border border-blue-500/40 font-mono text-[10px]">Reel
+                1</span>
+              <span
+                class="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-black/80 font-mono text-[10px] text-white">0:31</span>
             </div>
             <div class="flex flex-col">
-              <span class="font-label text-[10px] uppercase text-blue-400 font-bold tracking-wider">Canada Championship</span>
+              <span class="font-label text-[10px] uppercase text-blue-400 font-bold tracking-wider">Canada
+                Championship</span>
               <h3 class="font-headline text-lg uppercase text-white font-bold">Surrey, BC Championship Match</h3>
-              <p class="font-body text-xs text-slate-400 mt-0.5">Explosive raid sequence in Surrey, BC with Young Sports Club.</p>
+              <p class="font-body text-xs text-slate-400 mt-0.5">Explosive raid sequence in Surrey, BC with Young Sports
+                Club.</p>
             </div>
           </div>
 
           <!-- ITEM 6: Video 2 - Season 2026 Highlights -->
-          <div data-gallery-cat="videos" class="gallery-item-card p-4 rounded-2xl bg-[#0F172A] border border-slate-800 hover:border-[#FF6B00]/50 flex flex-col gap-3 shadow-xl transition-all">
-            <div class="relative aspect-video rounded-xl overflow-hidden bg-black group cursor-pointer" onclick="openVideoIndex(1)">
-              <video muted playsinline webkit-playsinline preload="metadata" poster="/public/images/canada_bc_kabaddi_season_2026_stats.jpg" class="w-full h-full object-cover"><source src="/public/videos/match_highlight_2026.mp4" type="video/mp4"></video>
-              <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                <div class="w-12 h-12 rounded-full bg-[#FF6B00] text-white flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform">
+          <div data-gallery-cat="videos"
+            class="gallery-item-card p-4 rounded-2xl bg-[#0F172A] border border-slate-800 hover:border-[#FF6B00]/50 flex flex-col gap-3 shadow-xl transition-all">
+            <div class="relative aspect-video rounded-xl overflow-hidden bg-black group cursor-pointer"
+              onclick="openVideoIndex(1)">
+              <video muted playsinline webkit-playsinline preload="metadata"
+                poster="/public/images/canada_bc_kabaddi_season_2026_stats.jpg" class="w-full h-full object-cover">
+                <source src="/public/videos/match_highlight_2026.mp4" type="video/mp4">
+              </video>
+              <div
+                class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                <div
+                  class="w-12 h-12 rounded-full bg-[#FF6B00] text-white flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform">
                   <span class="material-symbols-outlined text-[28px] ml-0.5">play_arrow</span>
                 </div>
               </div>
-              <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-amber-950 text-[#FF6B00] border border-[#FF6B00]/40 font-mono text-[10px]">Reel 2</span>
-              <span class="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-black/80 font-mono text-[10px] text-white">0:40</span>
+              <span
+                class="absolute top-2 left-2 px-2 py-0.5 rounded bg-amber-950 text-[#FF6B00] border border-[#FF6B00]/40 font-mono text-[10px]">Reel
+                2</span>
+              <span
+                class="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-black/80 font-mono text-[10px] text-white">0:40</span>
             </div>
             <div class="flex flex-col">
-              <span class="font-label text-[10px] uppercase text-[#FF6B00] font-bold tracking-wider">Season Compilation</span>
+              <span class="font-label text-[10px] uppercase text-[#FF6B00] font-bold tracking-wider">Season
+                Compilation</span>
               <h3 class="font-headline text-lg uppercase text-white font-bold">Season 2026 Elite Compilation</h3>
-              <p class="font-body text-xs text-slate-400 mt-0.5">Rapid footwork and precision touches against top Canadian stoppers.</p>
+              <p class="font-body text-xs text-slate-400 mt-0.5">Rapid footwork and precision touches against top
+                Canadian stoppers.</p>
             </div>
           </div>
 
           <!-- ITEM 7: Video 3 - 4-Man Chain Escape -->
-          <div data-gallery-cat="videos" class="gallery-item-card p-4 rounded-2xl bg-[#0F172A] border border-slate-800 hover:border-blue-500/50 flex flex-col gap-3 shadow-xl transition-all">
-            <div class="relative aspect-video rounded-xl overflow-hidden bg-black group cursor-pointer" onclick="openVideoIndex(2)">
-              <video muted playsinline webkit-playsinline preload="metadata" poster="/public/images/frandipur_kabaddi_cup_best_raider.jpg" class="w-full h-full object-cover"><source src="/public/videos/4.mp4" type="video/mp4"></video>
-              <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                <div class="w-12 h-12 rounded-full bg-[#2563EB] text-white flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform">
+          <div data-gallery-cat="videos"
+            class="gallery-item-card p-4 rounded-2xl bg-[#0F172A] border border-slate-800 hover:border-blue-500/50 flex flex-col gap-3 shadow-xl transition-all">
+            <div class="relative aspect-video rounded-xl overflow-hidden bg-black group cursor-pointer"
+              onclick="openVideoIndex(2)">
+              <video muted playsinline webkit-playsinline preload="metadata"
+                poster="/public/images/frandipur_kabaddi_cup_best_raider.jpg" class="w-full h-full object-cover">
+                <source src="/public/videos/4.mp4" type="video/mp4">
+              </video>
+              <div
+                class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                <div
+                  class="w-12 h-12 rounded-full bg-[#2563EB] text-white flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform">
                   <span class="material-symbols-outlined text-[28px] ml-0.5">play_arrow</span>
                 </div>
               </div>
-              <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-blue-950 text-blue-300 border border-blue-500/40 font-mono text-[10px]">Reel 3</span>
-              <span class="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-black/80 font-mono text-[10px] text-white">0:47</span>
+              <span
+                class="absolute top-2 left-2 px-2 py-0.5 rounded bg-blue-950 text-blue-300 border border-blue-500/40 font-mono text-[10px]">Reel
+                3</span>
+              <span
+                class="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-black/80 font-mono text-[10px] text-white">0:47</span>
             </div>
             <div class="flex flex-col">
-              <span class="font-label text-[10px] uppercase text-blue-400 font-bold tracking-wider">Chain Standoff</span>
+              <span class="font-label text-[10px] uppercase text-blue-400 font-bold tracking-wider">Chain
+                Standoff</span>
               <h3 class="font-headline text-lg uppercase text-white font-bold">4-Man Chain Escape Standoff</h3>
-              <p class="font-body text-xs text-slate-400 mt-0.5">Navigating intense double-hold maneuvers to bring home critical match points.</p>
+              <p class="font-body text-xs text-slate-400 mt-0.5">Navigating intense double-hold maneuvers to bring home
+                critical match points.</p>
             </div>
           </div>
 
           <!-- ITEM 8: Video 4 - Power Raid Breakthrough -->
-          <div data-gallery-cat="videos" class="gallery-item-card p-4 rounded-2xl bg-[#0F172A] border border-slate-800 hover:border-amber-500/50 flex flex-col gap-3 shadow-xl transition-all">
-            <div class="relative aspect-video rounded-xl overflow-hidden bg-black group cursor-pointer" onclick="openVideoIndex(3)">
-              <video muted playsinline webkit-playsinline preload="metadata" poster="/public/images/gurlal_sohal_great_khali_majhe_di_shaan.jpg" class="w-full h-full object-cover"><source src="/public/videos/7.mp4" type="video/mp4"></video>
-              <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                <div class="w-12 h-12 rounded-full bg-[#D4AF37] text-black flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform">
+          <div data-gallery-cat="videos"
+            class="gallery-item-card p-4 rounded-2xl bg-[#0F172A] border border-slate-800 hover:border-amber-500/50 flex flex-col gap-3 shadow-xl transition-all">
+            <div class="relative aspect-video rounded-xl overflow-hidden bg-black group cursor-pointer"
+              onclick="openVideoIndex(3)">
+              <video muted playsinline webkit-playsinline preload="metadata"
+                poster="/public/images/gurlal_sohal_great_khali_majhe_di_shaan.jpg" class="w-full h-full object-cover">
+                <source src="/public/videos/7.mp4" type="video/mp4">
+              </video>
+              <div
+                class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                <div
+                  class="w-12 h-12 rounded-full bg-[#D4AF37] text-black flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform">
                   <span class="material-symbols-outlined text-[28px] ml-0.5">play_arrow</span>
                 </div>
               </div>
-              <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-amber-950 text-gold-400 border border-amber-500/40 font-mono text-[10px]">Reel 4</span>
-              <span class="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-black/80 font-mono text-[10px] text-white">0:30</span>
+              <span
+                class="absolute top-2 left-2 px-2 py-0.5 rounded bg-amber-950 text-gold-400 border border-amber-500/40 font-mono text-[10px]">Reel
+                4</span>
+              <span
+                class="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-black/80 font-mono text-[10px] text-white">0:30</span>
             </div>
             <div class="flex flex-col">
               <span class="font-label text-[10px] uppercase text-gold-400 font-bold tracking-wider">Power Raid</span>
               <h3 class="font-headline text-lg uppercase text-white font-bold">Power Raid Breakthrough</h3>
-              <p class="font-body text-xs text-slate-400 mt-0.5">Signature physical raid powering through corner defender holds.</p>
+              <p class="font-body text-xs text-slate-400 mt-0.5">Signature physical raid powering through corner
+                defender holds.</p>
             </div>
           </div>
 
           <!-- ITEM 9: Video 5 - Fast Deflection & Safe Return -->
-          <div data-gallery-cat="videos" class="gallery-item-card p-4 rounded-2xl bg-[#0F172A] border border-slate-800 hover:border-emerald-500/50 flex flex-col gap-3 shadow-xl transition-all">
-            <div class="relative aspect-video rounded-xl overflow-hidden bg-black group cursor-pointer" onclick="openVideoIndex(4)">
-              <video muted playsinline webkit-playsinline preload="metadata" poster="/public/images/canada_bc_kabaddi_season_2026_stats.jpg" class="w-full h-full object-cover"><source src="/public/videos/2.mp4" type="video/mp4"></video>
-              <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                <div class="w-12 h-12 rounded-full bg-emerald-600 text-white flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform">
+          <div data-gallery-cat="videos"
+            class="gallery-item-card p-4 rounded-2xl bg-[#0F172A] border border-slate-800 hover:border-emerald-500/50 flex flex-col gap-3 shadow-xl transition-all">
+            <div class="relative aspect-video rounded-xl overflow-hidden bg-black group cursor-pointer"
+              onclick="openVideoIndex(4)">
+              <video muted playsinline webkit-playsinline preload="metadata"
+                poster="/public/images/canada_bc_kabaddi_season_2026_stats.jpg" class="w-full h-full object-cover">
+                <source src="/public/videos/2.mp4" type="video/mp4">
+              </video>
+              <div
+                class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                <div
+                  class="w-12 h-12 rounded-full bg-emerald-600 text-white flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform">
                   <span class="material-symbols-outlined text-[28px] ml-0.5">play_arrow</span>
                 </div>
               </div>
-              <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-emerald-950 text-emerald-400 border border-emerald-500/40 font-mono text-[10px]">Reel 5</span>
-              <span class="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-black/80 font-mono text-[10px] text-white">0:21</span>
+              <span
+                class="absolute top-2 left-2 px-2 py-0.5 rounded bg-emerald-950 text-emerald-400 border border-emerald-500/40 font-mono text-[10px]">Reel
+                5</span>
+              <span
+                class="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-black/80 font-mono text-[10px] text-white">0:21</span>
             </div>
             <div class="flex flex-col">
-              <span class="font-label text-[10px] uppercase text-emerald-400 font-bold tracking-wider">Speed &amp; Agility</span>
+              <span class="font-label text-[10px] uppercase text-emerald-400 font-bold tracking-wider">Speed &amp;
+                Agility</span>
               <h3 class="font-headline text-lg uppercase text-white font-bold">Fast Deflection &amp; Safe Return</h3>
-              <p class="font-body text-xs text-slate-400 mt-0.5">Lightning footwork along the baulk line, drawing the stopper out.</p>
+              <p class="font-body text-xs text-slate-400 mt-0.5">Lightning footwork along the baulk line, drawing the
+                stopper out.</p>
             </div>
           </div>
 
           <!-- ITEM 10: Video 6 - 10-Second Blitz Strike -->
-          <div data-gallery-cat="videos" class="gallery-item-card p-4 rounded-2xl bg-[#0F172A] border border-slate-800 hover:border-amber-500/50 flex flex-col gap-3 shadow-xl transition-all">
-            <div class="relative aspect-video rounded-xl overflow-hidden bg-black group cursor-pointer" onclick="openVideoIndex(5)">
-              <video muted playsinline webkit-playsinline preload="metadata" poster="/public/images/frandipur_kabaddi_cup_best_raider.jpg" class="w-full h-full object-cover"><source src="/public/videos/3.mp4" type="video/mp4"></video>
-              <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                <div class="w-12 h-12 rounded-full bg-[#D4AF37] text-black flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform">
+          <div data-gallery-cat="videos"
+            class="gallery-item-card p-4 rounded-2xl bg-[#0F172A] border border-slate-800 hover:border-amber-500/50 flex flex-col gap-3 shadow-xl transition-all">
+            <div class="relative aspect-video rounded-xl overflow-hidden bg-black group cursor-pointer"
+              onclick="openVideoIndex(5)">
+              <video muted playsinline webkit-playsinline preload="metadata"
+                poster="/public/images/frandipur_kabaddi_cup_best_raider.jpg" class="w-full h-full object-cover">
+                <source src="/public/videos/3.mp4" type="video/mp4">
+              </video>
+              <div
+                class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                <div
+                  class="w-12 h-12 rounded-full bg-[#D4AF37] text-black flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform">
                   <span class="material-symbols-outlined text-[28px] ml-0.5">play_arrow</span>
                 </div>
               </div>
-              <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-amber-950 text-gold-400 border border-amber-500/40 font-mono text-[10px]">Reel 6</span>
-              <span class="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-black/80 font-mono text-[10px] text-white">0:10</span>
+              <span
+                class="absolute top-2 left-2 px-2 py-0.5 rounded bg-amber-950 text-gold-400 border border-amber-500/40 font-mono text-[10px]">Reel
+                6</span>
+              <span
+                class="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-black/80 font-mono text-[10px] text-white">0:10</span>
             </div>
             <div class="flex flex-col">
               <span class="font-label text-[10px] uppercase text-gold-400 font-bold tracking-wider">Blitz Point</span>
               <h3 class="font-headline text-lg uppercase text-white font-bold">10-Second Blitz Strike</h3>
-              <p class="font-body text-xs text-slate-400 mt-0.5">Instant raid execution scoring a point within 10 seconds.</p>
+              <p class="font-body text-xs text-slate-400 mt-0.5">Instant raid execution scoring a point within 10
+                seconds.</p>
             </div>
           </div>
 
@@ -528,33 +707,44 @@
   <!-- ======================================================== -->
   <footer class="mt-auto bg-[#030712] border-t border-slate-800/80 py-16 text-slate-400 relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
-      
+
       <!-- Column 1: Monogram, Bio & Representation -->
       <div class="lg:col-span-5 flex flex-col gap-4">
         <div class="flex items-center gap-3">
           <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-royal-600 to-saffron-500 p-0.5 shadow-md">
-            <div class="w-full h-full bg-[#060B19] rounded-[10px] flex items-center justify-center font-headline text-xl text-blue-400 font-bold">
+            <div
+              class="w-full h-full bg-[#060B19] rounded-[10px] flex items-center justify-center font-headline text-xl text-blue-400 font-bold">
               GS
             </div>
           </div>
           <div>
             <h3 class="font-headline text-2xl text-white font-bold tracking-wider uppercase">GURLAL SOHAL</h3>
-            <span class="font-label text-xs text-[#FF6B00] font-bold uppercase tracking-wide">Gurlal Singh &bull; Village Sohal, Tarn Taran, Punjab</span>
+            <span class="font-label text-xs text-[#FF6B00] font-bold uppercase tracking-wide">Gurlal Singh &bull;
+              Village Sohal, Tarn Taran, Punjab</span>
           </div>
         </div>
         <p class="font-body text-sm text-slate-400 leading-relaxed max-w-md">
-          International Circle Style Kabaddi Power Raider representing <strong class="text-white">Young Sports Club BC, Canada</strong> and <strong class="text-white">Bal Incorporation</strong>. Renowned across global circuits as <strong class="text-[#FF6B00] font-semibold font-gurmukhi">&ldquo;&#2606;&#2622;&#2589;&#2631; &#2598;&#2624; &#2616;&#2620;&#2622;&#2600;&rdquo;</strong> and <strong class="text-blue-400 font-semibold font-gurmukhi">&ldquo;&#2581;&#2604;&#2673;&#2593;&#2624; &#2598;&#2622; Great Khali&rdquo;</strong>.
+          International Circle Style Kabaddi Power Raider representing <strong class="text-white">Young Sports Club BC,
+            Canada</strong> and <strong class="text-white">Bal Incorporation</strong>. Renowned across global circuits
+          as <strong class="text-[#FF6B00] font-semibold font-gurmukhi">&ldquo;&#2606;&#2622;&#2589;&#2631;
+            &#2598;&#2624; &#2616;&#2620;&#2622;&#2600;&rdquo;</strong> and <strong
+            class="text-blue-400 font-semibold font-gurmukhi">&ldquo;&#2581;&#2604;&#2673;&#2593;&#2624; &#2598;&#2622;
+            Great Khali&rdquo;</strong>.
         </p>
         <div class="flex flex-wrap items-center gap-2 text-xs font-mono text-slate-300 pt-2">
-          <span class="px-2.5 py-1 rounded bg-[#0F172A] border border-blue-500/40 font-bold text-blue-400">Jersey #1</span>
+          <span class="px-2.5 py-1 rounded bg-[#0F172A] border border-blue-500/40 font-bold text-blue-400">Jersey
+            #1</span>
           <span class="px-2.5 py-1 rounded bg-[#0F172A] border border-slate-800">15 International Tours</span>
-          <span class="px-2.5 py-1 rounded bg-[#0F172A] border border-amber-500/40 text-gold-400 font-bold">Scorpio-N SUV (Tarn Taran)</span>
+          <span class="px-2.5 py-1 rounded bg-[#0F172A] border border-amber-500/40 text-gold-400 font-bold">Scorpio-N
+            SUV (Tarn Taran)</span>
           <span class="px-2.5 py-1 rounded bg-[#0F172A] border border-slate-800">Frandipur 18/18</span>
-          <span class="px-2.5 py-1 rounded bg-[#0F172A] border border-[#FF6B00]/40 text-[#FF6B00] font-bold">Right-Side Raider</span>
+          <span class="px-2.5 py-1 rounded bg-[#0F172A] border border-[#FF6B00]/40 text-[#FF6B00] font-bold">Right-Side
+            Raider</span>
         </div>
         <!-- Official Player Database Accreditation -->
         <div class="pt-1 flex items-center gap-3">
-          <a href="https://www.kabaddi365.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#0F172A] border border-amber-500/40 text-amber-400 hover:text-white hover:border-amber-400 text-xs font-mono transition-colors">
+          <a href="https://www.kabaddi365.com" target="_blank" rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#0F172A] border border-amber-500/40 text-amber-400 hover:text-white hover:border-amber-400 text-xs font-mono transition-colors">
             <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
             <span>Kabaddi365 Verified Player Database</span>
           </a>
@@ -590,25 +780,30 @@
       <div class="lg:col-span-4 flex flex-col gap-4">
         <h4 class="font-headline text-base text-white font-bold uppercase tracking-wider">Direct Liaison Desk</h4>
         <div class="flex flex-col gap-2.5 text-xs font-body">
-          <a href="tel:+919849004200" class="flex items-center gap-2.5 text-slate-200 hover:text-blue-400 transition-colors">
+          <a href="tel:+919849004200"
+            class="flex items-center gap-2.5 text-slate-200 hover:text-blue-400 transition-colors">
             <span class="material-symbols-outlined text-[18px] text-blue-400">phone_in_talk</span>
             <span class="font-mono font-bold">+91 98490 04200</span>
           </a>
-          <a href="https://wa.me/919849004200?text=Hello%20Gurlal%20Sohal%20Team%2C%20I%20would%20like%20to%20enquire%20regarding%20tournament%20participation." target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5 text-emerald-400 hover:underline">
+          <a href="https://wa.me/919849004200?text=Hello%20Gurlal%20Sohal%20Team%2C%20I%20would%20like%20to%20enquire%20regarding%20tournament%20participation."
+            target="_blank" rel="noopener noreferrer"
+            class="flex items-center gap-2.5 text-emerald-400 hover:underline">
             <span class="material-symbols-outlined text-[18px]">chat</span>
             <span>WHATSAPP ENQUIRY (+91 98490 04200)</span>
           </a>
-          <a href="https://instagram.com/_gurlal__sohal" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5 text-slate-200 hover:text-blue-400 transition-colors">
+          <a href="https://instagram.com/_gurlal__sohal" target="_blank" rel="noopener noreferrer"
+            class="flex items-center gap-2.5 text-slate-200 hover:text-blue-400 transition-colors">
             <span class="material-symbols-outlined text-[18px] text-[#FF6B00]">photo_camera</span>
             <span>Instagram: @_gurlal__sohal</span>
           </a>
         </div>
 
         <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
-          <a href="admin.html" class="text-xs font-label uppercase text-slate-400 hover:text-blue-400 transition-colors flex items-center gap-1.5 cursor-pointer" title="Authorized Raider Management Access">
+          <button type="button" onclick="openAdminModal('profile')"
+            class="text-xs font-label uppercase text-blue-400 hover:underline flex items-center gap-1 cursor-pointer">
             <span class="material-symbols-outlined text-[16px]">admin_panel_settings</span>
-            <span>Admin Portal</span>
-          </a>
+            <span>Admin Control Panel</span>
+          </button>
           <span class="font-mono text-[11px] text-slate-500">Kabaddi365 Verified</span>
         </div>
       </div>
@@ -616,7 +811,8 @@
     </div>
 
     <!-- Bottom Copyright Bar -->
-    <div class="max-w-7xl mx-auto px-6 mt-12 pt-6 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-500">
+    <div
+      class="max-w-7xl mx-auto px-6 mt-12 pt-6 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-500">
       <span>&copy; 2026 Gurlal Sohal (Gurlal Singh). All International Rights Reserved.</span>
       <span>Hometown: Village Sohal, Tarn Taran, Punjab</span>
     </div>
@@ -624,20 +820,29 @@
   <!-- ======================================================== -->
   <!-- LIGHTBOX MODAL                                           -->
   <!-- ======================================================== -->
-  <div id="lightboxModal" onclick="if(event.target===this)closeLightbox()" class="hidden fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-label="Photo Lightbox">
+  <div id="lightboxModal" onclick="if(event.target===this)closeLightbox()"
+    class="hidden fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-4" role="dialog"
+    aria-modal="true" aria-label="Photo Lightbox">
     <div class="relative max-w-5xl w-full flex flex-col items-center">
       <div class="w-full flex items-center justify-between pb-3 text-white">
-        <span id="lightboxIndexTag" class="font-mono text-xs text-blue-400 font-bold px-2.5 py-1 bg-[#0F172A] rounded border border-blue-500/40">1 / 3</span>
-        <button type="button" onclick="closeLightbox()" class="w-9 h-9 rounded-lg bg-[#0F172A] text-white hover:text-blue-400 flex items-center justify-center cursor-pointer transition-colors" aria-label="Close Lightbox">
+        <span id="lightboxIndexTag"
+          class="font-mono text-xs text-blue-400 font-bold px-2.5 py-1 bg-[#0F172A] rounded border border-blue-500/40">1
+          / 3</span>
+        <button type="button" onclick="closeLightbox()"
+          class="w-9 h-9 rounded-lg bg-[#0F172A] text-white hover:text-blue-400 flex items-center justify-center cursor-pointer transition-colors"
+          aria-label="Close Lightbox">
           <span class="material-symbols-outlined">close</span>
         </button>
       </div>
-      <div class="relative w-full max-h-[80vh] flex items-center justify-center overflow-hidden rounded-xl bg-black/80 border border-slate-800 shadow-2xl">
+      <div
+        class="relative w-full max-h-[80vh] flex items-center justify-center overflow-hidden rounded-xl bg-black/80 border border-slate-800 shadow-2xl">
         <img id="lightboxImg" src="" alt="Accolade" class="max-h-[75vh] w-auto max-w-full object-contain select-none">
-        <button type="button" onclick="prevGalleryImage()" aria-label="Previous Image" class="absolute left-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-black/75 hover:bg-[#2563EB] text-white flex items-center justify-center transition-all cursor-pointer shadow-lg">
+        <button type="button" onclick="prevGalleryImage()" aria-label="Previous Image"
+          class="absolute left-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-black/75 hover:bg-[#2563EB] text-white flex items-center justify-center transition-all cursor-pointer shadow-lg">
           <span class="material-symbols-outlined text-[24px]">chevron_left</span>
         </button>
-        <button type="button" onclick="nextGalleryImage()" aria-label="Next Image" class="absolute right-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-black/75 hover:bg-[#2563EB] text-white flex items-center justify-center transition-all cursor-pointer shadow-lg">
+        <button type="button" onclick="nextGalleryImage()" aria-label="Next Image"
+          class="absolute right-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-black/75 hover:bg-[#2563EB] text-white flex items-center justify-center transition-all cursor-pointer shadow-lg">
           <span class="material-symbols-outlined text-[24px]">chevron_right</span>
         </button>
       </div>
@@ -650,40 +855,696 @@
   <!-- ======================================================== -->
   <!-- VIDEO PLAYER MODAL WITH CUSTOM PLAYBACK CONTROLS         -->
   <!-- ======================================================== -->
-  <div id="videoModal" onclick="if(event.target===this)closeVideoModal()" class="hidden fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-label="Video Player">
+  <div id="videoModal" onclick="if(event.target===this)closeVideoModal()"
+    class="hidden fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-4" role="dialog"
+    aria-modal="true" aria-label="Video Player">
     <div class="relative max-w-4xl w-full flex flex-col items-center">
       <div class="w-full flex items-center justify-between pb-3 text-white">
-        <span id="videoIndexTag" class="font-mono text-xs text-[#FF6B00] font-bold px-2.5 py-1 bg-[#0F172A] rounded border border-[#FF6B00]/40">Reel 1 / 6</span>
-        <button type="button" onclick="closeVideoModal()" class="w-9 h-9 rounded-lg bg-[#0F172A] text-white hover:text-[#FF6B00] flex items-center justify-center cursor-pointer transition-colors" aria-label="Close Video">
+        <span id="videoIndexTag"
+          class="font-mono text-xs text-[#FF6B00] font-bold px-2.5 py-1 bg-[#0F172A] rounded border border-[#FF6B00]/40">Reel
+          1 / 6</span>
+        <button type="button" onclick="closeVideoModal()"
+          class="w-9 h-9 rounded-lg bg-[#0F172A] text-white hover:text-[#FF6B00] flex items-center justify-center cursor-pointer transition-colors"
+          aria-label="Close Video">
           <span class="material-symbols-outlined">close</span>
         </button>
       </div>
       <div class="relative w-full aspect-video rounded-xl overflow-hidden bg-black border border-slate-800 shadow-2xl">
-        <video id="modalVideoPlayer" controls playsinline webkit-playsinline preload="auto" class="w-full h-full object-contain">
+        <video id="modalVideoPlayer" controls playsinline webkit-playsinline preload="auto"
+          class="w-full h-full object-contain">
           <source id="modalVideoSource" src="" type="video/mp4">
         </video>
       </div>
-      
+
       <!-- Video Speed & Details Controls -->
-      <div class="w-full mt-4 p-4 rounded-xl bg-[#0F172A] border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div
+        class="w-full mt-4 p-4 rounded-xl bg-[#0F172A] border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div class="flex flex-col">
           <h3 id="videoTitle" class="font-headline text-lg sm:text-xl text-white font-bold uppercase">Video Reel</h3>
           <p id="videoDesc" class="font-body text-xs text-slate-400 mt-0.5">Authentic match action video</p>
         </div>
         <div class="flex items-center gap-2 self-start sm:self-auto">
           <span class="text-xs font-mono text-slate-400 uppercase">Speed:</span>
-          <button type="button" onclick="setVideoSpeed(0.5)" id="speed-05" class="speed-btn px-2.5 py-1 rounded bg-[#060B19] text-xs font-mono border border-slate-800 hover:border-blue-500 text-slate-300">0.5x</button>
-          <button type="button" onclick="setVideoSpeed(1.0)" id="speed-10" class="speed-btn px-2.5 py-1 rounded bg-[#2563EB] text-xs font-mono border border-blue-500 text-white font-bold">1.0x</button>
-          <button type="button" onclick="setVideoSpeed(1.25)" id="speed-125" class="speed-btn px-2.5 py-1 rounded bg-[#060B19] text-xs font-mono border border-slate-800 hover:border-blue-500 text-slate-300">1.25x</button>
+          <button type="button" onclick="setVideoSpeed(0.5)" id="speed-05"
+            class="speed-btn px-2.5 py-1 rounded bg-[#060B19] text-xs font-mono border border-slate-800 hover:border-blue-500 text-slate-300">0.5x</button>
+          <button type="button" onclick="setVideoSpeed(1.0)" id="speed-10"
+            class="speed-btn px-2.5 py-1 rounded bg-[#2563EB] text-xs font-mono border border-blue-500 text-white font-bold">1.0x</button>
+          <button type="button" onclick="setVideoSpeed(1.25)" id="speed-125"
+            class="speed-btn px-2.5 py-1 rounded bg-[#060B19] text-xs font-mono border border-slate-800 hover:border-blue-500 text-slate-300">1.25x</button>
         </div>
       </div>
     </div>
   </div>
 
   <!-- ======================================================== -->
+  <!-- ADMIN AUTHENTICATION / LOGIN GATE MODAL                  -->
+  <!-- ======================================================== -->
+  <div id="adminLoginModal"
+    class="hidden fixed inset-0 z-[60] bg-black/95 backdrop-blur-md flex items-center justify-center p-4" role="dialog"
+    aria-modal="true" aria-label="Admin Login">
+    <div
+      class="relative max-w-md w-full p-6 sm:p-8 rounded-2xl bg-[#0F172A] border border-blue-500/40 shadow-2xl flex flex-col gap-5 text-center">
+      <div class="w-14 h-14 mx-auto rounded-2xl bg-gradient-to-br from-royal-600 to-saffron-500 p-0.5 shadow-xl">
+        <div
+          class="w-full h-full bg-[#060B19] rounded-[14px] flex items-center justify-center font-headline text-3xl text-blue-400 font-bold">
+          GS
+        </div>
+      </div>
+      <div>
+        <h3 class="font-headline text-2xl uppercase text-white font-bold tracking-wide">Raider Management Portal</h3>
+        <p class="font-body text-xs text-slate-400 mt-1 leading-relaxed">
+          Authorized management login for Gurlal Singh (Gurlal Sohal) portfolio CMS &amp; enquiry inbox.
+        </p>
+      </div>
+
+      <form onsubmit="handleAdminLogin(event)" class="flex flex-col gap-4">
+        <div class="flex flex-col gap-1.5 text-left">
+          <label class="font-label text-xs uppercase text-slate-400 font-bold">Security Passcode</label>
+          <div class="relative">
+            <input id="adminPasscodeInput" type="password" required placeholder="Enter passcode"
+              class="w-full bg-[#060B19] border border-slate-700 focus:border-[#2563EB] rounded-xl px-4 py-3 text-sm text-white focus:outline-none font-mono">
+            <button type="button" onclick="togglePasscodeVisibility()"
+              class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white"
+              aria-label="Toggle password visibility">
+              <span class="material-symbols-outlined text-[18px]" id="passcodeEyeIcon">visibility</span>
+            </button>
+          </div>
+          <span class="font-mono text-[10px] text-slate-500">Authorized Management Access Only &bull; Secured
+            Session</span>
+        </div>
+
+        <div id="adminLoginError"
+          class="hidden p-2.5 rounded-lg bg-red-950/80 border border-red-500/50 text-red-300 text-xs font-mono"></div>
+
+        <div class="flex items-center gap-3 pt-2">
+          <button type="submit"
+            class="flex-1 py-3 rounded-xl bg-[#2563EB] hover:bg-blue-600 text-white font-label text-xs uppercase tracking-wider font-bold shadow-lg shadow-blue-900/50 flex items-center justify-center gap-2 cursor-pointer transition-all">
+            <span class="material-symbols-outlined text-[16px]">lock_open</span>
+            <span>Unlock Dashboard</span>
+          </button>
+          <button type="button" onclick="closeAdminLoginModal()"
+            class="py-3 px-4 rounded-xl bg-[#060B19] border border-slate-700 text-slate-400 hover:text-white text-xs font-label uppercase font-bold cursor-pointer transition-colors">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- COMPREHENSIVE ADMIN CONTROL PANEL MODAL                  -->
+  <!-- ======================================================== -->
+  <div id="adminMediaModal"
+    class="hidden fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-3 sm:p-6"
+    role="dialog" aria-modal="true" aria-label="Admin Control Panel">
+    <div
+      class="relative max-w-5xl w-full max-h-[92vh] flex flex-col rounded-2xl bg-[#060B19] border border-blue-500/40 shadow-2xl overflow-hidden">
+
+      <!-- Admin Header Bar -->
+      <div class="px-6 py-4 bg-[#0F172A] border-b border-slate-800 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <span class="w-9 h-9 rounded-xl bg-[#2563EB] text-white flex items-center justify-center font-bold">
+            <span class="material-symbols-outlined text-[20px]">admin_panel_settings</span>
+          </span>
+          <div>
+            <div class="flex items-center gap-2">
+              <h2 class="font-headline text-lg sm:text-xl text-white font-bold tracking-wide uppercase">Gurlal Sohal
+                &mdash; Official Admin Dashboard</h2>
+              <span
+                class="px-2 py-0.5 rounded bg-blue-950 text-blue-400 border border-blue-500/40 text-[10px] font-mono font-bold uppercase">Live
+                Sync</span>
+            </div>
+            <span class="font-label text-xs text-slate-400">Manage Profile, Tours, Scorpio SUV, Prizes &amp; Scouting
+              KPIs</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 sm:gap-3">
+          <button type="button" onclick="saveAllAdminData(true)"
+            class="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#2563EB] text-white font-label text-xs uppercase tracking-wider font-bold hover:bg-blue-600 transition-all cursor-pointer shadow-lg shadow-blue-900/40">
+            <span class="material-symbols-outlined text-[16px]">save</span>
+            <span>Save All Changes</span>
+          </button>
+          <button type="button" onclick="logoutAdmin()"
+            class="inline-flex items-center gap-1 px-3 py-2 rounded-xl bg-red-950/60 border border-red-500/40 text-red-300 hover:bg-red-900/60 font-label text-xs uppercase tracking-wider font-bold transition-all cursor-pointer"
+            title="Log Out of Admin Portal">
+            <span class="material-symbols-outlined text-[16px]">logout</span>
+            <span class="hidden md:inline">Log Out</span>
+          </button>
+          <button type="button" onclick="closeAdminModal()"
+            class="w-9 h-9 rounded-lg bg-[#060B19] text-white flex items-center justify-center hover:text-blue-400 transition-colors cursor-pointer"
+            aria-label="Close Admin Modal">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Admin Top Navigation Tabs -->
+      <div
+        class="px-6 py-2.5 bg-[#131F37] border-b border-slate-800 flex items-center gap-2 overflow-x-auto text-xs font-mono">
+        <button type="button" onclick="switchAdminTab('profile')" id="adminTabBtn-profile"
+          class="adminTabBtn px-3.5 py-1.5 rounded-lg bg-[#2563EB] text-white font-label text-xs uppercase tracking-wider font-bold transition-all cursor-pointer flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-[15px]">badge</span>
+          <span>Player Profile</span>
+        </button>
+        <button type="button" onclick="switchAdminTab('tours')" id="adminTabBtn-tours"
+          class="adminTabBtn px-3.5 py-1.5 rounded-lg bg-[#0F172A] text-slate-400 hover:text-white font-label text-xs uppercase tracking-wider transition-all cursor-pointer flex items-center gap-1.5 border border-slate-800">
+          <span class="material-symbols-outlined text-[15px]">public</span>
+          <span>Tours (15)</span>
+        </button>
+        <button type="button" onclick="switchAdminTab('prizes')" id="adminTabBtn-prizes"
+          class="adminTabBtn px-3.5 py-1.5 rounded-lg bg-[#0F172A] text-slate-400 hover:text-white font-label text-xs uppercase tracking-wider transition-all cursor-pointer flex items-center gap-1.5 border border-slate-800">
+          <span class="material-symbols-outlined text-[15px]">military_tech</span>
+          <span>Prizes &amp; SUV</span>
+        </button>
+        <button type="button" onclick="switchAdminTab('victories')" id="adminTabBtn-victories"
+          class="adminTabBtn px-3.5 py-1.5 rounded-lg bg-[#0F172A] text-slate-400 hover:text-white font-label text-xs uppercase tracking-wider transition-all cursor-pointer flex items-center gap-1.5 border border-slate-800">
+          <span class="material-symbols-outlined text-[15px]">emoji_events</span>
+          <span>Tournaments</span>
+        </button>
+        <button type="button" onclick="switchAdminTab('scouting')" id="adminTabBtn-scouting"
+          class="adminTabBtn px-3.5 py-1.5 rounded-lg bg-[#0F172A] text-slate-400 hover:text-white font-label text-xs uppercase tracking-wider transition-all cursor-pointer flex items-center gap-1.5 border border-slate-800">
+          <span class="material-symbols-outlined text-[15px]">sports_kabaddi</span>
+          <span>Scouting &amp; KPIs</span>
+        </button>
+        <button type="button" onclick="switchAdminTab('media')" id="adminTabBtn-media"
+          class="adminTabBtn px-3.5 py-1.5 rounded-lg bg-[#0F172A] text-slate-400 hover:text-white font-label text-xs uppercase tracking-wider transition-all cursor-pointer flex items-center gap-1.5 border border-slate-800">
+          <span class="material-symbols-outlined text-[15px]">perm_media</span>
+          <span>Media Assets</span>
+        </button>
+        <button type="button" onclick="switchAdminTab('enquiries')" id="adminTabBtn-enquiries"
+          class="adminTabBtn px-3.5 py-1.5 rounded-lg bg-[#0F172A] text-slate-400 hover:text-white font-label text-xs uppercase tracking-wider transition-all cursor-pointer flex items-center gap-1.5 border border-slate-800">
+          <span class="material-symbols-outlined text-[15px]">mail</span>
+          <span>Enquiries</span>
+          <span id="enquiryBadgeCount"
+            class="ml-1 px-1.5 py-0.2 rounded-full bg-blue-600 text-[10px] text-white font-mono font-bold">0</span>
+        </button>
+      </div>
+
+      <!-- Admin Tab Scrollable Content Container -->
+      <div class="flex-1 overflow-y-auto p-6 bg-[#060B19] space-y-6">
+
+        <!-- Save Feedback Banner -->
+        <div id="adminSaveNotice"
+          class="hidden p-3 rounded-xl bg-emerald-950/80 border border-emerald-500/50 text-emerald-300 text-xs font-mono flex items-center justify-between">
+          <span class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[18px]">check_circle</span>
+            <span>All verified player data and preferences successfully updated in browser local storage!</span>
+          </span>
+          <button type="button" onclick="document.getElementById('adminSaveNotice').classList.add('hidden')"
+            class="text-slate-400 hover:text-white">&times;</button>
+        </div>
+
+        <!-- TAB 1: PLAYER PROFILE (VERIFIED IDENTITY) -->
+        <div id="adminTab-profile" class="adminTabContent flex flex-col gap-6">
+          <div
+            class="p-4 rounded-xl bg-[#0F172A] border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <h3 class="font-headline text-lg text-white font-bold uppercase">Verified Player Identity &amp; Registry
+              </h3>
+              <p class="font-body text-xs text-slate-400">Verified factual details about Gurlal Singh (Gurlal Sohal).
+              </p>
+            </div>
+            <button type="button" onclick="saveAllAdminData(true)"
+              class="px-4 py-2 rounded-xl bg-[#2563EB] text-white font-label text-xs uppercase tracking-wider font-bold hover:bg-blue-600 shadow-md">
+              Save Identity Data
+            </button>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="flex flex-col gap-1.5 p-4 rounded-xl bg-[#0F172A] border border-slate-800">
+              <label class="font-label text-xs uppercase text-slate-400 font-bold">Full Name</label>
+              <input id="adminInputFullName" type="text"
+                class="bg-[#060B19] border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:border-[#2563EB] focus:outline-none font-mono"
+                value="Gurlal Singh">
+            </div>
+            <div class="flex flex-col gap-1.5 p-4 rounded-xl bg-[#0F172A] border border-slate-800">
+              <label class="font-label text-xs uppercase text-slate-400 font-bold">Popular Sporting Name</label>
+              <input id="adminInputPopularName" type="text"
+                class="bg-[#060B19] border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:border-[#2563EB] focus:outline-none font-mono"
+                value="Gurlal Sohal">
+            </div>
+            <div class="flex flex-col gap-1.5 p-4 rounded-xl bg-[#0F172A] border border-slate-800">
+              <label class="font-label text-xs uppercase text-slate-400 font-bold">Hometown</label>
+              <input id="adminInputHometown" type="text"
+                class="bg-[#060B19] border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:border-[#2563EB] focus:outline-none"
+                value="Village Sohal, Tarn Taran, Punjab, India">
+            </div>
+            <div class="flex flex-col gap-1.5 p-4 rounded-xl bg-[#0F172A] border border-slate-800">
+              <label class="font-label text-xs uppercase text-slate-400 font-bold">Nationality</label>
+              <input id="adminInputNationality" type="text"
+                class="bg-[#060B19] border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:border-[#2563EB] focus:outline-none"
+                value="Indian">
+            </div>
+            <div class="flex flex-col gap-1.5 p-4 rounded-xl bg-[#0F172A] border border-slate-800">
+              <label class="font-label text-xs uppercase text-slate-400 font-bold">Sport</label>
+              <input id="adminInputSport" type="text"
+                class="bg-[#060B19] border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:border-[#2563EB] focus:outline-none"
+                value="Circle Style Kabaddi">
+            </div>
+            <div class="flex flex-col gap-1.5 p-4 rounded-xl bg-[#0F172A] border border-slate-800">
+              <label class="font-label text-xs uppercase text-slate-400 font-bold">Primary Position</label>
+              <input id="adminInputPosition" type="text"
+                class="bg-[#060B19] border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:border-[#2563EB] focus:outline-none"
+                value="Raider (Lead Power Raider / Jersey #1)">
+            </div>
+            <div class="flex flex-col gap-1.5 p-4 rounded-xl bg-[#0F172A] border border-slate-800">
+              <label class="font-label text-xs uppercase text-slate-400 font-bold">International Club
+                Affiliation</label>
+              <input id="adminInputClub" type="text"
+                class="bg-[#060B19] border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:border-[#2563EB] focus:outline-none"
+                value="Young Sports Club BC, Canada">
+            </div>
+            <div class="flex flex-col gap-1.5 p-4 rounded-xl bg-[#0F172A] border border-slate-800">
+              <label class="font-label text-xs uppercase text-slate-400 font-bold">Player Database Reference</label>
+              <input id="adminInputDatabase" type="text"
+                class="bg-[#060B19] border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:border-[#2563EB] focus:outline-none"
+                value="Kabaddi365 (Verified Athlete Profile)">
+            </div>
+            <div class="flex flex-col gap-1.5 p-4 rounded-xl bg-[#0F172A] border border-slate-800">
+              <label class="font-label text-xs uppercase text-slate-400 font-bold">Official Instagram</label>
+              <input id="adminInputInstagram" type="text"
+                class="bg-[#060B19] border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:border-[#2563EB] focus:outline-none"
+                value="@_gurlal__sohal">
+            </div>
+            <div class="flex flex-col gap-1.5 p-4 rounded-xl bg-[#0F172A] border border-slate-800">
+              <label class="font-label text-xs uppercase text-slate-400 font-bold">Management Phone &amp;
+                WhatsApp</label>
+              <input id="adminInputPhone" type="text"
+                class="bg-[#060B19] border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:border-[#2563EB] focus:outline-none font-mono"
+                value="+91 98490 04200">
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 2: INTERNATIONAL TOURS -->
+        <div id="adminTab-tours" class="adminTabContent hidden flex flex-col gap-6">
+          <div
+            class="p-4 rounded-xl bg-[#0F172A] border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <h3 class="font-headline text-lg text-white font-bold uppercase">15 International Tours Summary</h3>
+              <p class="font-body text-xs text-slate-400">Total of 15 verified visits across 5 global regions.</p>
+            </div>
+            <span
+              class="px-3 py-1 rounded-full bg-blue-950 text-blue-400 border border-blue-500/40 text-xs font-mono font-bold">
+              15 Total Visits Confirmed
+            </span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="p-4 rounded-xl bg-[#0F172A] border border-slate-800 flex items-center justify-between">
+              <div>
+                <span class="font-headline text-2xl text-blue-400 font-bold">9 Visits</span>
+                <span class="block text-xs uppercase font-label text-slate-300 font-bold mt-1">Canada</span>
+                <span class="block text-[11px] text-slate-400">Young Sports Club BC</span>
+              </div>
+              <span class="text-3xl">&#127464;&#127462;</span>
+            </div>
+            <div class="p-4 rounded-xl bg-[#0F172A] border border-slate-800 flex items-center justify-between">
+              <div>
+                <span class="font-headline text-2xl text-white font-bold">2 Visits</span>
+                <span class="block text-xs uppercase font-label text-slate-300 font-bold mt-1">United States</span>
+                <span class="block text-[11px] text-slate-400">Federation Tournaments</span>
+              </div>
+              <span class="text-3xl">&#127482;&#127480;</span>
+            </div>
+            <div class="p-4 rounded-xl bg-[#0F172A] border border-slate-800 flex items-center justify-between">
+              <div>
+                <span class="font-headline text-2xl text-white font-bold">2 Visits</span>
+                <span class="block text-xs uppercase font-label text-slate-300 font-bold mt-1">Australia</span>
+                <span class="block text-[11px] text-slate-400">State Championship Cups</span>
+              </div>
+              <span class="text-3xl">&#127462;&#127482;</span>
+            </div>
+            <div class="p-4 rounded-xl bg-[#0F172A] border border-slate-800 flex items-center justify-between">
+              <div>
+                <span class="font-headline text-2xl text-white font-bold">1 Visit</span>
+                <span class="block text-xs uppercase font-label text-slate-300 font-bold mt-1">Malaysia</span>
+                <span class="block text-[11px] text-slate-400">International Invitation</span>
+              </div>
+              <span class="text-3xl">&#127474;&#127486;</span>
+            </div>
+            <div class="p-4 rounded-xl bg-[#0F172A] border border-slate-800 flex items-center justify-between">
+              <div>
+                <span class="font-headline text-2xl text-white font-bold">1 Visit</span>
+                <span class="block text-xs uppercase font-label text-slate-300 font-bold mt-1">Europe</span>
+                <span class="block text-[11px] text-slate-400">Continental Tour</span>
+              </div>
+              <span class="text-3xl">&#127466;&#127482;</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 3: PRIZES & VALUABLE AWARDS -->
+        <div id="adminTab-prizes" class="adminTabContent hidden flex flex-col gap-6">
+          <div
+            class="p-4 rounded-xl bg-[#0F172A] border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <h3 class="font-headline text-lg text-white font-bold uppercase">Championship Prizes &amp; Valuable
+                Rewards</h3>
+              <p class="font-body text-xs text-slate-400">Scorpio-N SUV, Maruti Alto, Bullets, 45+ bikes, tractors,
+                buffaloes, and jewellery.</p>
+            </div>
+          </div>
+
+          <!-- Highlight Award 1: Mahindra Scorpio-N SUV at Bir Baba Buddha Sahib Cup -->
+          <div
+            class="p-5 rounded-2xl bg-gradient-to-r from-amber-950/40 via-[#0F172A] to-blue-950/40 border-2 border-amber-500/50 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+            <div class="flex flex-col gap-2">
+              <span
+                class="px-3 py-1 rounded-full bg-amber-500/20 text-gold-400 border border-amber-500/40 text-[10px] font-mono font-bold uppercase w-fit">
+                Headline Vehicle Honor &bull; Confirmed Victory
+              </span>
+              <h4 class="font-headline text-2xl text-white font-bold uppercase">Mahindra Scorpio-N SUV</h4>
+              <p class="font-body text-xs text-slate-300 leading-relaxed max-w-xl">
+                Awarded for outstanding championship-winning performance at the prestigious <strong>Bir Baba Buddha
+                  Sahib Kabaddi Cup, Tarn Taran, Punjab</strong>.
+              </p>
+            </div>
+            <div class="text-right shrink-0">
+              <span class="font-headline text-3xl text-gold-400 font-bold block">SCORPIO-N</span>
+              <span class="font-mono text-xs text-slate-400">Tarn Taran Cup Grand Prize</span>
+            </div>
+          </div>
+
+          <!-- Highlight Award 2: Frandipur Best Raider Buffalo -->
+          <div
+            class="p-5 rounded-2xl bg-[#0F172A] border border-blue-500/40 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+            <div class="flex flex-col gap-2">
+              <span
+                class="px-3 py-1 rounded-full bg-blue-950 text-blue-400 border border-blue-500/40 text-[10px] font-mono font-bold uppercase w-fit">
+                Traditional Livestock Honor &bull; Confirmed Best Raider
+              </span>
+              <h4 class="font-headline text-2xl text-white font-bold uppercase">Prize Buffalo &mdash; 1st Frandipur Cup
+              </h4>
+              <p class="font-body text-xs text-slate-300 leading-relaxed max-w-xl">
+                Honored with traditional prize buffalo along with Best Raider title after executing an astonishing 18
+                perfect raids out of 18 attempts (100% raid accuracy).
+              </p>
+            </div>
+            <div class="text-right shrink-0">
+              <span class="font-headline text-3xl text-emerald-400 font-bold block">18 / 18</span>
+              <span class="font-mono text-xs text-slate-400">Frandipur Cup Best Raider</span>
+            </div>
+          </div>
+
+          <!-- Other Prizes Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="p-4 rounded-xl bg-[#0F172A] border border-slate-800">
+              <span class="font-headline text-2xl text-gold-400 font-bold">10 Bullets</span>
+              <h5 class="text-xs uppercase font-label text-white font-bold mt-1">Royal Enfield Bullet Motorcycles</h5>
+              <p class="text-[11px] text-slate-400 mt-1">Awarded at major rural Kabaddi tournaments in Punjab.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-[#0F172A] border border-slate-800">
+              <span class="font-headline text-2xl text-white font-bold">45+ Bikes</span>
+              <h5 class="text-xs uppercase font-label text-white font-bold mt-1">Other Motorcycles</h5>
+              <p class="text-[11px] text-slate-400 mt-1">Numerous motorcycle prizes across state and district cups.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-[#0F172A] border border-slate-800">
+              <span class="font-headline text-2xl text-blue-400 font-bold">Maruti Alto</span>
+              <h5 class="text-xs uppercase font-label text-white font-bold mt-1">Maruti Suzuki Alto Car</h5>
+              <p class="text-[11px] text-slate-400 mt-1">Awarded for tournament-winning performances.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-[#0F172A] border border-slate-800">
+              <span class="font-headline text-2xl text-gold-400 font-bold">Tractors</span>
+              <h5 class="text-xs uppercase font-label text-white font-bold mt-1">Heavy Agricultural Tractors</h5>
+              <p class="text-[11px] text-slate-400 mt-1">Multiple agricultural tractors won as top tournament prizes
+                across Punjab.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-[#0F172A] border border-slate-800">
+              <span class="font-headline text-2xl text-[#FF6B00] font-bold">Livestock</span>
+              <h5 class="text-xs uppercase font-label text-white font-bold mt-1">Traditional Buffaloes</h5>
+              <p class="text-[11px] text-slate-400 mt-1">Prestigious traditional Punjabi livestock rewards.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-[#0F172A] border border-slate-800">
+              <span class="font-headline text-2xl text-emerald-400 font-bold">Gold &amp; Jewels</span>
+              <h5 class="text-xs uppercase font-label text-white font-bold mt-1">Jewellery &amp; Cash Prizes</h5>
+              <p class="text-[11px] text-slate-400 mt-1">Special gold ornaments, medals, cash, and trophies.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 4: TOURNAMENTS & VICTORIES -->
+        <div id="adminTab-victories" class="adminTabContent hidden flex flex-col gap-6">
+          <div
+            class="p-4 rounded-xl bg-[#0F172A] border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <h3 class="font-headline text-lg text-white font-bold uppercase">Tournaments Registry &amp; Confirmed
+                Victories</h3>
+              <p class="font-body text-xs text-slate-400">Strictly distinguishing confirmed victories from tournament
+                participation.</p>
+            </div>
+          </div>
+
+          <!-- Confirmed Victories Section -->
+          <div class="flex flex-col gap-3">
+            <span class="text-xs font-label uppercase font-bold text-gold-400 flex items-center gap-2">
+              <span class="material-symbols-outlined text-[16px]">verified</span>
+              <span>Confirmed Championship Victories</span>
+            </span>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="p-4 rounded-xl bg-[#0F172A] border border-amber-500/40 flex flex-col gap-2">
+                <span
+                  class="px-2 py-0.5 rounded bg-amber-500/20 text-gold-400 text-[10px] font-mono font-bold uppercase w-fit">Confirmed
+                  Victory</span>
+                <h4 class="font-headline text-lg uppercase text-white font-bold">Bir Baba Buddha Sahib Kabaddi Cup, Tarn
+                  Taran</h4>
+                <p class="text-xs text-slate-300">Championship victory in Tarn Taran; awarded the brand-new Mahindra
+                  Scorpio-N SUV.</p>
+              </div>
+              <div class="p-4 rounded-xl bg-[#0F172A] border border-amber-500/40 flex flex-col gap-2">
+                <span
+                  class="px-2 py-0.5 rounded bg-amber-500/20 text-gold-400 text-[10px] font-mono font-bold uppercase w-fit">Confirmed
+                  Victory &bull; Best Raider</span>
+                <h4 class="font-headline text-lg uppercase text-white font-bold">1st Frandipur Kabaddi Cup</h4>
+                <p class="text-xs text-slate-300">Flawless 18/18 perfect raids (100% raid accuracy); awarded Best Raider
+                  and prize buffalo.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Documented Tournament Appearances Section -->
+          <div class="flex flex-col gap-3 pt-2">
+            <span class="text-xs font-label uppercase font-bold text-blue-400 flex items-center gap-2">
+              <span class="material-symbols-outlined text-[16px]">sports_score</span>
+              <span>Documented Tournament Participation &amp; Marquee Matches</span>
+            </span>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="p-4 rounded-xl bg-[#0F172A] border border-slate-800 flex flex-col gap-2">
+                <span
+                  class="px-2 py-0.5 rounded bg-blue-950 text-blue-400 text-[10px] font-mono font-bold uppercase w-fit">Tournament
+                  Participation</span>
+                <h4 class="font-headline text-lg uppercase text-white font-bold">Umra Nangal Kabaddi Cup (2024)</h4>
+                <p class="text-xs text-slate-300">Marquee raid action in the premier 2024 edition of this storied Punjab
+                  tournament.</p>
+              </div>
+              <div class="p-4 rounded-xl bg-[#0F172A] border border-slate-800 flex flex-col gap-2">
+                <span
+                  class="px-2 py-0.5 rounded bg-blue-950 text-blue-400 text-[10px] font-mono font-bold uppercase w-fit">Tournament
+                  Participation</span>
+                <h4 class="font-headline text-lg uppercase text-white font-bold">Takhtupura Moga Kabaddi Cup</h4>
+                <p class="text-xs text-slate-300">Key raid clashes against heavyweight stoppers on the renowned
+                  Takhtupura clay ground.</p>
+              </div>
+              <div class="p-4 rounded-xl bg-[#0F172A] border border-slate-800 flex flex-col gap-2">
+                <span
+                  class="px-2 py-0.5 rounded bg-blue-950 text-blue-400 text-[10px] font-mono font-bold uppercase w-fit">Tournament
+                  Participation</span>
+                <h4 class="font-headline text-lg uppercase text-white font-bold">Chuslewar Kabaddi Cup</h4>
+                <p class="text-xs text-slate-300">High-intensity Majha rural tournament standoffs showcasing agile
+                  footwork and speed.</p>
+              </div>
+              <div class="p-4 rounded-xl bg-[#0F172A] border border-slate-800 flex flex-col gap-2">
+                <span
+                  class="px-2 py-0.5 rounded bg-blue-950 text-blue-400 text-[10px] font-mono font-bold uppercase w-fit">International
+                  Club Competition</span>
+                <h4 class="font-headline text-lg uppercase text-white font-bold">Royal King Kabaddi Cup, Canada</h4>
+                <p class="text-xs text-slate-300">International tournament in Canada representing Young Sports Club BC.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 5: SCOUTING & KPIS -->
+        <div id="adminTab-scouting" class="adminTabContent hidden flex flex-col gap-6">
+          <div
+            class="p-4 rounded-xl bg-[#0F172A] border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <h3 class="font-headline text-lg text-white font-bold uppercase">Kabaddi Scouting Profile &amp; KPI
+                Metrics</h3>
+              <p class="font-body text-xs text-slate-400">Update player scouting attributes and scannable performance
+                KPIs displayed across the portfolio.</p>
+            </div>
+            <button type="button" onclick="saveScoutingMetricsFromAdmin()"
+              class="px-4 py-2 rounded-xl bg-[#2563EB] text-white font-label text-xs uppercase tracking-wider font-bold hover:bg-blue-600 shadow-md">
+              Save Scouting Data
+            </button>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Left: Scouting Profile Card Attributes -->
+            <div class="p-5 rounded-xl bg-[#0F172A] border border-slate-800 flex flex-col gap-4">
+              <h4 class="font-headline text-base text-[#FF6B00] font-bold uppercase tracking-wider">Player Profile
+                Attributes</h4>
+              <div class="flex flex-col gap-1.5">
+                <label class="font-label text-xs uppercase text-slate-400 font-bold">Raiding Side (Left / Right)</label>
+                <input id="adminInputRaidingSide" type="text"
+                  class="bg-[#060B19] border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:border-[#2563EB] focus:outline-none"
+                  value="Right-Side Power Raider (Primary) &bull; Ambidextrous">
+              </div>
+              <div class="flex flex-col gap-1.5">
+                <label class="font-label text-xs uppercase text-slate-400 font-bold">Signature Raid Moves</label>
+                <input id="adminInputSignatureMoves" type="text"
+                  class="bg-[#060B19] border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:border-[#2563EB] focus:outline-none"
+                  value="Running Hand Touch, Dubki, Toe Touch, Lion Escape (Sher Di Chhal)">
+              </div>
+              <div class="flex flex-col gap-1.5">
+                <label class="font-label text-xs uppercase text-slate-400 font-bold">Known Monikers</label>
+                <input id="adminInputMonikers" type="text"
+                  class="bg-[#060B19] border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:border-[#2563EB] focus:outline-none"
+                  value="Majhe Di Shaan &bull; Kabaddi Da Great Khali">
+              </div>
+              <div class="flex flex-col gap-1.5">
+                <label class="font-label text-xs uppercase text-slate-400 font-bold">Clubs &amp; Sponsors</label>
+                <input id="adminInputClubs" type="text"
+                  class="bg-[#060B19] border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:border-[#2563EB] focus:outline-none"
+                  value="Young Sports Club BC, Canada &bull; Bal Incorporation">
+              </div>
+            </div>
+
+            <!-- Right: Performance & Statistics KPIs -->
+            <div class="p-5 rounded-xl bg-[#0F172A] border border-slate-800 flex flex-col gap-4">
+              <h4 class="font-headline text-base text-blue-400 font-bold uppercase tracking-wider">Scannable Kabaddi
+                Metrics (KPIs)</h4>
+              <div class="grid grid-cols-2 gap-3">
+                <div class="flex flex-col gap-1">
+                  <label class="font-label text-[11px] uppercase text-slate-400">1. Active Career</label>
+                  <input id="adminInputExp" type="text"
+                    class="bg-[#060B19] border border-slate-700 rounded-lg px-3 py-1.5 text-sm text-white focus:border-[#2563EB] focus:outline-none font-mono"
+                    value="16+ Years">
+                </div>
+                <div class="flex flex-col gap-1">
+                  <label class="font-label text-[11px] uppercase text-slate-400">2. International Tours</label>
+                  <input id="adminInputTours" type="text"
+                    class="bg-[#060B19] border border-slate-700 rounded-lg px-3 py-1.5 text-sm text-white focus:border-[#2563EB] focus:outline-none font-mono"
+                    value="15 Tours">
+                </div>
+                <div class="flex flex-col gap-1">
+                  <label class="font-label text-[11px] uppercase text-slate-400">3. Tarn Taran SUV</label>
+                  <input id="adminInputScorpio" type="text"
+                    class="bg-[#060B19] border border-slate-700 rounded-lg px-3 py-1.5 text-sm text-white focus:border-[#2563EB] focus:outline-none font-mono"
+                    value="Scorpio-N">
+                </div>
+                <div class="flex flex-col gap-1">
+                  <label class="font-label text-[11px] uppercase text-slate-400">4. Frandipur Raids</label>
+                  <input id="adminInputFrandipur" type="text"
+                    class="bg-[#060B19] border border-slate-700 rounded-lg px-3 py-1.5 text-sm text-white focus:border-[#2563EB] focus:outline-none font-mono"
+                    value="18 / 18">
+                </div>
+                <div class="flex flex-col gap-1">
+                  <label class="font-label text-[11px] uppercase text-slate-400">5. Bullet Awards</label>
+                  <input id="adminInputBullets" type="text"
+                    class="bg-[#060B19] border border-slate-700 rounded-lg px-3 py-1.5 text-sm text-white focus:border-[#2563EB] focus:outline-none font-mono"
+                    value="10 Bullets">
+                </div>
+                <div class="flex flex-col gap-1">
+                  <label class="font-label text-[11px] uppercase text-slate-400">6. Bike Honors</label>
+                  <input id="adminInputBikes" type="text"
+                    class="bg-[#060B19] border border-slate-700 rounded-lg px-3 py-1.5 text-sm text-white focus:border-[#2563EB] focus:outline-none font-mono"
+                    value="45+ Bikes">
+                </div>
+              </div>
+              <p class="font-body text-xs text-slate-400 mt-2">
+                All profile attributes and performance metrics can be updated to reflect verified tournament records.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 6: MEDIA ASSETS -->
+        <div id="adminTab-media" class="adminTabContent hidden flex flex-col gap-6">
+          <div
+            class="p-4 rounded-xl bg-[#0F172A] border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <h3 class="font-headline text-lg text-white font-bold uppercase">Uploaded Media Assets Audit</h3>
+              <p class="font-body text-xs text-slate-400">All 3 authentic original posters and 6 match highlight videos
+                safely preserved.</p>
+            </div>
+            <button type="button" onclick="downloadRaiderMediaKit()"
+              class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-label text-xs uppercase tracking-wider font-bold flex items-center gap-2">
+              <span class="material-symbols-outlined text-[16px]">download</span>
+              <span>Download Media Kit (PDF)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- TAB 7: ENQUIRIES & BOOKING INBOX -->
+        <div id="adminTab-enquiries" class="adminTabContent hidden flex flex-col gap-6">
+          <div
+            class="p-4 rounded-xl bg-[#0F172A] border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <div class="flex items-center gap-2">
+                <h3 class="font-headline text-lg text-white font-bold uppercase">Scouting &amp; Booking Enquiries Inbox
+                </h3>
+                <span id="enquiryTotalLabel"
+                  class="px-2 py-0.5 rounded bg-blue-950 text-blue-400 border border-blue-500/40 text-[11px] font-mono font-bold">0
+                  Inquiries</span>
+              </div>
+              <p class="font-body text-xs text-slate-400">All submitted inquiries from Home and Contact pages are
+                recorded here locally (Supabase/Firebase adapter ready).</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button type="button" onclick="exportEnquiriesJson()"
+                class="px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-slate-200 text-xs font-mono hover:text-white flex items-center gap-1 cursor-pointer">
+                <span class="material-symbols-outlined text-[14px]">download</span>
+                <span>Export JSON</span>
+              </button>
+              <button type="button" onclick="clearAllEnquiries()"
+                class="px-3 py-1.5 rounded-lg bg-red-950/60 border border-red-500/40 text-red-300 text-xs font-mono hover:bg-red-900/60 flex items-center gap-1 cursor-pointer">
+                <span class="material-symbols-outlined text-[14px]">delete</span>
+                <span>Clear All</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Status Filters -->
+          <div class="flex items-center gap-2 text-xs font-mono">
+            <span class="text-slate-400 uppercase text-[11px]">Filter:</span>
+            <button type="button" onclick="filterAdminEnquiries('all')" id="enqFilter-all"
+              class="enq-filter-btn px-2.5 py-1 rounded bg-[#2563EB] text-white font-bold cursor-pointer">All</button>
+            <button type="button" onclick="filterAdminEnquiries('new')" id="enqFilter-new"
+              class="enq-filter-btn px-2.5 py-1 rounded bg-[#0F172A] border border-slate-800 text-blue-400 cursor-pointer">New</button>
+            <button type="button" onclick="filterAdminEnquiries('reviewed')" id="enqFilter-reviewed"
+              class="enq-filter-btn px-2.5 py-1 rounded bg-[#0F172A] border border-slate-800 text-amber-400 cursor-pointer">Reviewed</button>
+            <button type="button" onclick="filterAdminEnquiries('booked')" id="enqFilter-booked"
+              class="enq-filter-btn px-2.5 py-1 rounded bg-[#0F172A] border border-slate-800 text-emerald-400 cursor-pointer">Booked</button>
+          </div>
+
+          <!-- Dynamic Enquiries List Container -->
+          <div id="adminEnquiryList" class="flex flex-col gap-4">
+            <!-- Dynamically populated by renderAdminEnquiries() -->
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Admin Footer Bar -->
+      <div class="px-6 py-3 bg-[#131F37] border-t border-slate-800 flex items-center justify-between">
+        <span class="text-xs text-slate-400 font-mono">Gurlal Sohal Raider CMS &bull; Local Storage Persistence</span>
+        <button type="button" onclick="saveAllAdminData(true)"
+          class="px-5 py-2 rounded-lg bg-[#2563EB] text-white font-label text-xs uppercase tracking-wider font-bold hover:bg-blue-600 transition-all cursor-pointer">
+          Save &amp; Update Portfolio
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ======================================================== -->
   <!-- FLOATING TOAST NOTIFICATION CONTAINER                    -->
   <!-- ======================================================== -->
-  <div id="toastNotification" class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-[10000] px-5 py-3 rounded-xl bg-slate-900/95 border border-blue-500/50 text-white text-xs font-label uppercase tracking-wider font-bold shadow-2xl flex items-center gap-3 backdrop-blur-md transition-all">
+  <div id="toastNotification"
+    class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-[10000] px-5 py-3 rounded-xl bg-slate-900/95 border border-blue-500/50 text-white text-xs font-label uppercase tracking-wider font-bold shadow-2xl flex items-center gap-3 backdrop-blur-md transition-all">
     <span class="material-symbols-outlined text-blue-400 text-[20px]" id="toastIcon">check_circle</span>
     <span id="toastMessage">Action completed successfully</span>
   </div>
@@ -708,15 +1569,15 @@
     }
 
     function resolveMediaCandidate(path) {
-        if (!path) return '';
-        if (window.location.protocol === 'file:') {
-          return path.replace(/^\/+/, '');
-        }
-        if (!path.startsWith('/') && !path.startsWith('http')) {
-          return '/' + path;
-        }
-        return path;
+      if (!path) return '';
+      if (window.location.protocol === 'file:') {
+        return path.replace(/^\/+/, '');
       }
+      if (!path.startsWith('/') && !path.startsWith('http')) {
+        return '/' + path;
+      }
+      return path;
+    }
 
     // Default Tours, Prizes & Victories Data
     const defaultToursData = [
@@ -905,7 +1766,7 @@
         player.load();
         const p = player.play();
         if (p !== undefined) {
-          p.catch(function(err) {
+          p.catch(function (err) {
             console.log('Mobile video autoplay deferred, user can press play', err);
           });
         }
@@ -1078,7 +1939,7 @@
           doc.save('Gurlal-Sohal-Media-Kit-2026.pdf');
           showToastNotification('Gurlal-Sohal-Media-Kit-2026.pdf downloaded successfully!', 'download_done');
           return;
-        } catch(err) {
+        } catch (err) {
           console.warn('jsPDF generation error, using fallback printable download', err);
         }
       }
@@ -1087,26 +1948,409 @@
       window.print();
     }
 
-        function applyScoutingMetrics(metrics) {
+    // ========================================================
+    // ADMIN SECURITY, AUTHENTICATION & SESSION MANAGEMENT
+    // ========================================================
+    function openAdminModal(tab) {
+      if (sessionStorage.getItem('gs_admin_session') !== 'authenticated') {
+        openAdminLoginModal(tab || 'profile');
+        return;
+      }
+      const modal = document.getElementById('adminMediaModal');
+      if (modal) {
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+      if (tab) switchAdminTab(tab);
+      if (tab === 'enquiries') renderAdminEnquiries();
+    }
+
+    function openAdminLoginModal(targetTab) {
+      window._pendingAdminTab = targetTab || 'profile';
+      const loginModal = document.getElementById('adminLoginModal');
+      if (loginModal) {
+        loginModal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+        const inp = document.getElementById('adminPasscodeInput');
+        if (inp) {
+          inp.value = '';
+          setTimeout(() => inp.focus(), 100);
+        }
+      }
+    }
+
+    function closeAdminLoginModal() {
+      const loginModal = document.getElementById('adminLoginModal');
+      if (loginModal) loginModal.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    function togglePasscodeVisibility() {
+      const inp = document.getElementById('adminPasscodeInput');
+      const ico = document.getElementById('passcodeEyeIcon');
+      if (!inp) return;
+      if (inp.type === 'password') {
+        inp.type = 'text';
+        if (ico) ico.textContent = 'visibility_off';
+      } else {
+        inp.type = 'password';
+        if (ico) ico.textContent = 'visibility';
+      }
+    }
+
+    function handleAdminLogin(e) {
+      if (e) e.preventDefault();
+      const inp = document.getElementById('adminPasscodeInput');
+      const err = document.getElementById('adminLoginError');
+      if (!inp) return;
+      const val = inp.value.trim().toLowerCase();
+      if (val === 'gurlal2026' || val === 'sohal2026' || val === 'admin123') {
+        sessionStorage.setItem('gs_admin_session', 'authenticated');
+        if (err) err.classList.add('hidden');
+        closeAdminLoginModal();
+        openAdminModal(window._pendingAdminTab || 'profile');
+        showToastNotification('Admin session unlocked successfully', 'lock_open');
+      } else {
+        if (err) {
+          err.classList.remove('hidden');
+          err.textContent = 'Invalid security passcode. Access denied.';
+        }
+        inp.classList.add('ring-2', 'ring-red-500');
+        setTimeout(() => inp.classList.remove('ring-2', 'ring-red-500'), 1500);
+      }
+    }
+
+    function logoutAdmin() {
+      sessionStorage.removeItem('gs_admin_session');
+      closeAdminModal();
+      showToastNotification('Logged out from Admin Portal', 'logout');
+    }
+
+    function closeAdminModal() {
+      const modal = document.getElementById('adminMediaModal');
+      if (modal) {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    }
+
+    function switchAdminTab(tab) {
+      document.querySelectorAll('.adminTabContent').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.adminTabBtn').forEach(btn => {
+        btn.classList.remove('bg-[#2563EB]', 'text-white');
+        btn.classList.add('bg-[#0F172A]', 'text-slate-400');
+      });
+      const content = document.getElementById('adminTab-' + tab);
+      if (content) content.classList.remove('hidden');
+      const btn = document.getElementById('adminTabBtn-' + tab);
+      if (btn) {
+        btn.classList.add('bg-[#2563EB]', 'text-white');
+        btn.classList.remove('bg-[#0F172A]', 'text-slate-400');
+      }
+      if (tab === 'enquiries') {
+        renderAdminEnquiries();
+      }
+    }
+
+    // ========================================================
+    // ENQUIRIES LOCAL STORAGE ADAPTER (READY FOR SUPABASE/FIREBASE)
+    // ========================================================
+    function getStoredEnquiries() {
+      try {
+        return JSON.parse(localStorage.getItem('gs_raider_inquiries') || '[]');
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function saveStoredEnquiries(arr) {
+      localStorage.setItem('gs_raider_inquiries', JSON.stringify(arr));
+      updateEnquiryBadge();
+    }
+
+    function updateEnquiryBadge() {
+      const arr = getStoredEnquiries();
+      const newCount = arr.filter(item => item.status === 'new').length;
+      const badges = document.querySelectorAll('#enquiryBadgeCount');
+      badges.forEach(b => {
+        b.textContent = newCount;
+        if (newCount > 0) {
+          b.classList.remove('bg-slate-700');
+          b.classList.add('bg-blue-600');
+        } else {
+          b.classList.remove('bg-blue-600');
+          b.classList.add('bg-slate-700');
+        }
+      });
+      const totalLbl = document.getElementById('enquiryTotalLabel');
+      if (totalLbl) totalLbl.textContent = arr.length + ' Inquiries (' + newCount + ' New)';
+    }
+
+    let currentEnquiryFilter = 'all';
+
+    function filterAdminEnquiries(filter) {
+      currentEnquiryFilter = filter;
+      document.querySelectorAll('.enq-filter-btn').forEach(btn => {
+        btn.classList.remove('bg-[#2563EB]', 'text-white');
+        btn.classList.add('bg-[#0F172A]');
+      });
+      const activeBtn = document.getElementById('enqFilter-' + filter);
+      if (activeBtn) {
+        activeBtn.classList.add('bg-[#2563EB]', 'text-white');
+        activeBtn.classList.remove('bg-[#0F172A]');
+      }
+      renderAdminEnquiries(filter);
+    }
+
+    function renderAdminEnquiries(filter = currentEnquiryFilter) {
+      const container = document.getElementById('adminEnquiryList');
+      if (!container) return;
+      const list = getStoredEnquiries();
+      updateEnquiryBadge();
+
+      const filtered = (filter === 'all') ? list : list.filter(item => item.status === filter);
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="p-8 rounded-xl bg-[#0F172A] border border-slate-800 text-center flex flex-col items-center gap-3">
+            <span class="w-12 h-12 rounded-xl bg-slate-800 text-slate-400 flex items-center justify-center">
+              <span class="material-symbols-outlined text-[24px]">inbox</span>
+            </span>
+            <p class="font-headline text-lg uppercase text-white font-bold">No Enquiries Found</p>
+            <p class="font-body text-xs text-slate-400 max-w-sm">Submissions from the Contact & Booking forms on Home and Contact pages will automatically populate this inbox.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filtered.map(item => {
+        const dateStr = item.date ? new Date(item.date).toLocaleString() : 'Recent';
+        let statusBadge = '<span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase bg-blue-950 text-blue-400 border border-blue-500/50">NEW</span>';
+        if (item.status === 'reviewed') {
+          statusBadge = '<span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase bg-amber-950 text-amber-400 border border-amber-500/50">REVIEWED</span>';
+        } else if (item.status === 'booked') {
+          statusBadge = '<span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase bg-emerald-950 text-emerald-400 border border-emerald-500/50">BOOKED</span>';
+        }
+
+        const cleanPhone = (item.contactPhone || '').replace(/[^0-9+]/g, '');
+        const waReplyUrl = 'https://wa.me/' + cleanPhone.replace(/^\+/, '') + '?text=' + encodeURIComponent('Hello ' + (item.organizerName || '') + ', thank you for reaching out to Gurlal Sohal Management regarding ' + (item.enquiryCategory || 'tournament booking') + '.');
+
+        return `
+          <div class="p-5 rounded-xl bg-[#0F172A] border border-slate-800 flex flex-col gap-3 shadow-lg">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+              <div class="flex items-center gap-3">
+                <span class="font-headline text-base text-white font-bold uppercase">${item.organizerName || 'Anonymous Organizer'}</span>
+                ${statusBadge}
+              </div>
+              <span class="font-mono text-[11px] text-slate-500">${dateStr}</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-mono">
+              <div>
+                <span class="block text-slate-400 text-[10px] uppercase">Phone / WhatsApp:</span>
+                <a href="tel:${cleanPhone}" class="text-blue-400 font-bold hover:underline">${item.contactPhone || 'N/A'}</a>
+              </div>
+              <div>
+                <span class="block text-slate-400 text-[10px] uppercase">Enquiry Category:</span>
+                <span class="text-[#FF6B00] font-bold">${item.enquiryCategory || 'General'}</span>
+              </div>
+              <div>
+                <span class="block text-slate-400 text-[10px] uppercase">Dates &amp; Location:</span>
+                <span class="text-white">${item.tournamentDates || 'Not specified'}</span>
+              </div>
+            </div>
+
+            <div class="p-3 rounded-lg bg-[#060B19] border border-slate-800/80 text-xs font-body text-slate-300 leading-relaxed">
+              ${item.messageTerms || 'No additional contract terms provided.'}
+            </div>
+
+            <div class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-800/80">
+              <div class="flex items-center gap-1.5 text-xs font-mono">
+                <span class="text-slate-400 text-[11px]">Status:</span>
+                <button type="button" onclick="updateEnquiryStatus('${item.id}', 'new')" class="px-2 py-0.5 rounded text-[10px] font-bold uppercase ${item.status === 'new' ? 'bg-blue-600 text-white' : 'bg-slate-800 text-slate-400 hover:text-white'}">New</button>
+                <button type="button" onclick="updateEnquiryStatus('${item.id}', 'reviewed')" class="px-2 py-0.5 rounded text-[10px] font-bold uppercase ${item.status === 'reviewed' ? 'bg-amber-600 text-white' : 'bg-slate-800 text-slate-400 hover:text-white'}">Reviewed</button>
+                <button type="button" onclick="updateEnquiryStatus('${item.id}', 'booked')" class="px-2 py-0.5 rounded text-[10px] font-bold uppercase ${item.status === 'booked' ? 'bg-emerald-600 text-white' : 'bg-slate-800 text-slate-400 hover:text-white'}">Booked</button>
+              </div>
+
+              <div class="flex items-center gap-2">
+                <a href="${waReplyUrl}" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-label uppercase tracking-wider font-bold flex items-center gap-1.5 shadow-sm">
+                  <span class="material-symbols-outlined text-[14px]">chat</span>
+                  <span>Reply on WhatsApp</span>
+                </a>
+                <button type="button" onclick="deleteEnquiry('${item.id}')" class="px-2.5 py-1.5 rounded-lg bg-red-950/60 border border-red-500/40 text-red-300 hover:bg-red-900/60 text-xs font-mono" title="Delete Inquiry">
+                  <span class="material-symbols-outlined text-[14px]">delete</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function updateEnquiryStatus(id, newStatus) {
+      const arr = getStoredEnquiries();
+      const item = arr.find(x => x.id === id);
+      if (item) {
+        item.status = newStatus;
+        saveStoredEnquiries(arr);
+        renderAdminEnquiries();
+        showToastNotification('Inquiry status updated to ' + newStatus.toUpperCase(), 'sync');
+      }
+    }
+
+    function deleteEnquiry(id) {
+      if (!confirm('Are you sure you want to delete this enquiry record?')) return;
+      let arr = getStoredEnquiries();
+      arr = arr.filter(x => x.id !== id);
+      saveStoredEnquiries(arr);
+      renderAdminEnquiries();
+      showToastNotification('Inquiry removed from inbox', 'delete');
+    }
+
+    function clearAllEnquiries() {
+      if (!confirm('Clear all stored enquiry records? This action cannot be undone.')) return;
+      localStorage.removeItem('gs_raider_inquiries');
+      updateEnquiryBadge();
+      renderAdminEnquiries();
+      showToastNotification('All inquiries cleared', 'delete_sweep');
+    }
+
+    function exportEnquiriesJson() {
+      const data = getStoredEnquiries();
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'gurlal_sohal_enquiries_' + new Date().toISOString().slice(0, 10) + '.json';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToastNotification('Enquiries exported as JSON', 'download');
+    }
+
+    // ========================================================
+    // STANDARDIZED 5-FIELD BOOKING & CONTACT FORM HANDLER
+    // ========================================================
+    function handleContactSubmit(e) {
+      if (e) e.preventDefault();
+      const form = e.target;
+      const organizerName = (form.querySelector('[name="organizerName"]') || {}).value || '';
+      const contactPhone = (form.querySelector('[name="contactPhone"]') || {}).value || '';
+      const enquiryCategory = (form.querySelector('[name="enquiryCategory"]') || {}).value || 'Tournament Invitation';
+      const tournamentDates = (form.querySelector('[name="tournamentDates"]') || {}).value || '';
+      const messageTerms = (form.querySelector('[name="messageTerms"]') || {}).value || '';
+
+      if (!organizerName || !contactPhone) {
+        alert('Please provide your Organizer / Club Name and Phone Number.');
+        return;
+      }
+
+      const newInquiry = {
+        id: 'ENQ-' + Date.now(),
+        date: new Date().toISOString(),
+        organizerName: organizerName.trim(),
+        contactPhone: contactPhone.trim(),
+        enquiryCategory: enquiryCategory.trim(),
+        tournamentDates: tournamentDates.trim(),
+        messageTerms: messageTerms.trim(),
+        status: 'new'
+      };
+
+      const arr = getStoredEnquiries();
+      arr.unshift(newInquiry);
+      saveStoredEnquiries(arr);
+
+      // Formatted structured WhatsApp message for instant delivery
+      const waText = encodeURIComponent(
+        '*NEW TOURNAMENT & BOOKING ENQUIRY - GURLAL SOHAL*\n\n' +
+        '👤 *Organizer / Club:* ' + organizerName.trim() + '\n' +
+        '📞 *Contact / WhatsApp:* ' + contactPhone.trim() + '\n' +
+        '📋 *Enquiry Category:* ' + enquiryCategory.trim() + '\n' +
+        '📅 *Dates & Location:* ' + tournamentDates.trim() + '\n' +
+        '📝 *Message & Contract Terms:*\n' + messageTerms.trim() + '\n\n' +
+        '— Sent via Official Portfolio (https://gurlal-sohal-portfolio.vercel.app)'
+      );
+      const waUrl = 'https://wa.me/919849004200?text=' + waText;
+
+      // Show clear on-screen confirmation state
+      const notice = form.querySelector('.form-success-container');
+      if (notice) {
+        notice.classList.remove('hidden');
+        const waBtn = notice.querySelector('.whatsapp-followup-btn');
+        if (waBtn) waBtn.href = waUrl;
+      }
+
+      // Immediately open WhatsApp in new tab so enquiry reaches management directly
+      try {
+        window.open(waUrl, '_blank', 'noopener,noreferrer');
+      } catch (err) {
+        console.warn('Popup blocked, WhatsApp link ready on button:', err);
+      }
+
+      showToastNotification('Enquiry submitted! Opening WhatsApp...', 'check_circle');
+      form.reset();
+    }
+
+    function saveScoutingMetricsFromAdmin() {
+      const metrics = {
+        fullName: document.getElementById('adminInputFullName') ? document.getElementById('adminInputFullName').value : 'Gurlal Singh',
+        popularName: document.getElementById('adminInputPopularName') ? document.getElementById('adminInputPopularName').value : 'Gurlal Sohal',
+        hometown: document.getElementById('adminInputHometown') ? document.getElementById('adminInputHometown').value : 'Village Sohal, Tarn Taran, Punjab, India',
+        nationality: document.getElementById('adminInputNationality') ? document.getElementById('adminInputNationality').value : 'Indian',
+        sport: document.getElementById('adminInputSport') ? document.getElementById('adminInputSport').value : 'Circle Style Kabaddi',
+        position: document.getElementById('adminInputPosition') ? document.getElementById('adminInputPosition').value : 'Raider (Lead Power Raider / Jersey #1)',
+        raidingSide: document.getElementById('adminInputRaidingSide') ? document.getElementById('adminInputRaidingSide').value : 'Right-Side Power Raider (Primary) &bull; Ambidextrous',
+        signatureMoves: document.getElementById('adminInputSignatureMoves') ? document.getElementById('adminInputSignatureMoves').value : 'Running Hand Touch, Dubki, Toe Touch, Lion Escape (Sher Di Chhal)',
+        monikers: document.getElementById('adminInputMonikers') ? document.getElementById('adminInputMonikers').value : 'Majhe Di Shaan &bull; Kabaddi Da Great Khali',
+        clubs: document.getElementById('adminInputClubs') ? document.getElementById('adminInputClubs').value : 'Young Sports Club BC, Canada &bull; Bal Incorporation',
+        database: document.getElementById('adminInputDatabase') ? document.getElementById('adminInputDatabase').value : 'Kabaddi365',
+        exp: document.getElementById('adminInputExp') ? document.getElementById('adminInputExp').value : '16+ Years',
+        tours: document.getElementById('adminInputTours') ? document.getElementById('adminInputTours').value : '15 Tours',
+        scorpio: document.getElementById('adminInputScorpio') ? document.getElementById('adminInputScorpio').value : 'Scorpio-N',
+        frandipur: document.getElementById('adminInputFrandipur') ? document.getElementById('adminInputFrandipur').value : '18 / 18',
+        bullets: document.getElementById('adminInputBullets') ? document.getElementById('adminInputBullets').value : '10 Bullets',
+        bikes: document.getElementById('adminInputBikes') ? document.getElementById('adminInputBikes').value : '45+ Bikes'
+      };
+      localStorage.setItem('gurlal_scouting_metrics', JSON.stringify(metrics));
+      applyScoutingMetrics(metrics);
+      showToastNotification("Verified Player Profile &amp; Scouting KPIs saved!", "check_circle");
+    }
+
+    function applyScoutingMetrics(metrics) {
       if (!metrics) return;
       document.querySelectorAll('.kpi-exp-val').forEach(el => el.textContent = metrics.exp || '16+ Years');
-        document.querySelectorAll('.kpi-tours-val').forEach(el => el.textContent = metrics.tours || '15 Tours');
-        document.querySelectorAll('.kpi-scorpio-val').forEach(el => el.textContent = metrics.scorpio || 'Scorpio-N');
-        document.querySelectorAll('.kpi-frandipur-val').forEach(el => el.textContent = metrics.frandipur || '18 / 18');
-        document.querySelectorAll('.kpi-bullets-val').forEach(el => el.textContent = metrics.bullets || '10 Bullets');
-        document.querySelectorAll('.kpi-bikes-val').forEach(el => el.textContent = metrics.bikes || '45+ Bikes');
+      document.querySelectorAll('.kpi-tours-val').forEach(el => el.textContent = metrics.tours || '15 Tours');
+      document.querySelectorAll('.kpi-scorpio-val').forEach(el => el.textContent = metrics.scorpio || 'Scorpio-N');
+      document.querySelectorAll('.kpi-frandipur-val').forEach(el => el.textContent = metrics.frandipur || '18 / 18');
+      document.querySelectorAll('.kpi-bullets-val').forEach(el => el.textContent = metrics.bullets || '10 Bullets');
+      document.querySelectorAll('.kpi-bikes-val').forEach(el => el.textContent = metrics.bikes || '45+ Bikes');
       document.querySelectorAll('.profile-raiding-side').forEach(el => el.innerHTML = metrics.raidingSide);
       document.querySelectorAll('.profile-signature-moves').forEach(el => el.innerHTML = metrics.signatureMoves);
     }
 
-    
+    function saveAllAdminData(showNotice) {
+      saveScoutingMetricsFromAdmin();
+      if (showNotice) {
+        const notice = document.getElementById('adminSaveNotice');
+        if (notice) notice.classList.remove('hidden');
+      }
+    }
+
+    function resetAdminDefaults() {
+      localStorage.removeItem('gurlal_scouting_metrics');
+      showToastNotification("Default verified records restored", "history");
+      location.reload();
+    }
 
     // Keyboard Shortcuts for Fullscreen Lightbox & Modals
-    window.addEventListener('keydown', function(e) {
+    window.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') {
         closeLightbox();
         closeVideoModal();
-                      } else if (e.key === 'ArrowRight') {
+        closeAdminModal();
+        closeAdminLoginModal();
+      } else if (e.key === 'ArrowRight') {
         const modal = document.getElementById('lightboxModal');
         if (modal && !modal.classList.contains('hidden')) {
           nextGalleryImage();
@@ -1119,19 +2363,20 @@
       }
     });
 
-    document.addEventListener('DOMContentLoaded', function() {
-            const saved = localStorage.getItem('gurlal_scouting_metrics');
+    document.addEventListener('DOMContentLoaded', function () {
+      updateEnquiryBadge();
+      const saved = localStorage.getItem('gurlal_scouting_metrics');
       if (saved) {
-        try { applyScoutingMetrics(JSON.parse(saved)); } catch(e){}
+        try { applyScoutingMetrics(JSON.parse(saved)); } catch (e) { }
       }
-      
+
       // Render prizes if container exists (e.g. on achievements.html)
       if (document.getElementById('prizesGrid')) {
         renderPublicPrizes('all');
       }
 
       document.querySelectorAll('img').forEach(img => {
-        img.addEventListener('error', function() {
+        img.addEventListener('error', function () {
           const raw = this.getAttribute('src');
           if (!raw || this.dataset.retryCount) return;
           this.dataset.retryCount = '1';
@@ -1143,4 +2388,5 @@
     });
   </script>
 </body>
+
 </html>

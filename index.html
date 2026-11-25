@@ -2020,10 +2020,10 @@
             v.playsInline = true;
             const p = v.play();
             if (p !== undefined) {
-              p.catch(function() {
-                const onTouch = function() {
+              p.catch(function () {
+                const onTouch = function () {
                   v.muted = true;
-                  v.play().catch(function() {});
+                  v.play().catch(function () { });
                   window.removeEventListener('touchstart', onTouch);
                   window.removeEventListener('click', onTouch);
                   window.removeEventListener('scroll', onTouch);
