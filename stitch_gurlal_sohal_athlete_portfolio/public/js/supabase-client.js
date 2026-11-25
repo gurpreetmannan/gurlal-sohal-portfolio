@@ -1,6 +1,6 @@
 /**
  * Gurlal Sohal Raider Portfolio - Supabase Cloud Database Client
- * Official Integration for Booking Enquiries & Live Admin Sync
+ * Centralized, Secure Integration for Booking Enquiries, Live KPIs & Admin Sync
  */
 
 (function (window) {
@@ -9,6 +9,25 @@
   const SUPABASE_URL = 'https://qhdjjydjxeksiyrdiwrc.supabase.co';
   const SUPABASE_KEY = 'sb_publishable_Vx_-XInEw7GaMgVN0fE-cA_wkjA0zun';
   const SESSION_STORAGE_KEY = 'gs_supabase_admin_session';
+
+  const DEFAULT_KPIS = {
+    exp: '16+ Years',
+    tours: '15 Tours',
+    scorpio: 'Scorpio-N',
+    frandipur: '18 / 18',
+    bullets: '10 Bullets',
+    bikes: '45+ Bikes',
+    raidingSide: 'Right Raider (Speed Baulk & Corner Specialist)',
+    signatureMoves: 'Jump Escape, Touch, Body Swerve, Rapid Toe Touch'
+  };
+
+  const DEFAULT_TOURS = [
+    { code: 'canada', country: 'Canada', flag: '🇨🇦', count: 9, club: 'Young Sports Club BC' },
+    { code: 'usa', country: 'United States', flag: '🇺🇸', count: 2, club: 'North American Kabaddi Federation' },
+    { code: 'australia', country: 'Australia', flag: '🇦🇺', count: 2, club: 'Australia Kabaddi Cup' },
+    { code: 'malaysia', country: 'Malaysia', flag: '🇲🇾', count: 1, club: 'Kuala Lumpur International Cup' },
+    { code: 'europe', country: 'Europe', flag: '🇪🇺', count: 1, club: 'European Kabaddi Championship Circuit' }
+  ];
 
   const SupabaseService = {
     url: SUPABASE_URL,
@@ -85,7 +104,6 @@
         if (!raw) return null;
         const s = JSON.parse(raw);
         if (s && s.access_token) {
-          // Check expiration
           if (s.expires_at && s.expires_at < Date.now()) {
             this.adminSignOut();
             return null;
@@ -101,7 +119,7 @@
     },
 
     /**
-     * Submit a new enquiry to Supabase public table (with local fallback)
+     * Submit a new enquiry to Supabase public table
      */
     async submitEnquiry(data) {
       const payload = {
@@ -138,10 +156,10 @@
           }
         }
       } catch (err) {
-        errorMessage = err.message || 'Network error';
+        errorMessage = err.message || 'Network error connecting to Supabase database.';
       }
 
-      // Always save locally as fallback resilience
+      // Sync local cache
       try {
         const localEnquiry = {
           id: record ? record.id : ('ENQ-' + Date.now()),
@@ -168,7 +186,7 @@
     },
 
     /**
-     * Fetch all enquiries (Protected: uses Bearer token if logged in)
+     * Fetch all enquiries (Uses Bearer token if logged in)
      */
     async getEnquiries() {
       const isAuth = this.isAdminAuthenticated();
@@ -199,7 +217,6 @@
         }
       } catch (err) {}
 
-      // Fallback to local storage
       try {
         const local = JSON.parse(localStorage.getItem('gs_raider_inquiries') || '[]');
         return { enquiries: local, source: 'local' };
@@ -209,7 +226,7 @@
     },
 
     /**
-     * Update enquiry status (Protected)
+     * Update enquiry status
      */
     async updateStatus(id, newStatus) {
       let remoteSuccess = false;
@@ -236,7 +253,7 @@
     },
 
     /**
-     * Delete an enquiry (Protected)
+     * Delete an enquiry
      */
     async deleteEnquiry(id) {
       let remoteSuccess = false;
@@ -256,6 +273,157 @@
       } catch (e) {}
 
       return remoteSuccess;
+    },
+
+    /**
+     * Fetch Scouting Metrics & KPIs (Supabase with Local Cache)
+     */
+    async getScoutingMetrics() {
+      try {
+        const resp = await fetch(`${this.url}/rest/v1/scouting_metrics?id=eq.current&select=*`, {
+          method: 'GET',
+          headers: this.getHeaders(false)
+        });
+
+        if (resp.ok) {
+          const rows = await resp.json();
+          if (rows && rows.length > 0) {
+            const r = rows[0];
+            const metrics = {
+              exp: r.exp || DEFAULT_KPIS.exp,
+              tours: r.tours || DEFAULT_KPIS.tours,
+              scorpio: r.scorpio || DEFAULT_KPIS.scorpio,
+              frandipur: r.frandipur || DEFAULT_KPIS.frandipur,
+              bullets: r.bullets || DEFAULT_KPIS.bullets,
+              bikes: r.bikes || DEFAULT_KPIS.bikes,
+              raidingSide: r.raiding_side || DEFAULT_KPIS.raidingSide,
+              signatureMoves: r.signature_moves || DEFAULT_KPIS.signatureMoves
+            };
+            localStorage.setItem('gurlal_scouting_metrics', JSON.stringify(metrics));
+            return { metrics, source: 'supabase' };
+          }
+        }
+      } catch (e) {}
+
+      // Fallback to local storage or defaults
+      try {
+        const saved = localStorage.getItem('gurlal_scouting_metrics');
+        if (saved) {
+          return { metrics: Object.assign({}, DEFAULT_KPIS, JSON.parse(saved)), source: 'local' };
+        }
+      } catch (e) {}
+
+      return { metrics: DEFAULT_KPIS, source: 'defaults' };
+    },
+
+    /**
+     * Save Scouting Metrics & KPIs (Protected: Admin Auth Required)
+     */
+    async saveScoutingMetrics(kpis) {
+      const isAuth = this.isAdminAuthenticated();
+      const payload = {
+        id: 'current',
+        exp: kpis.exp || DEFAULT_KPIS.exp,
+        tours: kpis.tours || DEFAULT_KPIS.tours,
+        scorpio: kpis.scorpio || DEFAULT_KPIS.scorpio,
+        frandipur: kpis.frandipur || DEFAULT_KPIS.frandipur,
+        bullets: kpis.bullets || DEFAULT_KPIS.bullets,
+        bikes: kpis.bikes || DEFAULT_KPIS.bikes,
+        raiding_side: kpis.raidingSide || DEFAULT_KPIS.raidingSide,
+        signature_moves: kpis.signatureMoves || DEFAULT_KPIS.signatureMoves,
+        updated_at: new Date().toISOString()
+      };
+
+      // Always save to local cache for immediate feedback
+      localStorage.setItem('gurlal_scouting_metrics', JSON.stringify({
+        exp: payload.exp,
+        tours: payload.tours,
+        scorpio: payload.scorpio,
+        frandipur: payload.frandipur,
+        bullets: payload.bullets,
+        bikes: payload.bikes,
+        raidingSide: payload.raiding_side,
+        signatureMoves: payload.signature_moves
+      }));
+
+      if (!isAuth) {
+        return {
+          success: false,
+          error: 'Unauthorized. Please log in with Supabase admin credentials.'
+        };
+      }
+
+      try {
+        const resp = await fetch(`${this.url}/rest/v1/scouting_metrics?id=eq.current`, {
+          method: 'PATCH',
+          headers: this.getHeaders(true),
+          body: JSON.stringify(payload)
+        });
+
+        if (resp.ok) {
+          return {
+            success: true,
+            source: 'supabase',
+            message: 'Scouting metrics saved successfully to Supabase database.'
+          };
+        } else {
+          return {
+            success: true,
+            source: 'local',
+            message: 'Saved to local cache. (Supabase table not provisioned yet; run schema.sql to activate cloud storage).'
+          };
+        }
+      } catch (e) {
+        return {
+          success: true,
+          source: 'local',
+          message: 'Saved to local cache. Network offline.'
+        };
+      }
+    },
+
+    /**
+     * Apply live metrics to all elements with matching classes on any page
+     */
+    applyScoutingMetricsToDOM(metrics) {
+      if (!metrics) return;
+      document.querySelectorAll('.kpi-exp-val').forEach(el => el.textContent = metrics.exp || DEFAULT_KPIS.exp);
+      document.querySelectorAll('.kpi-tours-val').forEach(el => el.textContent = metrics.tours || DEFAULT_KPIS.tours);
+      document.querySelectorAll('.kpi-scorpio-val').forEach(el => el.textContent = metrics.scorpio || DEFAULT_KPIS.scorpio);
+      document.querySelectorAll('.kpi-frandipur-val').forEach(el => el.textContent = metrics.frandipur || DEFAULT_KPIS.frandipur);
+      document.querySelectorAll('.kpi-bullets-val').forEach(el => el.textContent = metrics.bullets || DEFAULT_KPIS.bullets);
+      document.querySelectorAll('.kpi-bikes-val').forEach(el => el.textContent = metrics.bikes || DEFAULT_KPIS.bikes);
+      document.querySelectorAll('.profile-raiding-side').forEach(el => el.innerHTML = metrics.raidingSide || DEFAULT_KPIS.raidingSide);
+      document.querySelectorAll('.profile-signature-moves').forEach(el => el.innerHTML = metrics.signatureMoves || DEFAULT_KPIS.signatureMoves);
+    },
+
+    /**
+     * Global Init for Public Pages: Fetches live data and applies to DOM
+     */
+    async initPageSync() {
+      // 1. Apply cached metrics immediately to avoid layout shift
+      try {
+        const cached = localStorage.getItem('gurlal_scouting_metrics');
+        if (cached) {
+          this.applyScoutingMetricsToDOM(JSON.parse(cached));
+        } else {
+          this.applyScoutingMetricsToDOM(DEFAULT_KPIS);
+        }
+      } catch (e) {
+        this.applyScoutingMetricsToDOM(DEFAULT_KPIS);
+      }
+
+      // 2. Refresh from Supabase in background
+      try {
+        const { metrics } = await this.getScoutingMetrics();
+        if (metrics) {
+          this.applyScoutingMetricsToDOM(metrics);
+        }
+      } catch (e) {}
+    },
+
+    getToursBreakdown() {
+      return DEFAULT_TOURS;
     }
   };
 

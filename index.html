@@ -1989,6 +1989,9 @@
     });
 
     document.addEventListener('DOMContentLoaded', function () {
+      if (window.GurlalSupabase && window.GurlalSupabase.initPageSync) {
+        window.GurlalSupabase.initPageSync();
+      }
       const saved = localStorage.getItem('gurlal_scouting_metrics');
       if (saved) {
         try { applyScoutingMetrics(JSON.parse(saved)); } catch (e) { }

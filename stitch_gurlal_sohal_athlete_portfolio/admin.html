@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -761,7 +761,7 @@
       showNotice('Player identity preferences saved.');
     }
 
-    function saveScoutingKpis() {
+    async function saveScoutingKpis() {
       const kpis = {
         exp: document.getElementById('kpiExp') ? document.getElementById('kpiExp').value : '16+ Years',
         tours: document.getElementById('kpiTours') ? document.getElementById('kpiTours').value : '15 Tours',
@@ -770,21 +770,38 @@
         bullets: document.getElementById('kpiBullets') ? document.getElementById('kpiBullets').value : '10 Bullets',
         bikes: document.getElementById('kpiBikes') ? document.getElementById('kpiBikes').value : '45+ Bikes'
       };
-      localStorage.setItem('gurlal_scouting_metrics', JSON.stringify(kpis));
-      showNotice('Scouting KPIs successfully saved to storage.');
+
+      if (window.GurlalSupabase && window.GurlalSupabase.saveScoutingMetrics) {
+        showNotice('Saving scouting metrics to Supabase cloud database...');
+        const res = await window.GurlalSupabase.saveScoutingMetrics(kpis);
+        if (res.source === 'supabase') {
+          showNotice('✓ Scouting metrics successfully synchronized with Supabase database!');
+        } else {
+          showNotice(res.message || 'Saved to local cache. (Supabase cloud table pending)');
+        }
+      } else {
+        localStorage.setItem('gurlal_scouting_metrics', JSON.stringify(kpis));
+        showNotice('Scouting KPIs saved to local cache.');
+      }
     }
 
-    function loadSavedKpis() {
+    async function loadSavedKpis() {
       try {
-        const saved = localStorage.getItem('gurlal_scouting_metrics');
-        if (saved) {
-          const k = JSON.parse(saved);
-          if (k.matches) document.getElementById('kpiMatches').value = k.matches;
-          if (k.points) document.getElementById('kpiPoints').value = k.points;
-          if (k.avg) document.getElementById('kpiAvg').value = k.avg;
-          if (k.strike) document.getElementById('kpiStrike').value = k.strike;
-          if (k.super10s) document.getElementById('kpiSuper10s').value = k.super10s;
-          if (k.doOrDie) document.getElementById('kpiDoOrDie').value = k.doOrDie;
+        let k = null;
+        if (window.GurlalSupabase && window.GurlalSupabase.getScoutingMetrics) {
+          const res = await window.GurlalSupabase.getScoutingMetrics();
+          k = res.metrics;
+        } else {
+          const saved = localStorage.getItem('gurlal_scouting_metrics');
+          if (saved) k = JSON.parse(saved);
+        }
+        if (k) {
+          if (document.getElementById('kpiExp') && k.exp) document.getElementById('kpiExp').value = k.exp;
+          if (document.getElementById('kpiTours') && k.tours) document.getElementById('kpiTours').value = k.tours;
+          if (document.getElementById('kpiScorpio') && k.scorpio) document.getElementById('kpiScorpio').value = k.scorpio;
+          if (document.getElementById('kpiFrandipur') && k.frandipur) document.getElementById('kpiFrandipur').value = k.frandipur;
+          if (document.getElementById('kpiBullets') && k.bullets) document.getElementById('kpiBullets').value = k.bullets;
+          if (document.getElementById('kpiBikes') && k.bikes) document.getElementById('kpiBikes').value = k.bikes;
         }
       } catch(e){}
     }

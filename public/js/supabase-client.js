@@ -92,7 +92,7 @@
           }
           return s;
         }
-      } catch (e) {}
+      } catch (e) { }
       return null;
     },
 
@@ -133,7 +133,7 @@
           try {
             const errJson = JSON.parse(errText);
             errorMessage = errJson.message || errText;
-          } catch(e) {
+          } catch (e) {
             errorMessage = errText;
           }
         }
@@ -158,7 +158,7 @@
         const existing = JSON.parse(localStorage.getItem('gs_raider_inquiries') || '[]');
         existing.unshift(localEnquiry);
         localStorage.setItem('gs_raider_inquiries', JSON.stringify(existing));
-      } catch (e) {}
+      } catch (e) { }
 
       return {
         success: supabaseSuccess,
@@ -197,7 +197,7 @@
             return { enquiries: mapped, source: 'supabase' };
           }
         }
-      } catch (err) {}
+      } catch (err) { }
 
       // Fallback to local storage
       try {
@@ -221,7 +221,7 @@
           body: JSON.stringify({ status: newStatus })
         });
         if (resp.ok) remoteSuccess = true;
-      } catch (err) {}
+      } catch (err) { }
 
       try {
         const list = JSON.parse(localStorage.getItem('gs_raider_inquiries') || '[]');
@@ -230,7 +230,7 @@
           list[idx].status = newStatus;
           localStorage.setItem('gs_raider_inquiries', JSON.stringify(list));
         }
-      } catch (e) {}
+      } catch (e) { }
 
       return remoteSuccess;
     },
@@ -247,13 +247,13 @@
           headers: this.getHeaders(isAuth)
         });
         if (resp.ok) remoteSuccess = true;
-      } catch (err) {}
+      } catch (err) { }
 
       try {
         let list = JSON.parse(localStorage.getItem('gs_raider_inquiries') || '[]');
         list = list.filter(x => String(x.id) !== String(id));
         localStorage.setItem('gs_raider_inquiries', JSON.stringify(list));
-      } catch (e) {}
+      } catch (e) { }
 
       return remoteSuccess;
     }
