@@ -1,5 +1,5 @@
-User-agent: *
+﻿User-agent: *
 Allow: /
 Disallow: /admin.html
 
-Sitemap: https://gurlalsohal.in/sitemap.xml
+Sitemap: https://ggurlalsohal.sbs/sitemap.xml

@@ -1,4 +1,4 @@
-@echo off
+﻿@echo off
 cd /d "%~dp0"
 title Gurlal Sohal Raider Portfolio - Deploy to Live
 echo ========================================================
@@ -24,7 +24,7 @@ if errorlevel 1 (
     echo [SUCCESS] Pushed to GitHub successfully!
     echo.
     echo Vercel will now automatically update your live site at:
-    echo   https://gurlalsohal.in
+    echo   https://ggurlalsohal.sbs
     echo   https://gurlal-sohal-portfolio.vercel.app
     echo ========================================================
 )
