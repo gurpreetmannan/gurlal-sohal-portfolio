@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 &mdash; Page Not Found | Gurlal Sohal Raider Portfolio</title>
+  <meta name="description" content="Page not found on Gurlal Sohal official portfolio. Return to home or contact athlete management.">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Google Fonts & Material Symbols -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+
+  <!-- Tailwind CSS Configuration -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            midnight: '#060B19',
+            card: '#0F172A',
+            royal: { 600: '#2563EB', 700: '#1D4ED8' },
+            saffron: '#FF6B00',
+            gold: '#D4AF37'
+          },
+          fontFamily: {
+            headline: ['Bebas Neue', 'sans-serif'],
+            title: ['Space Grotesk', 'sans-serif'],
+            body: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-[#060B19] text-white min-h-screen flex flex-col font-body selection:bg-[#2563EB] selection:text-white">
+
+  <!-- Minimal Header -->
+  <header class="w-full bg-[#060B19]/90 border-b border-slate-800/80 py-4 px-6">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#2563EB] to-[#FF6B00] p-0.5 shadow-md">
+          <div class="w-full h-full bg-[#060B19] rounded-[10px] flex items-center justify-center font-headline text-xl text-blue-400 font-bold">
+            GS
+          </div>
+        </div>
+        <div>
+          <span class="font-headline text-xl text-white font-bold tracking-wider uppercase">GURLAL SOHAL</span>
+          <span class="block font-title text-[10px] text-[#FF6B00] font-bold uppercase tracking-widest -mt-1">Village Sohal, Tarn Taran</span>
+        </div>
+      </a>
+      <a href="index.html" class="px-4 py-2 rounded-xl bg-[#0F172A] border border-slate-700 hover:border-blue-500 text-slate-300 hover:text-white text-xs font-title uppercase tracking-wider font-bold transition-all">
+        Back to Home
+      </a>
+    </div>
+  </header>
+
+  <!-- Main 404 Hero Container -->
+  <main class="flex-1 flex items-center justify-center px-6 py-20 relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_50%_35%,rgba(37,99,235,0.15)_0%,rgba(255,107,0,0.06)_40%,transparent_70%)]"></div>
+
+    <div class="relative z-10 max-w-xl w-full p-8 sm:p-12 rounded-3xl bg-[#0F172A] border border-slate-800 shadow-2xl text-center flex flex-col items-center gap-6">
+      <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-950 to-slate-900 border border-blue-500/40 flex items-center justify-center text-[#FF6B00] shadow-lg">
+        <span class="material-symbols-outlined text-[44px]">sports_martial_arts</span>
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <span class="font-title text-xs uppercase tracking-widest text-[#FF6B00] font-bold">404 Error &bull; Route Out of Arena</span>
+        <h1 class="font-headline text-5xl sm:text-6xl uppercase text-white font-bold tracking-wider leading-none">
+          Page Not Found
+        </h1>
+        <p class="font-body text-sm text-slate-400 leading-relaxed max-w-md mx-auto pt-2">
+          The requested tournament record, media reel, or dossier could not be found. Use the buttons below to return to the active portfolio.
+        </p>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-center gap-3 w-full pt-2">
+        <a href="index.html" class="flex-1 min-w-[180px] py-3.5 px-6 rounded-xl bg-[#2563EB] hover:bg-blue-600 text-white font-title text-xs uppercase tracking-wider font-bold flex items-center justify-center gap-2 shadow-lg shadow-blue-900/50 transition-all">
+          <span class="material-symbols-outlined text-[18px]">home</span>
+          <span>Return to Home</span>
+        </a>
+        <a href="https://wa.me/919849004200?text=Hello%20Gurlal%20Sohal%20Team%2C%20I%20encountered%20a%20broken%20link%20on%20the%20website." target="_blank" rel="noopener noreferrer" class="flex-1 min-w-[180px] py-3.5 px-6 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-title text-xs uppercase tracking-wider font-bold flex items-center justify-center gap-2 shadow-lg shadow-emerald-950/60 transition-all">
+          <span class="material-symbols-outlined text-[18px]">chat</span>
+          <span>Contact WhatsApp</span>
+        </a>
+      </div>
+
+      <div class="pt-4 border-t border-slate-800 w-full flex flex-wrap items-center justify-center gap-4 text-xs font-title text-slate-400 uppercase tracking-wider">
+        <a href="about.html" class="hover:text-white transition-colors">About</a>
+        <span>&bull;</span>
+        <a href="achievements.html" class="hover:text-white transition-colors">Achievements</a>
+        <span>&bull;</span>
+        <a href="matches.html" class="hover:text-white transition-colors">Matches</a>
+        <span>&bull;</span>
+        <a href="gallery.html" class="hover:text-white transition-colors">Gallery</a>
+        <span>&bull;</span>
+        <a href="contact.html" class="hover:text-white transition-colors">Contact</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Minimal Footer -->
+  <footer class="w-full border-t border-slate-800/80 py-6 px-6 text-center text-xs font-mono text-slate-500 bg-[#030712]">
+    <span>&copy; 2026 Gurlal Sohal (Gurlal Singh). All International Rights Reserved.</span>
+  </footer>
+
+</body>
+</html>
