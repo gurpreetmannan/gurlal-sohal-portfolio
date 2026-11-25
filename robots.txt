@@ -2,4 +2,4 @@
 Allow: /
 Disallow: /admin.html
 
-Sitemap: https://ggurlalsohal.sbs/sitemap.xml
+Sitemap: https://gurlalsohal.sbs/sitemap.xml

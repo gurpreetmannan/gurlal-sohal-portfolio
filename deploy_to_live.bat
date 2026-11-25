@@ -24,7 +24,7 @@ if errorlevel 1 (
     echo [SUCCESS] Pushed to GitHub successfully!
     echo.
     echo Vercel will now automatically update your live site at:
-    echo   https://ggurlalsohal.sbs
+    echo   https://gurlalsohal.sbs
     echo   https://gurlal-sohal-portfolio.vercel.app
     echo ========================================================
 )
