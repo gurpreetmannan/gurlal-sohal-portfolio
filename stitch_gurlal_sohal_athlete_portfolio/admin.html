@@ -359,28 +359,28 @@
 
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
         <div class="p-4 rounded-xl bg-[#0F172A] border border-slate-800 flex flex-col gap-1.5">
-          <label class="font-label text-[11px] uppercase text-slate-400 font-bold">Matches Played</label>
-          <input id="kpiMatches" type="text" value="120+" class="bg-[#060B19] border border-slate-700 rounded-lg px-3 py-2 text-sm text-white font-mono">
+          <label class="font-label text-[11px] uppercase text-slate-400 font-bold">Active Career</label>
+          <input id="kpiExp" type="text" value="16+ Years" class="bg-[#060B19] border border-slate-700 rounded-lg px-3 py-2 text-sm text-white font-mono">
         </div>
         <div class="p-4 rounded-xl bg-[#0F172A] border border-slate-800 flex flex-col gap-1.5">
-          <label class="font-label text-[11px] uppercase text-slate-400 font-bold">Total Raid Points</label>
-          <input id="kpiPoints" type="text" value="850+" class="bg-[#060B19] border border-slate-700 rounded-lg px-3 py-2 text-sm text-[#FF6B00] font-mono font-bold">
+          <label class="font-label text-[11px] uppercase text-slate-400 font-bold">International Tours</label>
+          <input id="kpiTours" type="text" value="15 Tours" class="bg-[#060B19] border border-slate-700 rounded-lg px-3 py-2 text-sm text-[#FF6B00] font-mono font-bold">
         </div>
         <div class="p-4 rounded-xl bg-[#0F172A] border border-slate-800 flex flex-col gap-1.5">
-          <label class="font-label text-[11px] uppercase text-slate-400 font-bold">Avg Pts / Match</label>
-          <input id="kpiAvg" type="text" value="7.1 PTS" class="bg-[#060B19] border border-slate-700 rounded-lg px-3 py-2 text-sm text-blue-300 font-mono">
+          <label class="font-label text-[11px] uppercase text-slate-400 font-bold">Tarn Taran SUV</label>
+          <input id="kpiScorpio" type="text" value="Scorpio-N" class="bg-[#060B19] border border-slate-700 rounded-lg px-3 py-2 text-sm text-blue-300 font-mono">
         </div>
         <div class="p-4 rounded-xl bg-[#0F172A] border border-slate-800 flex flex-col gap-1.5">
-          <label class="font-label text-[11px] uppercase text-slate-400 font-bold">Raid Strike Rate</label>
-          <input id="kpiStrike" type="text" value="86.4%" class="bg-[#060B19] border border-slate-700 rounded-lg px-3 py-2 text-sm text-emerald-400 font-mono">
+          <label class="font-label text-[11px] uppercase text-slate-400 font-bold">Frandipur Perfect</label>
+          <input id="kpiFrandipur" type="text" value="18 / 18" class="bg-[#060B19] border border-slate-700 rounded-lg px-3 py-2 text-sm text-emerald-400 font-mono">
         </div>
         <div class="p-4 rounded-xl bg-[#0F172A] border border-slate-800 flex flex-col gap-1.5">
-          <label class="font-label text-[11px] uppercase text-slate-400 font-bold">Super 10s</label>
-          <input id="kpiSuper10s" type="text" value="42" class="bg-[#060B19] border border-slate-700 rounded-lg px-3 py-2 text-sm text-gold-400 font-mono">
+          <label class="font-label text-[11px] uppercase text-slate-400 font-bold">Bullet Awards</label>
+          <input id="kpiBullets" type="text" value="10 Bullets" class="bg-[#060B19] border border-slate-700 rounded-lg px-3 py-2 text-sm text-gold-400 font-mono">
         </div>
         <div class="p-4 rounded-xl bg-[#0F172A] border border-slate-800 flex flex-col gap-1.5">
-          <label class="font-label text-[11px] uppercase text-slate-400 font-bold">Do-or-Die Pts</label>
-          <input id="kpiDoOrDie" type="text" value="94 PTS" class="bg-[#060B19] border border-slate-700 rounded-lg px-3 py-2 text-sm text-red-400 font-mono">
+          <label class="font-label text-[11px] uppercase text-slate-400 font-bold">Bike Honors</label>
+          <input id="kpiBikes" type="text" value="45+ Bikes" class="bg-[#060B19] border border-slate-700 rounded-lg px-3 py-2 text-sm text-red-400 font-mono">
         </div>
       </div>
     </div>
@@ -683,12 +683,12 @@
 
     function saveScoutingKpis() {
       const kpis = {
-        matches: document.getElementById('kpiMatches').value,
-        points: document.getElementById('kpiPoints').value,
-        avg: document.getElementById('kpiAvg').value,
-        strike: document.getElementById('kpiStrike').value,
-        super10s: document.getElementById('kpiSuper10s').value,
-        doOrDie: document.getElementById('kpiDoOrDie').value
+        exp: document.getElementById('kpiExp') ? document.getElementById('kpiExp').value : '16+ Years',
+        tours: document.getElementById('kpiTours') ? document.getElementById('kpiTours').value : '15 Tours',
+        scorpio: document.getElementById('kpiScorpio') ? document.getElementById('kpiScorpio').value : 'Scorpio-N',
+        frandipur: document.getElementById('kpiFrandipur') ? document.getElementById('kpiFrandipur').value : '18 / 18',
+        bullets: document.getElementById('kpiBullets') ? document.getElementById('kpiBullets').value : '10 Bullets',
+        bikes: document.getElementById('kpiBikes') ? document.getElementById('kpiBikes').value : '45+ Bikes'
       };
       localStorage.setItem('gurlal_scouting_metrics', JSON.stringify(kpis));
       showNotice('Scouting KPIs successfully saved to storage.');
