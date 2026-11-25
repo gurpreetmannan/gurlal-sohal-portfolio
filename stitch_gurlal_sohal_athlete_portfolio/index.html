@@ -1001,8 +1001,6 @@
         </div>
       </div>
     </section>
-      </div>
-    </section>
   </main>
 
   <!-- ======================================================== -->
@@ -1718,40 +1716,39 @@
           else this.src = 'public/' + raw;
         });
       });
-    });
-  </script>
 
-    // Mobile Background Video Auto-Init & Touch Play Handler
-    (function initMobileHeroVideo() {
-      function startHeroVid() {
-        const v = document.getElementById('heroBgVideo');
-        if (v) {
-          v.muted = true;
-          v.defaultMuted = true;
-          v.playsInline = true;
-          const p = v.play();
-          if (p !== undefined) {
-            p.catch(function() {
-              const onTouch = function() {
-                v.muted = true;
-                v.play().catch(function() {});
-                window.removeEventListener('touchstart', onTouch);
-                window.removeEventListener('click', onTouch);
-                window.removeEventListener('scroll', onTouch);
-              };
-              window.addEventListener('touchstart', onTouch, { passive: true, once: true });
-              window.addEventListener('click', onTouch, { once: true });
-              window.addEventListener('scroll', onTouch, { passive: true, once: true });
-            });
+      // Mobile Background Video Auto-Init & Touch Play Handler
+      (function initMobileHeroVideo() {
+        function startHeroVid() {
+          const v = document.getElementById('heroBgVideo');
+          if (v) {
+            v.muted = true;
+            v.defaultMuted = true;
+            v.playsInline = true;
+            const p = v.play();
+            if (p !== undefined) {
+              p.catch(function() {
+                const onTouch = function() {
+                  v.muted = true;
+                  v.play().catch(function() {});
+                  window.removeEventListener('touchstart', onTouch);
+                  window.removeEventListener('click', onTouch);
+                  window.removeEventListener('scroll', onTouch);
+                };
+                window.addEventListener('touchstart', onTouch, { passive: true, once: true });
+                window.addEventListener('click', onTouch, { once: true });
+                window.addEventListener('scroll', onTouch, { passive: true, once: true });
+              });
+            }
           }
         }
-      }
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', startHeroVid);
-      } else {
-        startHeroVid();
-      }
-    })();
-  
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', startHeroVid);
+        } else {
+          startHeroVid();
+        }
+      })();
+    });
+  </script>
 </body>
 </html>
