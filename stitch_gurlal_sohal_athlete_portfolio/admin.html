@@ -1,0 +1,747 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Management Portal &mdash; Gurlal Sohal (Gurlal Singh)</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+Gurmukhi:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;700&family=Noto+Sans+Gurmukhi:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@300;400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <style>
+    body { background-color: #060B19; color: #FFFFFF; font-family: 'Inter', sans-serif; }
+    .font-headline { font-family: 'Bebas Neue', sans-serif; }
+    .font-label { font-family: 'Space Grotesk', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', monospace; }
+    .font-gurmukhi { font-family: 'Noto Sans Gurmukhi', sans-serif; }
+  </style>
+</head>
+<body class="bg-[#060B19] text-white min-h-screen flex flex-col">
+
+  <!-- ADMIN TOP BAR -->
+  <header class="sticky top-0 z-50 bg-[#0F172A]/90 backdrop-blur-md border-b border-slate-800 px-4 sm:px-6 py-3.5 flex items-center justify-between shadow-xl">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-[#2563EB] to-[#FF6B00] p-0.5 shadow-md">
+        <div class="w-full h-full bg-[#060B19] rounded-[10px] flex items-center justify-center font-headline text-lg text-blue-400 font-bold">
+          GS
+        </div>
+      </div>
+      <div class="flex flex-col">
+        <span class="font-headline text-lg uppercase tracking-wider text-white font-bold leading-tight">Gurlal Sohal &bull; Admin Portal</span>
+        <span class="text-[10px] font-mono text-[#FF6B00] uppercase font-bold">Authorized Raider CMS &amp; Enquiries Desk</span>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-3">
+      <a href="index.html" class="px-3.5 py-1.5 rounded-xl bg-[#060B19] hover:bg-slate-800 border border-slate-700 text-slate-300 hover:text-white font-label text-xs uppercase tracking-wider font-bold transition-all flex items-center gap-1.5 shadow-sm">
+        <span class="material-symbols-outlined text-[16px]">visibility</span>
+        <span class="hidden sm:inline">View Public Site</span>
+      </a>
+      <button id="adminLogoutBtn" type="button" onclick="adminLogOut()" class="hidden px-3.5 py-1.5 rounded-xl bg-red-950/70 hover:bg-red-900 border border-red-500/50 text-red-300 hover:text-white font-label text-xs uppercase tracking-wider font-bold transition-all flex items-center gap-1.5 shadow-sm cursor-pointer">
+        <span class="material-symbols-outlined text-[16px]">logout</span>
+        <span>Log Out</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- SCREEN 1: SECURE LOGIN GATE (Rendered when unauthenticated) -->
+  <div id="loginGateScreen" class="flex-1 flex items-center justify-center p-4">
+    <div class="max-w-md w-full p-8 rounded-2xl bg-[#0F172A] border border-blue-500/40 shadow-2xl flex flex-col gap-6 text-center">
+      <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-[#2563EB] to-[#FF6B00] p-0.5 shadow-xl">
+        <div class="w-full h-full bg-[#060B19] rounded-[14px] flex items-center justify-center font-headline text-3xl text-blue-400 font-bold">
+          GS
+        </div>
+      </div>
+      <div>
+        <h1 class="font-headline text-3xl uppercase text-white font-bold tracking-wide">Raider Management Portal</h1>
+        <p class="font-body text-xs text-slate-400 mt-1 leading-relaxed">
+          Authorized management login for Gurlal Singh (Gurlal Sohal) portfolio CMS &amp; booking inquiry inbox.
+        </p>
+      </div>
+
+      <form onsubmit="handleDirectAdminLogin(event)" class="flex flex-col gap-4">
+        <div class="flex flex-col gap-1.5 text-left">
+          <label class="font-label text-xs uppercase text-slate-400 font-bold">Security Passcode</label>
+          <div class="relative">
+            <input id="directAdminPasscode" type="password" required placeholder="Enter authorized passcode" class="w-full bg-[#060B19] border border-slate-700 focus:border-[#2563EB] rounded-xl px-4 py-3 text-sm text-white focus:outline-none font-mono">
+            <button type="button" onclick="toggleDirectPasscode()" class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white" aria-label="Toggle password visibility">
+              <span class="material-symbols-outlined text-[18px]" id="directPasscodeEye">visibility</span>
+            </button>
+          </div>
+          <span class="font-mono text-[10px] text-slate-500">Authorized Management Access Only &bull; Secured Session</span>
+        </div>
+
+        <div id="directAdminError" class="hidden p-2.5 rounded-lg bg-red-950/80 border border-red-500/50 text-red-300 text-xs font-mono"></div>
+
+        <button type="submit" class="w-full py-3.5 rounded-xl bg-[#2563EB] hover:bg-blue-600 text-white font-label text-xs uppercase tracking-wider font-bold shadow-lg shadow-blue-900/50 flex items-center justify-center gap-2 cursor-pointer transition-all mt-1">
+          <span class="material-symbols-outlined text-[18px]">lock_open</span>
+          <span>Unlock Dashboard</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- SCREEN 2: ADMIN DASHBOARD (Rendered when authenticated) -->
+  <div id="dashboardScreen" class="hidden flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 flex flex-col gap-6">
+    
+    <!-- Admin Tabs Bar -->
+    <div class="flex flex-wrap items-center gap-2 p-2 bg-[#0F172A] rounded-2xl border border-slate-800 shadow-lg">
+      <button type="button" onclick="switchTab('enquiries')" id="tabBtn-enquiries" class="tab-btn px-4 py-2.5 rounded-xl bg-[#2563EB] text-white font-label text-xs uppercase tracking-wider font-bold flex items-center gap-2 transition-all shadow-md cursor-pointer">
+        <span class="material-symbols-outlined text-[16px]">mail</span>
+        <span>Enquiries Inbox</span>
+        <span id="adminPageEnquiryBadge" class="ml-1 px-2 py-0.5 rounded-full bg-blue-900 border border-blue-400 text-white font-mono text-[10px]">0</span>
+      </button>
+      <button type="button" onclick="switchTab('profile')" id="tabBtn-profile" class="tab-btn px-4 py-2.5 rounded-xl bg-[#060B19] text-slate-400 hover:text-white font-label text-xs uppercase tracking-wider transition-all flex items-center gap-2 border border-slate-800 cursor-pointer">
+        <span class="material-symbols-outlined text-[16px]">badge</span>
+        <span>Player Profile</span>
+      </button>
+      <button type="button" onclick="switchTab('tours')" id="tabBtn-tours" class="tab-btn px-4 py-2.5 rounded-xl bg-[#060B19] text-slate-400 hover:text-white font-label text-xs uppercase tracking-wider transition-all flex items-center gap-2 border border-slate-800 cursor-pointer">
+        <span class="material-symbols-outlined text-[16px]">public</span>
+        <span>15 Tours</span>
+      </button>
+      <button type="button" onclick="switchTab('prizes')" id="tabBtn-prizes" class="tab-btn px-4 py-2.5 rounded-xl bg-[#060B19] text-slate-400 hover:text-white font-label text-xs uppercase tracking-wider transition-all flex items-center gap-2 border border-slate-800 cursor-pointer">
+        <span class="material-symbols-outlined text-[16px]">military_tech</span>
+        <span>Prizes &amp; Vehicles</span>
+      </button>
+      <button type="button" onclick="switchTab('victories')" id="tabBtn-victories" class="tab-btn px-4 py-2.5 rounded-xl bg-[#060B19] text-slate-400 hover:text-white font-label text-xs uppercase tracking-wider transition-all flex items-center gap-2 border border-slate-800 cursor-pointer">
+        <span class="material-symbols-outlined text-[16px]">emoji_events</span>
+        <span>Tournaments</span>
+      </button>
+      <button type="button" onclick="switchTab('scouting')" id="tabBtn-scouting" class="tab-btn px-4 py-2.5 rounded-xl bg-[#060B19] text-slate-400 hover:text-white font-label text-xs uppercase tracking-wider transition-all flex items-center gap-2 border border-slate-800 cursor-pointer">
+        <span class="material-symbols-outlined text-[16px]">sports_kabaddi</span>
+        <span>Scouting &amp; KPIs</span>
+      </button>
+      <button type="button" onclick="switchTab('media')" id="tabBtn-media" class="tab-btn px-4 py-2.5 rounded-xl bg-[#060B19] text-slate-400 hover:text-white font-label text-xs uppercase tracking-wider transition-all flex items-center gap-2 border border-slate-800 cursor-pointer">
+        <span class="material-symbols-outlined text-[16px]">perm_media</span>
+        <span>Media Catalogue</span>
+      </button>
+    </div>
+
+    <!-- Notification Banner -->
+    <div id="adminNotice" class="hidden p-4 rounded-xl bg-emerald-950/80 border border-emerald-500/50 text-emerald-300 text-xs font-mono flex items-center justify-between shadow-lg">
+      <span class="flex items-center gap-2">
+        <span class="material-symbols-outlined text-[20px]">check_circle</span>
+        <span id="adminNoticeText">Changes saved successfully to browser storage.</span>
+      </span>
+      <button type="button" onclick="document.getElementById('adminNotice').classList.add('hidden')" class="text-slate-400 hover:text-white">&times;</button>
+    </div>
+
+    <!-- TAB 1: ENQUIRIES INBOX -->
+    <div id="tabContent-enquiries" class="tab-content flex flex-col gap-6">
+      <div class="p-5 rounded-2xl bg-[#0F172A] border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xl">
+        <div>
+          <div class="flex items-center gap-2">
+            <h2 class="font-headline text-2xl text-white uppercase font-bold">Contact &amp; Tournament Booking Inquiries</h2>
+            <span id="pageTotalEnquiries" class="px-2.5 py-0.5 rounded-full bg-blue-950 text-blue-400 border border-blue-500/40 text-xs font-mono font-bold">0 Inquiries</span>
+          </div>
+          <p class="font-body text-xs text-slate-400 mt-1">Submitted inquiries from the website with status management and direct WhatsApp replies.</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <button type="button" onclick="exportEnquiriesJson()" class="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs font-mono flex items-center gap-1.5 cursor-pointer">
+            <span class="material-symbols-outlined text-[16px]">download</span>
+            <span>Export JSON</span>
+          </button>
+          <button type="button" onclick="clearAllEnquiries()" class="px-3.5 py-2 rounded-xl bg-red-950/60 hover:bg-red-900/60 border border-red-500/40 text-red-300 text-xs font-mono flex items-center gap-1.5 cursor-pointer">
+            <span class="material-symbols-outlined text-[16px]">delete</span>
+            <span>Clear All</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Filter Row -->
+      <div class="flex items-center gap-2 text-xs font-mono">
+        <span class="text-slate-400 uppercase text-[11px]">Filter by Status:</span>
+        <button type="button" onclick="filterPageEnquiries('all')" id="filter-all" class="filter-btn px-3 py-1.5 rounded-lg bg-[#2563EB] text-white font-bold cursor-pointer">All</button>
+        <button type="button" onclick="filterPageEnquiries('new')" id="filter-new" class="filter-btn px-3 py-1.5 rounded-lg bg-[#0F172A] border border-slate-800 text-blue-400 cursor-pointer">New</button>
+        <button type="button" onclick="filterPageEnquiries('reviewed')" id="filter-reviewed" class="filter-btn px-3 py-1.5 rounded-lg bg-[#0F172A] border border-slate-800 text-amber-400 cursor-pointer">Reviewed</button>
+        <button type="button" onclick="filterPageEnquiries('booked')" id="filter-booked" class="filter-btn px-3 py-1.5 rounded-lg bg-[#0F172A] border border-slate-800 text-emerald-400 cursor-pointer">Booked</button>
+      </div>
+
+      <!-- Enquiries Cards List -->
+      <div id="pageEnquiryList" class="flex flex-col gap-4">
+        <!-- Rendered via JavaScript -->
+      </div>
+    </div>
+
+    <!-- TAB 2: PLAYER PROFILE -->
+    <div id="tabContent-profile" class="tab-content hidden flex flex-col gap-6">
+      <div class="p-5 rounded-2xl bg-[#0F172A] border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xl">
+        <div>
+          <h2 class="font-headline text-2xl text-white uppercase font-bold">Verified Player Profile &amp; Identity</h2>
+          <p class="font-body text-xs text-slate-400 mt-1">Verified factual details about Gurlal Singh (Gurlal Sohal).</p>
+        </div>
+        <button type="button" onclick="saveAdminData()" class="px-5 py-2.5 rounded-xl bg-[#2563EB] hover:bg-blue-600 text-white font-label text-xs uppercase tracking-wider font-bold shadow-md cursor-pointer">
+          Save Identity Changes
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="p-4 rounded-xl bg-[#0F172A] border border-slate-800 flex flex-col gap-1.5">
+          <label class="font-label text-xs uppercase text-slate-400 font-bold">Full Name</label>
+          <input id="pFullName" type="text" value="Gurlal Singh" class="bg-[#060B19] border border-slate-700 rounded-lg px-3 py-2 text-sm text-white font-mono">
+        </div>
+        <div class="p-4 rounded-xl bg-[#0F172A] border border-slate-800 flex flex-col gap-1.5">
+          <label class="font-label text-xs uppercase text-slate-400 font-bold">Popular Sporting Name</label>
+          <input id="pPopularName" type="text" value="Gurlal Sohal" class="bg-[#060B19] border border-slate-700 rounded-lg px-3 py-2 text-sm text-white font-mono">
+        </div>
+        <div class="p-4 rounded-xl bg-[#0F172A] border border-slate-800 flex flex-col gap-1.5">
+          <label class="font-label text-xs uppercase text-slate-400 font-bold">Hometown</label>
+          <input id="pHometown" type="text" value="Village Sohal, Tarn Taran, Punjab, India" class="bg-[#060B19] border border-slate-700 rounded-lg px-3 py-2 text-sm text-white">
+        </div>
+        <div class="p-4 rounded-xl bg-[#0F172A] border border-slate-800 flex flex-col gap-1.5">
+          <label class="font-label text-xs uppercase text-slate-400 font-bold">Sport</label>
+          <input id="pSport" type="text" value="Circle Style Kabaddi" class="bg-[#060B19] border border-slate-700 rounded-lg px-3 py-2 text-sm text-white">
+        </div>
+        <div class="p-4 rounded-xl bg-[#0F172A] border border-slate-800 flex flex-col gap-1.5">
+          <label class="font-label text-xs uppercase text-slate-400 font-bold">Primary Position</label>
+          <input id="pPosition" type="text" value="Raider (Lead Power Raider / Jersey #1)" class="bg-[#060B19] border border-slate-700 rounded-lg px-3 py-2 text-sm text-white">
+        </div>
+        <div class="p-4 rounded-xl bg-[#0F172A] border border-slate-800 flex flex-col gap-1.5">
+          <label class="font-label text-xs uppercase text-slate-400 font-bold">International Club</label>
+          <input id="pClub" type="text" value="Young Sports Club BC, Canada &bull; Bal Incorporation" class="bg-[#060B19] border border-slate-700 rounded-lg px-3 py-2 text-sm text-white">
+        </div>
+        <div class="p-4 rounded-xl bg-[#0F172A] border border-slate-800 flex flex-col gap-1.5">
+          <label class="font-label text-xs uppercase text-slate-400 font-bold">Official Management Phone</label>
+          <input id="pPhone" type="text" value="+91 98490 04200" class="bg-[#060B19] border border-slate-700 rounded-lg px-3 py-2 text-sm text-white font-mono">
+        </div>
+        <div class="p-4 rounded-xl bg-[#0F172A] border border-slate-800 flex flex-col gap-1.5">
+          <label class="font-label text-xs uppercase text-slate-400 font-bold">Official Instagram</label>
+          <input id="pInstagram" type="text" value="@_gurlal__sohal" class="bg-[#060B19] border border-slate-700 rounded-lg px-3 py-2 text-sm text-white">
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: 15 TOURS -->
+    <div id="tabContent-tours" class="tab-content hidden flex flex-col gap-6">
+      <div class="p-5 rounded-2xl bg-[#0F172A] border border-slate-800 flex items-center justify-between shadow-xl">
+        <div>
+          <h2 class="font-headline text-2xl text-white uppercase font-bold">15 International Tours Verified Records</h2>
+          <p class="font-body text-xs text-slate-400 mt-1">Official visit breakdown across 5 international sports territories.</p>
+        </div>
+        <span class="px-3.5 py-1.5 rounded-full bg-blue-950 text-blue-400 border border-blue-500/40 text-xs font-mono font-bold">15 Total Visits</span>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="p-5 rounded-2xl bg-[#0F172A] border border-slate-800 flex items-center justify-between">
+          <div>
+            <span class="font-headline text-3xl text-blue-400 font-bold">9 Visits</span>
+            <span class="block text-xs uppercase font-label text-slate-300 font-bold mt-1">Canada</span>
+            <span class="block text-[11px] text-slate-400">Young Sports Club BC</span>
+          </div>
+          <span class="text-4xl">&#127464;&#127462;</span>
+        </div>
+        <div class="p-5 rounded-2xl bg-[#0F172A] border border-slate-800 flex items-center justify-between">
+          <div>
+            <span class="font-headline text-3xl text-white font-bold">2 Visits</span>
+            <span class="block text-xs uppercase font-label text-slate-300 font-bold mt-1">United States</span>
+            <span class="block text-[11px] text-slate-400">Federation Championships</span>
+          </div>
+          <span class="text-4xl">&#127482;&#127480;</span>
+        </div>
+        <div class="p-5 rounded-2xl bg-[#0F172A] border border-slate-800 flex items-center justify-between">
+          <div>
+            <span class="font-headline text-3xl text-white font-bold">2 Visits</span>
+            <span class="block text-xs uppercase font-label text-slate-300 font-bold mt-1">Australia</span>
+            <span class="block text-[11px] text-slate-400">State Championship Cups</span>
+          </div>
+          <span class="text-4xl">&#127462;&#127482;</span>
+        </div>
+        <div class="p-5 rounded-2xl bg-[#0F172A] border border-slate-800 flex items-center justify-between">
+          <div>
+            <span class="font-headline text-3xl text-white font-bold">1 Visit</span>
+            <span class="block text-xs uppercase font-label text-slate-300 font-bold mt-1">Malaysia</span>
+            <span class="block text-[11px] text-slate-400">International Invitation</span>
+          </div>
+          <span class="text-4xl">&#127474;&#127486;</span>
+        </div>
+        <div class="p-5 rounded-2xl bg-[#0F172A] border border-slate-800 flex items-center justify-between">
+          <div>
+            <span class="font-headline text-3xl text-white font-bold">1 Visit</span>
+            <span class="block text-xs uppercase font-label text-slate-300 font-bold mt-1">Europe</span>
+            <span class="block text-[11px] text-slate-400">Continental Tour</span>
+          </div>
+          <span class="text-4xl">&#127466;&#127482;</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: PRIZES -->
+    <div id="tabContent-prizes" class="tab-content hidden flex flex-col gap-6">
+      <div class="p-5 rounded-2xl bg-[#0F172A] border border-slate-800 flex items-center justify-between shadow-xl">
+        <div>
+          <h2 class="font-headline text-2xl text-white uppercase font-bold">Championship Prizes, Vehicles &amp; Honors</h2>
+          <p class="font-body text-xs text-slate-400 mt-1">Authentic awards earned across Punjab and global competitions.</p>
+        </div>
+        <span class="px-3.5 py-1.5 rounded-full bg-amber-950 text-gold-400 border border-amber-500/40 text-xs font-mono font-bold">Mahindra Scorpio-N</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="p-5 rounded-2xl bg-[#0F172A] border border-amber-500/40 flex flex-col gap-2">
+          <span class="px-2.5 py-0.5 rounded bg-amber-950 text-gold-400 text-[10px] font-mono font-bold uppercase w-fit">Grand Vehicle Award</span>
+          <h3 class="font-headline text-xl text-white uppercase font-bold">Mahindra Scorpio-N SUV</h3>
+          <p class="text-xs text-slate-400">Awarded at Bir Baba Buddha Sahib Kabaddi Cup, Tarn Taran as champion raider.</p>
+        </div>
+        <div class="p-5 rounded-2xl bg-[#0F172A] border border-slate-800 flex flex-col gap-2">
+          <span class="px-2.5 py-0.5 rounded bg-blue-950 text-blue-400 text-[10px] font-mono font-bold uppercase w-fit">Two-Wheelers</span>
+          <h3 class="font-headline text-xl text-white uppercase font-bold">10 Bullets &amp; 45+ Bikes</h3>
+          <p class="text-xs text-slate-400">10 Royal Enfield Bullet motorcycles and 45+ competition motorcycles awarded in Punjab matches.</p>
+        </div>
+        <div class="p-5 rounded-2xl bg-[#0F172A] border border-slate-800 flex flex-col gap-2">
+          <span class="px-2.5 py-0.5 rounded bg-blue-950 text-blue-400 text-[10px] font-mono font-bold uppercase w-fit">Agricultural</span>
+          <h3 class="font-headline text-xl text-white uppercase font-bold">Heavy Tractors (Ford, 5, 11)</h3>
+          <p class="text-xs text-slate-400">Multiple agricultural tractors awarded for match-winning performances across Punjab circuits.</p>
+        </div>
+        <div class="p-5 rounded-2xl bg-[#0F172A] border border-slate-800 flex flex-col gap-2">
+          <span class="px-2.5 py-0.5 rounded bg-emerald-950 text-emerald-400 text-[10px] font-mono font-bold uppercase w-fit">Rural Honor</span>
+          <h3 class="font-headline text-xl text-white uppercase font-bold">Prize Dairy Buffaloes</h3>
+          <p class="text-xs text-slate-400">Awarded at 1st Frandipur Cup (18/18 perfect raids) and marquee rural tournaments.</p>
+        </div>
+        <div class="p-5 rounded-2xl bg-[#0F172A] border border-slate-800 flex flex-col gap-2">
+          <span class="px-2.5 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px] font-mono font-bold uppercase w-fit">Automobile</span>
+          <h3 class="font-headline text-xl text-white uppercase font-bold">Maruti Suzuki Alto</h3>
+          <p class="text-xs text-slate-400">Car awarded at premier Punjab rural sports festival for Best Raider distinction.</p>
+        </div>
+        <div class="p-5 rounded-2xl bg-[#0F172A] border border-slate-800 flex flex-col gap-2">
+          <span class="px-2.5 py-0.5 rounded bg-amber-950 text-gold-400 text-[10px] font-mono font-bold uppercase w-fit">Gold &amp; Jewellery</span>
+          <h3 class="font-headline text-xl text-white uppercase font-bold">Gold Ornaments &amp; Cash</h3>
+          <p class="text-xs text-slate-400">Gold chains, rings, traditional ornaments, and major cash purses won in championships.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 5: TOURNAMENTS -->
+    <div id="tabContent-victories" class="tab-content hidden flex flex-col gap-6">
+      <div class="p-5 rounded-2xl bg-[#0F172A] border border-slate-800 flex items-center justify-between shadow-xl">
+        <div>
+          <h2 class="font-headline text-2xl text-white uppercase font-bold">Tournament Victories &amp; Marquee Appearances</h2>
+          <p class="font-body text-xs text-slate-400 mt-1">Certified match events across Punjab and Canada.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="p-5 rounded-2xl bg-[#0F172A] border border-slate-800 flex flex-col gap-2">
+          <span class="px-2 py-0.5 rounded bg-blue-950 text-blue-400 text-[10px] font-mono font-bold uppercase w-fit">Headline Victory</span>
+          <h3 class="font-headline text-xl text-white uppercase font-bold">Bir Baba Buddha Sahib Kabaddi Cup, Tarn Taran</h3>
+          <p class="text-xs text-slate-400">Historic victory in home district earning the flagship Mahindra Scorpio-N SUV.</p>
+        </div>
+        <div class="p-5 rounded-2xl bg-[#0F172A] border border-slate-800 flex flex-col gap-2">
+          <span class="px-2 py-0.5 rounded bg-emerald-950 text-emerald-400 text-[10px] font-mono font-bold uppercase w-fit">100% Strike Rate</span>
+          <h3 class="font-headline text-xl text-white uppercase font-bold">1st Frandipur Kabaddi Cup &mdash; 18/18 Raids</h3>
+          <p class="text-xs text-slate-400">Flawless 18 successful raids out of 18 attempts, Best Raider honor and prize buffalo.</p>
+        </div>
+        <div class="p-5 rounded-2xl bg-[#0F172A] border border-slate-800 flex flex-col gap-2">
+          <span class="px-2 py-0.5 rounded bg-blue-950 text-blue-400 text-[10px] font-mono font-bold uppercase w-fit">2024 Season</span>
+          <h3 class="font-headline text-xl text-white uppercase font-bold">Umra Nangal Kabaddi Cup (2024)</h3>
+          <p class="text-xs text-slate-400">Top-tier raid performance against elite defensive stopping chains.</p>
+        </div>
+        <div class="p-5 rounded-2xl bg-[#0F172A] border border-slate-800 flex flex-col gap-2">
+          <span class="px-2 py-0.5 rounded bg-blue-950 text-blue-400 text-[10px] font-mono font-bold uppercase w-fit">Clay Circuit</span>
+          <h3 class="font-headline text-xl text-white uppercase font-bold">Takhtupura Moga Kabaddi Cup</h3>
+          <p class="text-xs text-slate-400">Fierce raids on the storied Takhtupura clay arena.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 6: SCOUTING & KPIS -->
+    <div id="tabContent-scouting" class="tab-content hidden flex flex-col gap-6">
+      <div class="p-5 rounded-2xl bg-[#0F172A] border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xl">
+        <div>
+          <h2 class="font-headline text-2xl text-white uppercase font-bold">Scouting Metrics &amp; Performance KPIs</h2>
+          <p class="font-body text-xs text-slate-400 mt-1">Update values that reflect across the website KPI cards.</p>
+        </div>
+        <button type="button" onclick="saveScoutingKpis()" class="px-5 py-2.5 rounded-xl bg-[#2563EB] hover:bg-blue-600 text-white font-label text-xs uppercase tracking-wider font-bold shadow-md cursor-pointer">
+          Save KPI Metrics
+        </button>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        <div class="p-4 rounded-xl bg-[#0F172A] border border-slate-800 flex flex-col gap-1.5">
+          <label class="font-label text-[11px] uppercase text-slate-400 font-bold">Matches Played</label>
+          <input id="kpiMatches" type="text" value="120+" class="bg-[#060B19] border border-slate-700 rounded-lg px-3 py-2 text-sm text-white font-mono">
+        </div>
+        <div class="p-4 rounded-xl bg-[#0F172A] border border-slate-800 flex flex-col gap-1.5">
+          <label class="font-label text-[11px] uppercase text-slate-400 font-bold">Total Raid Points</label>
+          <input id="kpiPoints" type="text" value="850+" class="bg-[#060B19] border border-slate-700 rounded-lg px-3 py-2 text-sm text-[#FF6B00] font-mono font-bold">
+        </div>
+        <div class="p-4 rounded-xl bg-[#0F172A] border border-slate-800 flex flex-col gap-1.5">
+          <label class="font-label text-[11px] uppercase text-slate-400 font-bold">Avg Pts / Match</label>
+          <input id="kpiAvg" type="text" value="7.1 PTS" class="bg-[#060B19] border border-slate-700 rounded-lg px-3 py-2 text-sm text-blue-300 font-mono">
+        </div>
+        <div class="p-4 rounded-xl bg-[#0F172A] border border-slate-800 flex flex-col gap-1.5">
+          <label class="font-label text-[11px] uppercase text-slate-400 font-bold">Raid Strike Rate</label>
+          <input id="kpiStrike" type="text" value="86.4%" class="bg-[#060B19] border border-slate-700 rounded-lg px-3 py-2 text-sm text-emerald-400 font-mono">
+        </div>
+        <div class="p-4 rounded-xl bg-[#0F172A] border border-slate-800 flex flex-col gap-1.5">
+          <label class="font-label text-[11px] uppercase text-slate-400 font-bold">Super 10s</label>
+          <input id="kpiSuper10s" type="text" value="42" class="bg-[#060B19] border border-slate-700 rounded-lg px-3 py-2 text-sm text-gold-400 font-mono">
+        </div>
+        <div class="p-4 rounded-xl bg-[#0F172A] border border-slate-800 flex flex-col gap-1.5">
+          <label class="font-label text-[11px] uppercase text-slate-400 font-bold">Do-or-Die Pts</label>
+          <input id="kpiDoOrDie" type="text" value="94 PTS" class="bg-[#060B19] border border-slate-700 rounded-lg px-3 py-2 text-sm text-red-400 font-mono">
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 7: MEDIA ASSETS -->
+    <div id="tabContent-media" class="tab-content hidden flex flex-col gap-6">
+      <div class="p-5 rounded-2xl bg-[#0F172A] border border-slate-800 flex items-center justify-between shadow-xl">
+        <div>
+          <h2 class="font-headline text-2xl text-white uppercase font-bold">Media Assets &amp; Video Reels Catalogue</h2>
+          <p class="font-body text-xs text-slate-400 mt-1">All 3 authentic championship posters and 6 verified match action video reels.</p>
+        </div>
+        <button type="button" onclick="downloadRaiderMediaKit()" class="px-4 py-2 rounded-xl bg-[#2563EB] hover:bg-blue-600 text-white font-label text-xs uppercase tracking-wider font-bold shadow-md flex items-center gap-2 cursor-pointer">
+          <span>Generate PDF Media Kit</span>
+          <span class="material-symbols-outlined text-[16px]">download</span>
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="p-4 rounded-2xl bg-[#0F172A] border border-slate-800 flex flex-col gap-3">
+          <div class="aspect-[3/4] rounded-xl overflow-hidden bg-black">
+            <img src="public/images/frandipur_kabaddi_cup_best_raider.jpg" class="w-full h-full object-cover">
+          </div>
+          <h4 class="font-headline text-lg text-white uppercase font-bold">Frandipur Cup Best Raider Poster</h4>
+          <span class="text-xs font-mono text-slate-400">18/18 Raids &bull; Bal Incorporation</span>
+        </div>
+        <div class="p-4 rounded-2xl bg-[#0F172A] border border-slate-800 flex flex-col gap-3">
+          <div class="aspect-[3/4] rounded-xl overflow-hidden bg-black">
+            <img src="public/images/canada_bc_kabaddi_season_2026_stats.jpg" class="w-full h-full object-cover">
+          </div>
+          <h4 class="font-headline text-lg text-white uppercase font-bold">Canada BC Season 2026 Poster</h4>
+          <span class="text-xs font-mono text-slate-400">81 Raids, 73 Pts &bull; Uttam Khed</span>
+        </div>
+        <div class="p-4 rounded-2xl bg-[#0F172A] border border-slate-800 flex flex-col gap-3">
+          <div class="aspect-[3/4] rounded-xl overflow-hidden bg-black">
+            <img src="public/images/gurlal_sohal_great_khali_majhe_di_shaan.jpg" class="w-full h-full object-cover">
+          </div>
+          <h4 class="font-headline text-lg text-white uppercase font-bold">Great Khali / Majhe Di Shaan Poster</h4>
+          <span class="text-xs font-mono text-slate-400">Navi Bhagiwander Design</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Authentication Check
+    function checkAdminAuth() {
+      const isAuth = sessionStorage.getItem('gs_admin_session') === 'authenticated';
+      const loginGate = document.getElementById('loginGateScreen');
+      const dashboard = document.getElementById('dashboardScreen');
+      const logoutBtn = document.getElementById('adminLogoutBtn');
+
+      if (isAuth) {
+        if (loginGate) loginGate.classList.add('hidden');
+        if (dashboard) dashboard.classList.remove('hidden');
+        if (logoutBtn) logoutBtn.classList.remove('hidden');
+        renderPageEnquiries('all');
+        loadSavedKpis();
+      } else {
+        if (loginGate) loginGate.classList.remove('hidden');
+        if (dashboard) dashboard.classList.add('hidden');
+        if (logoutBtn) logoutBtn.classList.add('hidden');
+      }
+    }
+
+    function handleDirectAdminLogin(e) {
+      e.preventDefault();
+      const input = document.getElementById('directAdminPasscode');
+      const err = document.getElementById('directAdminError');
+      if ((input.value || '').trim() === 'gurlal2026') {
+        sessionStorage.setItem('gs_admin_session', 'authenticated');
+        if (err) err.classList.add('hidden');
+        checkAdminAuth();
+      } else {
+        if (err) {
+          err.textContent = 'Incorrect passcode. Please enter authorized credentials.';
+          err.classList.remove('hidden');
+        }
+      }
+    }
+
+    function toggleDirectPasscode() {
+      const input = document.getElementById('directAdminPasscode');
+      const eye = document.getElementById('directPasscodeEye');
+      if (input.type === 'password') {
+        input.type = 'text';
+        if (eye) eye.textContent = 'visibility_off';
+      } else {
+        input.type = 'password';
+        if (eye) eye.textContent = 'visibility';
+      }
+    }
+
+    function adminLogOut() {
+      sessionStorage.removeItem('gs_admin_session');
+      location.reload();
+    }
+
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('bg-[#2563EB]', 'text-white', 'shadow-md');
+        btn.classList.add('bg-[#060B19]', 'text-slate-400');
+      });
+      const activeBtn = document.getElementById('tabBtn-' + tabId);
+      if (activeBtn) {
+        activeBtn.classList.add('bg-[#2563EB]', 'text-white', 'shadow-md');
+        activeBtn.classList.remove('bg-[#060B19]', 'text-slate-400');
+      }
+
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
+      const activeContent = document.getElementById('tabContent-' + tabId);
+      if (activeContent) activeContent.classList.remove('hidden');
+
+      if (tabId === 'enquiries') renderPageEnquiries('all');
+    }
+
+    // Enquiry Storage & Management
+    function getStoredEnquiries() {
+      try {
+        const raw = localStorage.getItem('gs_raider_inquiries');
+        return raw ? JSON.parse(raw) : [];
+      } catch(e) { return []; }
+    }
+
+    function saveStoredEnquiries(arr) {
+      try {
+        localStorage.setItem('gs_raider_inquiries', JSON.stringify(arr));
+        updateBadgeCounters();
+      } catch(e){}
+    }
+
+    function updateBadgeCounters() {
+      const arr = getStoredEnquiries();
+      const unread = arr.filter(x => x.status === 'new').length;
+      const b1 = document.getElementById('adminPageEnquiryBadge');
+      const totalLbl = document.getElementById('pageTotalEnquiries');
+      if (b1) b1.textContent = unread;
+      if (totalLbl) totalLbl.textContent = arr.length + ' Inquiries (' + unread + ' New)';
+    }
+
+    let currentPageFilter = 'all';
+
+    function filterPageEnquiries(filter) {
+      currentPageFilter = filter;
+      document.querySelectorAll('.filter-btn').forEach(b => {
+        b.classList.remove('bg-[#2563EB]', 'text-white');
+        b.classList.add('bg-[#0F172A]', 'text-slate-400');
+      });
+      const active = document.getElementById('filter-' + filter);
+      if (active) {
+        active.classList.add('bg-[#2563EB]', 'text-white');
+        active.classList.remove('bg-[#0F172A]', 'text-slate-400');
+      }
+      renderPageEnquiries(filter);
+    }
+
+    function renderPageEnquiries(filter = 'all') {
+      const container = document.getElementById('pageEnquiryList');
+      if (!container) return;
+      const arr = getStoredEnquiries();
+      updateBadgeCounters();
+
+      const filtered = (filter === 'all') ? arr : arr.filter(x => x.status === filter);
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="p-8 rounded-2xl bg-[#0F172A] border border-slate-800 text-center flex flex-col items-center justify-center gap-2">
+            <span class="material-symbols-outlined text-[36px] text-slate-600">inbox</span>
+            <span class="font-headline text-lg uppercase text-slate-400">No inquiries found in "${filter}" category</span>
+            <p class="font-body text-xs text-slate-500">Test the booking form on Home or Contact page to submit a new inquiry.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filtered.map(item => {
+        const dateStr = item.date ? new Date(item.date).toLocaleString() : 'N/A';
+        const statusColors = {
+          'new': 'bg-blue-950 text-blue-400 border-blue-500/40',
+          'reviewed': 'bg-amber-950 text-amber-400 border-amber-500/40',
+          'booked': 'bg-emerald-950 text-emerald-400 border-emerald-500/40'
+        };
+        const badgeClass = statusColors[item.status] || 'bg-slate-800 text-slate-300';
+        
+        // WhatsApp Reply Pre-fill
+        const waText = encodeURIComponent(
+          `Hello ${item.organizerName},\nRegarding your enquiry for Gurlal Sohal (${item.enquiryCategory} on ${item.tournamentDates}):\nOur management desk would like to discuss next steps with you.`
+        );
+        const cleanPhone = (item.contactPhone || '').replace(/[^0-9]/g, '');
+        const waLink = cleanPhone ? `https://wa.me/${cleanPhone}?text=${waText}` : `https://wa.me/919849004200?text=${waText}`;
+
+        return `
+          <div class="p-5 rounded-2xl bg-[#0F172A] border border-slate-800 flex flex-col gap-4 shadow-xl">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-800">
+              <div class="flex items-center gap-3">
+                <span class="px-2.5 py-0.5 rounded-full border text-[10px] font-mono uppercase font-bold ${badgeClass}">
+                  ${item.status}
+                </span>
+                <h4 class="font-headline text-lg text-white uppercase font-bold">${item.organizerName}</h4>
+              </div>
+              <span class="text-xs font-mono text-slate-400">${dateStr}</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-mono">
+              <div class="flex flex-col">
+                <span class="text-slate-400 text-[10px] uppercase">Contact Phone / WA:</span>
+                <span class="text-white font-bold">${item.contactPhone}</span>
+              </div>
+              <div class="flex flex-col">
+                <span class="text-slate-400 text-[10px] uppercase">Enquiry Category:</span>
+                <span class="text-[#FF6B00] font-bold">${item.enquiryCategory}</span>
+              </div>
+              <div class="flex flex-col">
+                <span class="text-slate-400 text-[10px] uppercase">Tournament Dates / Venue:</span>
+                <span class="text-blue-300 font-bold">${item.tournamentDates}</span>
+              </div>
+            </div>
+
+            <div class="p-3 rounded-xl bg-[#060B19] border border-slate-800 text-xs text-slate-300 leading-relaxed font-body">
+              <strong class="text-slate-400 font-mono text-[10px] block uppercase mb-1">Contract Particulars:</strong>
+              ${item.messageTerms || 'No contract terms specified.'}
+            </div>
+
+            <div class="flex flex-wrap items-center justify-between gap-3 pt-1">
+              <div class="flex items-center gap-2">
+                <span class="text-[11px] font-mono text-slate-400 uppercase">Change Status:</span>
+                <select onchange="updatePageEnquiryStatus('${item.id}', this.value)" class="bg-[#060B19] border border-slate-700 rounded-lg px-2.5 py-1 text-xs text-white focus:outline-none">
+                  <option value="new" ${item.status==='new'?'selected':''}>New</option>
+                  <option value="reviewed" ${item.status==='reviewed'?'selected':''}>Reviewed</option>
+                  <option value="booked" ${item.status==='booked'?'selected':''}>Booked</option>
+                </select>
+              </div>
+
+              <div class="flex items-center gap-2">
+                <a href="${waLink}" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-label text-xs uppercase tracking-wider font-bold flex items-center gap-1.5 shadow-md">
+                  <span class="material-symbols-outlined text-[16px]">chat</span>
+                  <span>Reply on WhatsApp</span>
+                </a>
+                <button type="button" onclick="deletePageEnquiry('${item.id}')" class="px-3 py-1.5 rounded-lg bg-red-950/70 hover:bg-red-900 border border-red-500/40 text-red-300 text-xs font-mono flex items-center gap-1 cursor-pointer">
+                  <span class="material-symbols-outlined text-[16px]">delete</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function updatePageEnquiryStatus(id, newStatus) {
+      const arr = getStoredEnquiries();
+      const idx = arr.findIndex(x => x.id === id);
+      if (idx !== -1) {
+        arr[idx].status = newStatus;
+        saveStoredEnquiries(arr);
+        renderPageEnquiries(currentPageFilter);
+        showNotice(`Enquiry status updated to "${newStatus}"`);
+      }
+    }
+
+    function deletePageEnquiry(id) {
+      if (!confirm('Are you sure you want to delete this enquiry record?')) return;
+      let arr = getStoredEnquiries();
+      arr = arr.filter(x => x.id !== id);
+      saveStoredEnquiries(arr);
+      renderPageEnquiries(currentPageFilter);
+      showNotice('Enquiry deleted successfully');
+    }
+
+    function clearAllEnquiries() {
+      if (!confirm('Delete ALL inquiries from local storage? This cannot be undone.')) return;
+      localStorage.removeItem('gs_raider_inquiries');
+      renderPageEnquiries('all');
+      showNotice('All inquiries cleared');
+    }
+
+    function exportEnquiriesJson() {
+      const arr = getStoredEnquiries();
+      const blob = new Blob([JSON.stringify(arr, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'gurlal-sohal-inquiries-' + Date.now() + '.json';
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function showNotice(msg) {
+      const notice = document.getElementById('adminNotice');
+      const text = document.getElementById('adminNoticeText');
+      if (text) text.textContent = msg;
+      if (notice) {
+        notice.classList.remove('hidden');
+        setTimeout(() => notice.classList.add('hidden'), 3500);
+      }
+    }
+
+    function saveAdminData() {
+      showNotice('Player identity preferences saved.');
+    }
+
+    function saveScoutingKpis() {
+      const kpis = {
+        matches: document.getElementById('kpiMatches').value,
+        points: document.getElementById('kpiPoints').value,
+        avg: document.getElementById('kpiAvg').value,
+        strike: document.getElementById('kpiStrike').value,
+        super10s: document.getElementById('kpiSuper10s').value,
+        doOrDie: document.getElementById('kpiDoOrDie').value
+      };
+      localStorage.setItem('gurlal_scouting_metrics', JSON.stringify(kpis));
+      showNotice('Scouting KPIs successfully saved to storage.');
+    }
+
+    function loadSavedKpis() {
+      try {
+        const saved = localStorage.getItem('gurlal_scouting_metrics');
+        if (saved) {
+          const k = JSON.parse(saved);
+          if (k.matches) document.getElementById('kpiMatches').value = k.matches;
+          if (k.points) document.getElementById('kpiPoints').value = k.points;
+          if (k.avg) document.getElementById('kpiAvg').value = k.avg;
+          if (k.strike) document.getElementById('kpiStrike').value = k.strike;
+          if (k.super10s) document.getElementById('kpiSuper10s').value = k.super10s;
+          if (k.doOrDie) document.getElementById('kpiDoOrDie').value = k.doOrDie;
+        }
+      } catch(e){}
+    }
+
+    // PDF Download from Admin
+    function downloadRaiderMediaKit() {
+      if (window.jspdf && window.jspdf.jsPDF) {
+        try {
+          const { jsPDF } = window.jspdf;
+          const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+          doc.setFillColor(6, 11, 25);
+          doc.rect(0, 0, 210, 297, 'F');
+          doc.setFillColor(15, 23, 42);
+          doc.roundedRect(12, 12, 186, 32, 3, 3, 'F');
+          doc.setDrawColor(37, 99, 235);
+          doc.setLineWidth(0.6);
+          doc.roundedRect(12, 12, 186, 32, 3, 3, 'D');
+          doc.setTextColor(255, 255, 255);
+          doc.setFont('helvetica', 'bold');
+          doc.setFontSize(20);
+          doc.text('GURLAL SOHAL', 18, 24);
+          doc.setTextColor(255, 107, 0);
+          doc.setFontSize(10);
+          doc.text('LEAD POWER RAIDER &bull; JERSEY #1 &bull; KABADDI365 VERIFIED', 18, 31);
+          doc.setTextColor(148, 163, 184);
+          doc.setFont('helvetica', 'normal');
+          doc.setFontSize(8.5);
+          doc.text('Full Name: Gurlal Singh | Hometown: Village Sohal, Tarn Taran, Punjab, India', 18, 38);
+          doc.save('Gurlal-Sohal-Media-Kit-2026.pdf');
+          showNotice('Gurlal-Sohal-Media-Kit-2026.pdf generated!');
+          return;
+        } catch(e) {}
+      }
+      window.print();
+    }
+
+    document.addEventListener('DOMContentLoaded', checkAdminAuth);
+  </script>
+</body>
+</html>
