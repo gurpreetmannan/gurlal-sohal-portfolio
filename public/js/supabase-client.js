@@ -50,7 +50,7 @@
     },
 
     /**
-     * Admin Sign In via Supabase Auth (Email + Password)
+     * Admin Sign In via Supabase Auth (Email + Password) + RBAC Verification
      */
     async adminSignIn(email, password) {
       try {
@@ -74,6 +74,19 @@
             expires_at: Date.now() + (data.expires_in * 1000),
             user: data.user
           };
+
+          // Strict Administrator Authorization Check against public.admin_users
+          const authCheck = await this.verifyAdminRole(session.access_token, data.user ? data.user.id : null);
+          if (!authCheck.isAuthorized) {
+            this.adminSignOut();
+            return {
+              success: false,
+              error: 'Access Denied: Your account is authenticated, but you are not registered as an authorized administrator in the management database.'
+            };
+          }
+
+          session.role = authCheck.role || 'admin';
+          session.pendingSchema = authCheck.pendingSchema || false;
           sessionStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(session));
           return { success: true, session };
         } else {
@@ -85,6 +98,39 @@
       } catch (err) {
         return { success: false, error: err.message || 'Network error connecting to authentication server.' };
       }
+    },
+
+    /**
+     * Verify Administrator Authorization against public.admin_users
+     */
+    async verifyAdminRole(accessToken, userId) {
+      if (!accessToken) return { isAuthorized: false };
+      try {
+        const filter = userId ? `?user_id=eq.${encodeURIComponent(userId)}&select=role` : '?select=role';
+        const resp = await fetch(`${this.url}/rest/v1/admin_users${filter}`, {
+          method: 'GET',
+          headers: {
+            'apikey': this.key,
+            'Authorization': `Bearer ${accessToken}`,
+            'Content-Type': 'application/json'
+          }
+        });
+
+        if (resp.ok) {
+          const rows = await resp.json();
+          if (Array.isArray(rows) && rows.length > 0) {
+            return { isAuthorized: true, role: rows[0].role };
+          }
+          return { isAuthorized: false, reason: 'not_in_admin_table' };
+        } else if (resp.status === 404) {
+          // admin_users table pending migration execution; grant bootstrap session
+          console.warn('public.admin_users table not provisioned yet; execute schema.sql in Supabase to lock RBAC.');
+          return { isAuthorized: true, role: 'bootstrap_admin', pendingSchema: true };
+        }
+      } catch (e) {
+        console.error('Error verifying admin authorization:', e);
+      }
+      return { isAuthorized: false };
     },
 
     /**
