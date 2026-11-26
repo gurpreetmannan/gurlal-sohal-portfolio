@@ -204,9 +204,9 @@
       const payload = {
         organizer_name: (data.organizerName || '').trim(),
         phone: (data.contactPhone || '').trim(),
-        category: (data.enquiryCategory || '').trim(),
-        dates_location: (data.tournamentDates || '').trim(),
-        message: (data.messageTerms || '').trim(),
+        category: (data.enquiryCategory || data.category || 'Tournament Booking').trim(),
+        dates_location: (data.tournamentDates || data.datesLocation || '').trim(),
+        message: (data.messageTerms || data.message || '').trim(),
         status: 'new'
       };
 
@@ -215,16 +215,21 @@
       let errorMessage = null;
 
       try {
+        const headers = Object.assign({}, this.getHeaders(false), { 'Prefer': 'return=minimal' });
         const resp = await fetch(`${this.url}/rest/v1/enquiries`, {
           method: 'POST',
-          headers: this.getHeaders(false),
+          headers: headers,
           body: JSON.stringify(payload)
         });
 
-        if (resp.ok) {
-          const resJson = await resp.json();
-          record = resJson && resJson.length ? resJson[0] : null;
+        if (resp.ok || resp.status === 201) {
           supabaseSuccess = true;
+          try {
+            const resJson = await resp.json();
+            record = resJson && resJson.length ? resJson[0] : null;
+          } catch(e) {
+            record = { id: 'ENQ-' + Date.now(), created_at: new Date().toISOString() };
+          }
         } else {
           const errText = await resp.text();
           try {
