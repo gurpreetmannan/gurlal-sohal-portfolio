@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -135,7 +135,7 @@
     <div id="adminNotice" class="hidden p-4 rounded-xl bg-emerald-950/80 border border-emerald-500/50 text-emerald-300 text-xs font-mono flex items-center justify-between shadow-lg">
       <span class="flex items-center gap-2">
         <span class="material-symbols-outlined text-[20px]">check_circle</span>
-        <span id="adminNoticeText">Changes saved successfully to browser storage.</span>
+        <span id="adminNoticeText">Changes synchronized with Supabase database.</span>
       </span>
       <button type="button" onclick="document.getElementById('adminNotice').classList.add('hidden')" class="text-slate-400 hover:text-white">&times;</button>
     </div>
@@ -151,13 +151,13 @@
           <p class="font-body text-xs text-slate-400 mt-1">Submitted inquiries from the website with status management and direct WhatsApp replies.</p>
         </div>
         <div class="flex items-center gap-2">
+          <button type="button" onclick="syncFromSupabase()" class="px-3.5 py-2 rounded-xl bg-blue-950/60 hover:bg-blue-900/60 border border-blue-500/40 text-blue-300 text-xs font-mono flex items-center gap-1.5 cursor-pointer">
+            <span class="material-symbols-outlined text-[16px]">sync</span>
+            <span>Sync Supabase</span>
+          </button>
           <button type="button" onclick="exportEnquiriesJson()" class="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs font-mono flex items-center gap-1.5 cursor-pointer">
             <span class="material-symbols-outlined text-[16px]">download</span>
             <span>Export JSON</span>
-          </button>
-          <button type="button" onclick="clearAllEnquiries()" class="px-3.5 py-2 rounded-xl bg-red-950/60 hover:bg-red-900/60 border border-red-500/40 text-red-300 text-xs font-mono flex items-center gap-1.5 cursor-pointer">
-            <span class="material-symbols-outlined text-[16px]">delete</span>
-            <span>Clear All</span>
           </button>
         </div>
       </div>
@@ -729,11 +729,17 @@
       showNotice('Enquiry permanently deleted.');
     }
 
-    function clearAllEnquiries() {
-      if (!confirm('Delete ALL inquiries from local storage? This cannot be undone.')) return;
-      localStorage.removeItem('gs_raider_inquiries');
-      renderPageEnquiries('all');
-      showNotice('All inquiries cleared');
+    async function syncFromSupabase() {
+      showNotice('Syncing live enquiries from Supabase database...');
+      if (window.GurlalSupabase && window.GurlalSupabase.getEnquiries) {
+        const res = await window.GurlalSupabase.getEnquiries();
+        renderPageEnquiries(currentPageFilter);
+        if (res.source === 'supabase') {
+          showNotice(`✓ Synchronized ${res.enquiries.length} enquiries from Supabase database.`);
+        } else {
+          showNotice('Loaded local cache. Verify Supabase connection.');
+        }
+      }
     }
 
     function exportEnquiriesJson() {

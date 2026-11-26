@@ -8,24 +8,32 @@
 CREATE TABLE IF NOT EXISTS public.enquiries (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   created_at TIMESTAMPTZ NOT NULL DEFAULT timezone('utc'::text, now()),
-  full_name TEXT NOT NULL,
-  email TEXT NOT NULL,
+  organizer_name TEXT,
+  full_name TEXT,
   phone TEXT,
-  organization TEXT,
-  enquiry_type TEXT NOT NULL,
+  email TEXT,
+  category TEXT,
+  enquiry_type TEXT,
+  dates_location TEXT,
   tour_location TEXT,
-  estimated_budget TEXT,
-  timeline TEXT,
-  message TEXT NOT NULL,
-  status TEXT NOT NULL DEFAULT 'unread' CHECK (status IN ('unread', 'contacted', 'archived', 'spam')),
+  message TEXT,
+  status TEXT NOT NULL DEFAULT 'new',
   admin_notes TEXT
 );
 
--- Enable RLS on enquiries
+-- Ensure columns exist if table was already created
+ALTER TABLE public.enquiries ADD COLUMN IF NOT EXISTS organizer_name TEXT;
+ALTER TABLE public.enquiries ADD COLUMN IF NOT EXISTS phone TEXT;
+ALTER TABLE public.enquiries ADD COLUMN IF NOT EXISTS category TEXT;
+ALTER TABLE public.enquiries ADD COLUMN IF NOT EXISTS dates_location TEXT;
+ALTER TABLE public.enquiries ADD COLUMN IF NOT EXISTS message TEXT;
+ALTER TABLE public.enquiries ADD COLUMN IF NOT EXISTS status TEXT DEFAULT 'new';
+ALTER TABLE public.enquiries ADD COLUMN IF NOT EXISTS admin_notes TEXT;
+
+-- ENABLE ROW LEVEL SECURITY ON ENQUIRIES (CRITICAL: Protects private contact data)
 ALTER TABLE public.enquiries ENABLE ROW LEVEL SECURITY;
 
--- Enquiries Policies:
--- Anyone (public/anon) can submit an enquiry
+-- 1. Anyone (public/anon) can submit an enquiry
 DROP POLICY IF EXISTS "Allow anonymous enquiry submission" ON public.enquiries;
 CREATE POLICY "Allow anonymous enquiry submission"
   ON public.enquiries
@@ -33,7 +41,7 @@ CREATE POLICY "Allow anonymous enquiry submission"
   TO anon, authenticated
   WITH CHECK (true);
 
--- Only authenticated admins can read, update, or delete enquiries
+-- 2. Only authenticated admins can read enquiries (protects phone numbers, organizer names)
 DROP POLICY IF EXISTS "Allow authenticated admins to read enquiries" ON public.enquiries;
 CREATE POLICY "Allow authenticated admins to read enquiries"
   ON public.enquiries
@@ -41,6 +49,7 @@ CREATE POLICY "Allow authenticated admins to read enquiries"
   TO authenticated
   USING (true);
 
+-- 3. Only authenticated admins can update enquiry status
 DROP POLICY IF EXISTS "Allow authenticated admins to update enquiries" ON public.enquiries;
 CREATE POLICY "Allow authenticated admins to update enquiries"
   ON public.enquiries
@@ -49,6 +58,7 @@ CREATE POLICY "Allow authenticated admins to update enquiries"
   USING (true)
   WITH CHECK (true);
 
+-- 4. Only authenticated admins can delete enquiries
 DROP POLICY IF EXISTS "Allow authenticated admins to delete enquiries" ON public.enquiries;
 CREATE POLICY "Allow authenticated admins to delete enquiries"
   ON public.enquiries
@@ -60,14 +70,14 @@ CREATE POLICY "Allow authenticated admins to delete enquiries"
 -- Stores real-time athlete KPIs updated from admin.html
 CREATE TABLE IF NOT EXISTS public.scouting_metrics (
   id TEXT PRIMARY KEY DEFAULT 'current',
-  exp TEXT NOT NULL DEFAULT '16+',
-  tours TEXT NOT NULL DEFAULT '15',
-  scorpio TEXT NOT NULL DEFAULT '1',
-  frandipur TEXT NOT NULL DEFAULT '3x',
-  bullets TEXT NOT NULL DEFAULT '11',
-  bikes TEXT NOT NULL DEFAULT '7',
-  raiding_side TEXT NOT NULL DEFAULT 'Right-Corner / All-Rounder',
-  signature_moves TEXT NOT NULL DEFAULT 'Thigh Catch, Ankle Hold & Running Hand Touch',
+  exp TEXT NOT NULL DEFAULT '16+ Years',
+  tours TEXT NOT NULL DEFAULT '15 Tours',
+  scorpio TEXT NOT NULL DEFAULT 'Scorpio-N',
+  frandipur TEXT NOT NULL DEFAULT '18 / 18',
+  bullets TEXT NOT NULL DEFAULT '10 Bullets',
+  bikes TEXT NOT NULL DEFAULT '45+ Bikes',
+  raiding_side TEXT NOT NULL DEFAULT 'Right Raider (Speed Baulk & Corner Specialist)',
+  signature_moves TEXT NOT NULL DEFAULT 'Jump Escape, Touch, Body Swerve, Rapid Toe Touch',
   updated_at TIMESTAMPTZ NOT NULL DEFAULT timezone('utc'::text, now())
 );
 
@@ -93,7 +103,7 @@ CREATE POLICY "Allow authenticated admin update scouting metrics"
 
 -- Seed default metrics row if not exists
 INSERT INTO public.scouting_metrics (id, exp, tours, scorpio, frandipur, bullets, bikes, raiding_side, signature_moves)
-VALUES ('current', '16+', '15', '1', '3x', '11', '7', 'Right-Corner / All-Rounder', 'Thigh Catch, Ankle Hold & Running Hand Touch')
+VALUES ('current', '16+ Years', '15 Tours', 'Scorpio-N', '18 / 18', '10 Bullets', '45+ Bikes', 'Right Raider (Speed Baulk & Corner Specialist)', 'Jump Escape, Touch, Body Swerve, Rapid Toe Touch')
 ON CONFLICT (id) DO NOTHING;
 
 -- 3. INTERNATIONAL TOURS TABLE
@@ -176,7 +186,43 @@ VALUES
   (2023, 'Toronto Metro Championship', 'Brampton / Toronto, Canada', 'Best Defender', 'Trophy', 'international', true)
 ON CONFLICT DO NOTHING;
 
--- Indexes for performance
+-- 5. STORAGE BUCKET CONFIGURATION FOR ATHLETE MEDIA (Optional Cloud Uploads)
+INSERT INTO storage.buckets (id, name, public)
+VALUES ('athlete-media', 'athlete-media', true)
+ON CONFLICT (id) DO UPDATE SET public = true;
+
+-- Storage RLS: Public read access
+DROP POLICY IF EXISTS "Public media read access" ON storage.objects;
+CREATE POLICY "Public media read access"
+  ON storage.objects
+  FOR SELECT
+  TO anon, authenticated
+  USING (bucket_id = 'athlete-media');
+
+-- Storage RLS: Authenticated Admin upload access
+DROP POLICY IF EXISTS "Admin upload media access" ON storage.objects;
+CREATE POLICY "Admin upload media access"
+  ON storage.objects
+  FOR INSERT
+  TO authenticated
+  WITH CHECK (bucket_id = 'athlete-media');
+
+-- Storage RLS: Authenticated Admin modify/delete access
+DROP POLICY IF EXISTS "Admin modify media access" ON storage.objects;
+CREATE POLICY "Admin modify media access"
+  ON storage.objects
+  FOR UPDATE
+  TO authenticated
+  USING (bucket_id = 'athlete-media');
+
+DROP POLICY IF EXISTS "Admin delete media access" ON storage.objects;
+CREATE POLICY "Admin delete media access"
+  ON storage.objects
+  FOR DELETE
+  TO authenticated
+  USING (bucket_id = 'athlete-media');
+
+-- Performance Indexes
 CREATE INDEX IF NOT EXISTS idx_enquiries_created_at ON public.enquiries (created_at DESC);
 CREATE INDEX IF NOT EXISTS idx_enquiries_status ON public.enquiries (status);
 CREATE INDEX IF NOT EXISTS idx_tournaments_year ON public.tournament_records (year DESC);

@@ -2518,17 +2518,7 @@
     }
 
     function openAdminLoginModal(targetTab) {
-      window._pendingAdminTab = targetTab || 'profile';
-      const loginModal = document.getElementById('adminLoginModal');
-      if (loginModal) {
-        loginModal.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-        const inp = document.getElementById('adminPasscodeInput');
-        if (inp) {
-          inp.value = '';
-          setTimeout(() => inp.focus(), 100);
-        }
-      }
+      window.location.href = 'admin.html';
     }
 
     function closeAdminLoginModal() {
@@ -2552,24 +2542,7 @@
 
     function handleAdminLogin(e) {
       if (e) e.preventDefault();
-      const inp = document.getElementById('adminPasscodeInput');
-      const err = document.getElementById('adminLoginError');
-      if (!inp) return;
-      const val = inp.value.trim().toLowerCase();
-      if (val === 'gurlal2026' || val === 'sohal2026' || val === 'admin123') {
-        sessionStorage.setItem('gs_admin_session', 'authenticated');
-        if (err) err.classList.add('hidden');
-        closeAdminLoginModal();
-        openAdminModal(window._pendingAdminTab || 'profile');
-        showToastNotification('Admin session unlocked successfully', 'lock_open');
-      } else {
-        if (err) {
-          err.classList.remove('hidden');
-          err.textContent = 'Invalid security passcode. Access denied.';
-        }
-        inp.classList.add('ring-2', 'ring-red-500');
-        setTimeout(() => inp.classList.remove('ring-2', 'ring-red-500'), 1500);
-      }
+      window.location.href = 'admin.html';
     }
 
     function logoutAdmin() {
