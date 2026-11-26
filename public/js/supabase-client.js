@@ -88,6 +88,35 @@
     },
 
     /**
+     * Refresh Admin Session Token via Supabase Auth
+     */
+    async adminRefreshToken(refreshToken) {
+      if (!refreshToken) return null;
+      try {
+        const resp = await fetch(`${this.url}/auth/v1/token?grant_type=refresh_token`, {
+          method: 'POST',
+          headers: {
+            'apikey': this.key,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ refresh_token: refreshToken })
+        });
+        const data = await resp.json();
+        if (resp.ok && data.access_token) {
+          const session = {
+            access_token: data.access_token,
+            refresh_token: data.refresh_token || refreshToken,
+            expires_at: Date.now() + (data.expires_in * 1000),
+            user: data.user
+          };
+          sessionStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(session));
+          return session;
+        }
+      } catch (e) {}
+      return null;
+    },
+
+    /**
      * Admin Sign Out
      */
     adminSignOut() {
@@ -105,8 +134,12 @@
         const s = JSON.parse(raw);
         if (s && s.access_token) {
           if (s.expires_at && s.expires_at < Date.now()) {
-            this.adminSignOut();
-            return null;
+            if (s.refresh_token) {
+              this.adminRefreshToken(s.refresh_token);
+            } else {
+              this.adminSignOut();
+              return null;
+            }
           }
           return s;
         }

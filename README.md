@@ -77,7 +77,7 @@ The project features exactly 6 public-facing pages plus a discrete management po
    * Fullscreen Lightbox image inspector.
    * Match video player with custom playback speeds (0.5x, 1x, 1.5x, 2x) and full range-request seeking.
 3. **Discreet Gated Admin CMS:**
-   * Password-protected (`gurlal2026`) local CMS for managing tournament dates, player stats, and media items.
+   * Supabase Auth-protected management portal for viewing live tournament enquiries, player stats, and media items.
    * Live **Enquiries Inbox** capturing submissions from Home and Contact forms with status tracking (`New`, `Reviewed`, `Booked`), JSON export, and instant WhatsApp reply.
 4. **100% Mojibake-Free Gurmukhi Support:**
    * Native Punjabi terms rendered via HTML decimal entities (`&#2606;&#2622;&#2589;&#2631; &#2598;&#2624; &#2616;&#2620;&#2622;&#2600;`) and Google Fonts `Noto Sans Gurmukhi`, immune to browser charset discrepancies.

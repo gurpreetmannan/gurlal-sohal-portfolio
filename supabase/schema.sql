@@ -179,11 +179,11 @@ CREATE POLICY "Allow admin modify tournaments"
 -- Seed confirmed victories
 INSERT INTO public.tournament_records (year, title, location, award, prize, category, verified)
 VALUES
-  (2025, 'Frandipur Kabaddi Cup', 'Frandipur, Punjab', 'Best Stopper (3rd Consecutive)', 'Mahindra Scorpio SUV', 'major_cup', true),
-  (2024, 'Frandipur Kabaddi Cup', 'Frandipur, Punjab', 'Best Stopper (2nd Consecutive)', 'Royal Enfield Bullet 350', 'major_cup', true),
-  (2023, 'Frandipur Kabaddi Cup', 'Frandipur, Punjab', 'Best Stopper', 'Trophy & Cash Purse', 'major_cup', true),
-  (2024, 'Vancouver International Kabaddi Cup', 'Vancouver, BC, Canada', 'Best Stopper of the Tournament', 'Trophy & Cash Award', 'international', true),
-  (2023, 'Toronto Metro Championship', 'Brampton / Toronto, Canada', 'Best Defender', 'Trophy', 'international', true)
+  (2025, 'Bir Baba Buddha Sahib Kabaddi Cup', 'Tarn Taran, Punjab', 'Best Raider of Tournament', 'Mahindra Scorpio-N SUV', 'major_cup', true),
+  (2024, '1st Frandipur Kabaddi Cup Championship', 'Frandipur, Punjab', 'Best Raider & 18/18 Strike', 'Trophy & Prize Buffalo', 'major_cup', true),
+  (2024, 'Vancouver International Kabaddi Cup', 'Vancouver, BC, Canada', 'Best Raider of the Tournament', 'Trophy & Cash Award', 'international', true),
+  (2023, 'Toronto Metro Championship', 'Brampton / Toronto, Canada', 'Best Raider / Lead Scorer', 'Championship Trophy', 'international', true),
+  (2023, 'Punjab State Federation Cup', 'Punjab, India', 'Best Raider Recognition', 'Royal Enfield Bullet 350', 'major_cup', true)
 ON CONFLICT DO NOTHING;
 
 -- 5. STORAGE BUCKET CONFIGURATION FOR ATHLETE MEDIA (Optional Cloud Uploads)
