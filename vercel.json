@@ -2,6 +2,10 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    { "source": "/stitch_gurlal_sohal_athlete_portfolio/(.*)", "destination": "/", "permanent": true },
+    { "source": "/code", "destination": "/", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/images/(.*)", "destination": "/public/images/$1" },
     { "source": "/videos/(.*)", "destination": "/public/videos/$1" },

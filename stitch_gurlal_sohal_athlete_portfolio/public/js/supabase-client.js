@@ -243,25 +243,6 @@
         errorMessage = err.message || 'Network error connecting to Supabase database.';
       }
 
-      // Sync local cache
-      try {
-        const localEnquiry = {
-          id: record ? record.id : ('ENQ-' + Date.now()),
-          date: record ? record.created_at : new Date().toISOString(),
-          organizerName: payload.organizer_name,
-          contactPhone: payload.phone,
-          enquiryCategory: payload.category,
-          tournamentDates: payload.dates_location,
-          messageTerms: payload.message,
-          status: 'new',
-          isSynced: supabaseSuccess
-        };
-
-        const existing = JSON.parse(localStorage.getItem('gs_raider_inquiries') || '[]');
-        existing.unshift(localEnquiry);
-        localStorage.setItem('gs_raider_inquiries', JSON.stringify(existing));
-      } catch (e) {}
-
       return {
         success: supabaseSuccess,
         error: errorMessage,
@@ -295,18 +276,12 @@
               isSynced: true
             }));
 
-            localStorage.setItem('gs_raider_inquiries', JSON.stringify(mapped));
             return { enquiries: mapped, source: 'supabase' };
           }
         }
       } catch (err) {}
 
-      try {
-        const local = JSON.parse(localStorage.getItem('gs_raider_inquiries') || '[]');
-        return { enquiries: local, source: 'local' };
-      } catch (e) {
-        return { enquiries: [], source: 'empty' };
-      }
+      return { enquiries: [], source: 'empty' };
     },
 
     /**
@@ -324,15 +299,6 @@
         if (resp.ok) remoteSuccess = true;
       } catch (err) {}
 
-      try {
-        const list = JSON.parse(localStorage.getItem('gs_raider_inquiries') || '[]');
-        const idx = list.findIndex(x => String(x.id) === String(id));
-        if (idx !== -1) {
-          list[idx].status = newStatus;
-          localStorage.setItem('gs_raider_inquiries', JSON.stringify(list));
-        }
-      } catch (e) {}
-
       return remoteSuccess;
     },
 
@@ -349,12 +315,6 @@
         });
         if (resp.ok) remoteSuccess = true;
       } catch (err) {}
-
-      try {
-        let list = JSON.parse(localStorage.getItem('gs_raider_inquiries') || '[]');
-        list = list.filter(x => String(x.id) !== String(id));
-        localStorage.setItem('gs_raider_inquiries', JSON.stringify(list));
-      } catch (e) {}
 
       return remoteSuccess;
     },
@@ -451,17 +411,16 @@
             message: 'Scouting metrics saved successfully to Supabase database.'
           };
         } else {
+          const errText = await resp.text();
           return {
-            success: true,
-            source: 'local',
-            message: 'Saved to local cache. (Supabase table not provisioned yet; run schema.sql to activate cloud storage).'
+            success: false,
+            error: 'Database update failed: ' + errText
           };
         }
       } catch (e) {
         return {
-          success: true,
-          source: 'local',
-          message: 'Saved to local cache. Network offline.'
+          success: false,
+          error: 'Network error connecting to Supabase database: ' + (e.message || e)
         };
       }
     },

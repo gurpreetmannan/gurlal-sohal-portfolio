@@ -155,10 +155,6 @@
             <span class="material-symbols-outlined text-[16px]">sync</span>
             <span>Sync Supabase</span>
           </button>
-          <button type="button" onclick="exportEnquiriesJson()" class="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs font-mono flex items-center gap-1.5 cursor-pointer">
-            <span class="material-symbols-outlined text-[16px]">download</span>
-            <span>Export JSON</span>
-          </button>
         </div>
       </div>
 
@@ -538,10 +534,12 @@
     }
 
     function adminLogOut() {
+      _activeEnquiries = [];
       if (window.GurlalSupabase) {
         window.GurlalSupabase.adminSignOut();
       }
       checkAdminAuth();
+      renderPageEnquiries('all');
       showNotice('Logged out successfully.');
     }
 
@@ -569,19 +567,16 @@
       }
     }
 
-    // Enquiry Storage & Management
+    // In-Memory Enquiry Store (Enforces session privacy; never written to unencrypted localStorage)
+    let _activeEnquiries = [];
+
     function getStoredEnquiries() {
-      try {
-        const raw = localStorage.getItem('gs_raider_inquiries');
-        return raw ? JSON.parse(raw) : [];
-      } catch(e) { return []; }
+      return _activeEnquiries;
     }
 
     function saveStoredEnquiries(arr) {
-      try {
-        localStorage.setItem('gs_raider_inquiries', JSON.stringify(arr));
-        updateBadgeCounters();
-      } catch(e){}
+      _activeEnquiries = Array.isArray(arr) ? arr : [];
+      updateBadgeCounters();
     }
 
     function updateBadgeCounters() {
@@ -704,53 +699,50 @@
     async function updatePageEnquiryStatus(id, newStatus) {
       showNotice(`Updating enquiry status to "${newStatus}" in Supabase...`);
       if (window.GurlalSupabase && window.GurlalSupabase.updateStatus) {
-        await window.GurlalSupabase.updateStatus(id, newStatus);
+        const ok = await window.GurlalSupabase.updateStatus(id, newStatus);
+        if (ok) {
+          const idx = _activeEnquiries.findIndex(x => String(x.id) === String(id));
+          if (idx !== -1) {
+            _activeEnquiries[idx].status = newStatus;
+            updateBadgeCounters();
+            renderPageEnquiries(currentPageFilter);
+          }
+          showNotice(`✓ Enquiry status updated to "${newStatus}" in Supabase.`);
+          return;
+        }
       }
-      const arr = getStoredEnquiries();
-      const idx = arr.findIndex(x => String(x.id) === String(id));
-      if (idx !== -1) {
-        arr[idx].status = newStatus;
-        saveStoredEnquiries(arr);
-        renderPageEnquiries(currentPageFilter);
-        showNotice(`Enquiry status updated to "${newStatus}".`);
-      }
+      showNotice('Failed to update enquiry in Supabase database.');
     }
 
     async function deletePageEnquiry(id) {
       if (!confirm('Are you sure you want to permanently delete this enquiry? This action removes it from the Supabase database.')) return;
       showNotice('Deleting enquiry from Supabase...');
       if (window.GurlalSupabase && window.GurlalSupabase.deleteEnquiry) {
-        await window.GurlalSupabase.deleteEnquiry(id);
+        const ok = await window.GurlalSupabase.deleteEnquiry(id);
+        if (ok) {
+          _activeEnquiries = _activeEnquiries.filter(x => String(x.id) !== String(id));
+          updateBadgeCounters();
+          renderPageEnquiries(currentPageFilter);
+          showNotice('✓ Enquiry permanently deleted from Supabase.');
+          return;
+        }
       }
-      let arr = getStoredEnquiries();
-      arr = arr.filter(x => String(x.id) !== String(id));
-      saveStoredEnquiries(arr);
-      renderPageEnquiries(currentPageFilter);
-      showNotice('Enquiry permanently deleted.');
+      showNotice('Failed to delete enquiry from Supabase database.');
     }
 
     async function syncFromSupabase() {
       showNotice('Syncing live enquiries from Supabase database...');
       if (window.GurlalSupabase && window.GurlalSupabase.getEnquiries) {
         const res = await window.GurlalSupabase.getEnquiries();
-        renderPageEnquiries(currentPageFilter);
-        if (res.source === 'supabase') {
-          showNotice(`✓ Synchronized ${res.enquiries.length} enquiries from Supabase database.`);
+        if (res && res.enquiries) {
+          _activeEnquiries = res.enquiries;
+          updateBadgeCounters();
+          renderPageEnquiries(currentPageFilter);
+          showNotice(`✓ Synchronized ${res.enquiries.length} enquiries directly from Supabase database.`);
         } else {
-          showNotice('Loaded local cache. Verify Supabase connection.');
+          showNotice('No enquiries returned or authorization required.');
         }
       }
-    }
-
-    function exportEnquiriesJson() {
-      const arr = getStoredEnquiries();
-      const blob = new Blob([JSON.stringify(arr, null, 2)], { type: 'application/json' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'gurlal-sohal-inquiries-' + Date.now() + '.json';
-      a.click();
-      URL.revokeObjectURL(url);
     }
 
     function showNotice(msg) {
@@ -780,14 +772,13 @@
       if (window.GurlalSupabase && window.GurlalSupabase.saveScoutingMetrics) {
         showNotice('Saving scouting metrics to Supabase cloud database...');
         const res = await window.GurlalSupabase.saveScoutingMetrics(kpis);
-        if (res.source === 'supabase') {
-          showNotice('✓ Scouting metrics successfully synchronized with Supabase database!');
+        if (res.success) {
+          showNotice('✓ Scouting metrics successfully saved to Supabase cloud database!');
         } else {
-          showNotice(res.message || 'Saved to local cache. (Supabase cloud table pending)');
+          showNotice(res.error || 'Failed to update scouting metrics in Supabase.');
         }
       } else {
-        localStorage.setItem('gurlal_scouting_metrics', JSON.stringify(kpis));
-        showNotice('Scouting KPIs saved to local cache.');
+        showNotice('Supabase client module unavailable.');
       }
     }
 
@@ -796,10 +787,7 @@
         let k = null;
         if (window.GurlalSupabase && window.GurlalSupabase.getScoutingMetrics) {
           const res = await window.GurlalSupabase.getScoutingMetrics();
-          k = res.metrics;
-        } else {
-          const saved = localStorage.getItem('gurlal_scouting_metrics');
-          if (saved) k = JSON.parse(saved);
+          k = res ? res.metrics : null;
         }
         if (k) {
           if (document.getElementById('kpiExp') && k.exp) document.getElementById('kpiExp').value = k.exp;

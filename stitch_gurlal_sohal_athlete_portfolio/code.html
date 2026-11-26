@@ -2,6 +2,8 @@
 <html lang="en" class="scroll-smooth">
 
 <head>
+  <meta http-equiv="refresh" content="0; url=/">
+  <script>window.location.replace('/');</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home &mdash; Gurlal Sohal (Gurlal Singh) Official Raider Portfolio</title>
@@ -1600,7 +1602,7 @@
           class="hidden p-3 rounded-xl bg-emerald-950/80 border border-emerald-500/50 text-emerald-300 text-xs font-mono flex items-center justify-between">
           <span class="flex items-center gap-2">
             <span class="material-symbols-outlined text-[18px]">check_circle</span>
-            <span>All verified player data and preferences successfully updated in browser local storage!</span>
+            <span>All verified player data and preferences successfully synchronized with Supabase database!</span>
           </span>
           <button type="button" onclick="document.getElementById('adminSaveNotice').classList.add('hidden')"
             class="text-slate-400 hover:text-white">&times;</button>
@@ -2042,20 +2044,13 @@
                   class="px-2 py-0.5 rounded bg-blue-950 text-blue-400 border border-blue-500/40 text-[11px] font-mono font-bold">0
                   Inquiries</span>
               </div>
-              <p class="font-body text-xs text-slate-400">All submitted inquiries from Home and Contact pages are
-                recorded here locally (Supabase/Firebase adapter ready).</p>
+              <p class="font-body text-xs text-slate-400">All submitted inquiries are securely synchronized and managed via Supabase Postgres.</p>
             </div>
             <div class="flex items-center gap-2">
-              <button type="button" onclick="exportEnquiriesJson()"
-                class="px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-slate-200 text-xs font-mono hover:text-white flex items-center gap-1 cursor-pointer">
-                <span class="material-symbols-outlined text-[14px]">download</span>
-                <span>Export JSON</span>
-              </button>
-              <button type="button" onclick="clearAllEnquiries()"
-                class="px-3 py-1.5 rounded-lg bg-red-950/60 border border-red-500/40 text-red-300 text-xs font-mono hover:bg-red-900/60 flex items-center gap-1 cursor-pointer">
-                <span class="material-symbols-outlined text-[14px]">delete</span>
-                <span>Clear All</span>
-              </button>
+              <a href="/admin" class="px-3 py-1.5 rounded-lg bg-blue-600 border border-blue-500 text-white text-xs font-mono flex items-center gap-1 cursor-pointer">
+                <span class="material-symbols-outlined text-[14px]">admin_panel_settings</span>
+                <span>Open Dedicated Admin Portal</span>
+              </a>
             </div>
           </div>
 
@@ -2082,7 +2077,7 @@
 
       <!-- Admin Footer Bar -->
       <div class="px-6 py-3 bg-[#131F37] border-t border-slate-800 flex items-center justify-between">
-        <span class="text-xs text-slate-400 font-mono">Gurlal Sohal Raider CMS &bull; Local Storage Persistence</span>
+        <span class="text-xs text-slate-400 font-mono">Gurlal Sohal Raider CMS &bull; Supabase Cloud Database</span>
         <button type="button" onclick="saveAllAdminData(true)"
           class="px-5 py-2 rounded-lg bg-[#2563EB] text-white font-label text-xs uppercase tracking-wider font-bold hover:bg-blue-600 transition-all cursor-pointer">
           Save &amp; Update Portfolio
